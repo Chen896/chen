@@ -1,0 +1,1921 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <!-- <meta http-equiv="x-ua-compatible" content="ie=7"/>-->
+        <title>易仓-仓配管理系统</title>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery-myProject.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery-myAjaxForm.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/chosen/chosen.jquery.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/init.js?v=20150517"></script>
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/ui-lightness/jquery-ui.min.css?2015-0110" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/global.css?2015-0110" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/public/index.css?2015-0110" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/public/layout.css?2015-0110" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/public/head.css?20141017" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/js/chosen/chosen.min.css" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/jquery.alerts.css" />
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery.alerts.js"></script>
+        <link type="image/x-icon" rel="shortcut icon" href="http://dev-wms.eccang.com/images/favicon.ico" />
+        <!-- 权限按钮控制 start -->
+        <!-- Array ( [state]=> 1
+        [ask] => 1
+        [clazz] => Array
+        (
+        [0] => plan_orders_exportPurchase_clazz
+        [1] => plan_orders_etaConfire_clazz
+        [2] => plan_orders_derecognition_clazz
+        [3] => plan_orders_revocationPurchase_clazz
+        [4] => plan_orders_printPurchase_clazz
+        [5] => plan_orders_createPurchase_clazz
+        [6] => plan_orders_printContract_clazz
+        [7] => plan_orders_downLoadContract_clazz
+        [8] => plan_orders_downLoadContractPdf_clazz
+        [9] => plan_orders_editAddr_clazz
+        [10] => orders_exportAllPurchase_clazz
+        [11] => orders_printPurchase_clazz
+        [12] => orders_markEta_clazz
+        [13] => orders_exportPurchase_clazz
+        [14] => orders_updateTrack_clazz
+        [15] => orders_doApplyForPayment_clazz
+        [16] => orders_printContract_clazz
+        [17] => orders_downLoadContract_clazz
+        [18] => orders_downLoadContractPdf_clazz
+        [19] => orders_addTrackingNote_clazz
+        [20] => replenish_strategy_runReplenishBtn_clazz
+        [21] => replenish_strategy_exportBtn_clazz
+        [22] => replenish_strategy_baseDataSetBtn_clazz
+        [23] => replenish_strategy_warehouseReplenishSetBtn_clazz
+        [24] => replenish_strategy_batchWarehouseReplenishSetBtn_clazz
+        [25] => replenish_strategy_importBtn_clazz
+        [26] => replenish_strategy_edit_clazz
+        [27] => replenish_strategy_deleteByKey_clazz
+        [28] => receiving_forceComplete_clazz
+        [29] => supplier_updateTreatyBatch_clazz
+        [30] => supplier_createSupplier_clazz
+        [31] => supplier_uploadSupplier_clazz
+        [32] => supplier_supplierEditById_clazz
+        [33] => product_defaultSupplierBtn_clazz
+        [34] => product_addProductBtn_clazz
+        [35] => product_uploadProductBtn_clazz
+        [36] => product_editById_clazz
+        [37] => product_deleteById_clazz
+        [38] => product_viewHistory_clazz
+        [39] => product_address_clazz
+        [40] => product_addSupplierProductBtn_clazz
+        [41] => product_viewAllHistory_clazz
+        [42] => supplier_exportBtn_clazz
+        [43] => supplier_exportSkuPriceBtn_clazz
+        [44] => supplier_exportPurchaseBtn_clazz
+        [45] => purchase_order_examine_clazz
+        [46] => order_orders_uploadTrackingNo_clazz
+        [47] => product_warehouse_exportButton_clazz
+        [48] => product_develop_detailBtn_clazz
+        [49] => product_develop_editProduct_clazz
+        [50] => product_develop_priceAnalysisSet_clazz
+        [51] => product_develop_showSupplierPrice_clazz
+        [52] => product_develop_countSaleFee_clazz
+        [53] => product_develop_uploadAdvancedProduct_clazz
+        [54] => product_develop_batchDeleteImagesButton_clazz
+        [55] => product_develop_updateProductAttr_clazz
+        [56] => product_develop_exportBtn_clazz
+        )
+        [data] => Array
+        (
+        [0] => Array
+        (
+        [urb_id] => 1
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 导出
+        [urb_desc] => 导出
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_exportPurchase_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [1] => Array
+        (
+        [urb_id] => 2
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 交货确认
+        [urb_desc] => 交货确认
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_etaConfire_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [2] => Array
+        (
+        [urb_id] => 10
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 撤销确认
+        [urb_desc] => 撤销确认
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_derecognition_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [3] => Array
+        (
+        [urb_id] => 11
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 撤销采购单
+        [urb_desc] => 撤销采购单
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_revocationPurchase_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [4] => Array
+        (
+        [urb_id] => 12
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 打印采购单
+        [urb_desc] => 打印采购单
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_printPurchase_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [5] => Array
+        (
+        [urb_id] => 13
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 手工创建采购单
+        [urb_desc] => 手工创建采购单
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_createPurchase_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [6] => Array
+        (
+        [urb_id] => 14
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 打印采购合同
+        [urb_desc] => 打印采购合同
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_printContract_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [7] => Array
+        (
+        [urb_id] => 15
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 下载采购合同
+        [urb_desc] => 下载采购合同
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_downLoadContract_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [8] => Array
+        (
+        [urb_id] => 16
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 导出PDF合同
+        [urb_desc] => 导出PDF合同
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_downLoadContractPdf_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [9] => Array
+        (
+        [urb_id] => 17
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 采购单详情编辑信息
+        [urb_desc] => 采购单详情编辑信息
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_editAddr_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [10] => Array
+        (
+        [urb_id] => 18
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 导出所有
+        [urb_desc] => 导出所有
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_exportAllPurchase_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [11] => Array
+        (
+        [urb_id] => 19
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 打印采购单
+        [urb_desc] => 打印采购单
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_printPurchase_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [12] => Array
+        (
+        [urb_id] => 20
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 标记到货日期
+        [urb_desc] => 标记到货日期
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_markEta_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [13] => Array
+        (
+        [urb_id] => 21
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 导出
+        [urb_desc] => 导出
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_exportPurchase_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [14] => Array
+        (
+        [urb_id] => 22
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 更新跟单状态
+        [urb_desc] => 更新跟单状态
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_updateTrack_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [15] => Array
+        (
+        [urb_id] => 23
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 申请付款
+        [urb_desc] => 申请付款
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_doApplyForPayment_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [16] => Array
+        (
+        [urb_id] => 24
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 打印采购合同
+        [urb_desc] => 打印采购合同
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_printContract_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [17] => Array
+        (
+        [urb_id] => 25
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 下载采购合同
+        [urb_desc] => 下载采购合同
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_downLoadContract_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [18] => Array
+        (
+        [urb_id] => 26
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 导出PDF合同
+        [urb_desc] => 导出PDF合同
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_downLoadContractPdf_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [19] => Array
+        (
+        [urb_id] => 27
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 添加跟踪记录
+        [urb_desc] => 添加跟踪记录
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_addTrackingNote_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [20] => Array
+        (
+        [urb_id] => 28
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 运行补货策略
+        [urb_desc] => 运行补货策略
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_runReplenishBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [21] => Array
+        (
+        [urb_id] => 29
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 导出
+        [urb_desc] => 导出
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_exportBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [22] => Array
+        (
+        [urb_id] => 30
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 基础数据设置
+        [urb_desc] => 基础数据设置
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_baseDataSetBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [23] => Array
+        (
+        [urb_id] => 31
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 仓库补货策略
+        [urb_desc] => 仓库补货策略
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_warehouseReplenishSetBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [24] => Array
+        (
+        [urb_id] => 32
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 批量设置补货策略
+        [urb_desc] => 批量设置补货策略
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_batchWarehouseReplenishSetBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [25] => Array
+        (
+        [urb_id] => 33
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 导入
+        [urb_desc] => 导入
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_importBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [26] => Array
+        (
+        [urb_id] => 34
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 编辑/查看
+        [urb_desc] => 编辑/查看
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_edit_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [27] => Array
+        (
+        [urb_id] => 35
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 删除
+        [urb_desc] => 删除
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_deleteByKey_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [28] => Array
+        (
+        [urb_id] => 36
+        [um_id] => 27
+        [ur_id] => 22
+        [urb_name] => 强制收货完成
+        [urb_desc] => 强制收货完成
+        [urb_url] => /receiving/receiving/list
+        [urb_sort] => 0
+        [urb_clazz] => receiving_forceComplete_clazz
+        [urb_status] => 1
+        [ur_name] => 收货管理
+        )
+        [29] => Array
+        (
+        [urb_id] => 37
+        [um_id] => 36
+        [ur_id] => 81
+        [urb_name] => 批量修改供应商属性
+        [urb_desc] => 批量修改供应商属性
+        [urb_url] => /supplier/supplier/list
+        [urb_sort] => 0
+        [urb_clazz] => supplier_updateTreatyBatch_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商管理
+        )
+        [30] => Array
+        (
+        [urb_id] => 38
+        [um_id] => 36
+        [ur_id] => 81
+        [urb_name] => 添加供应商
+        [urb_desc] => 添加供应商
+        [urb_url] => /supplier/supplier/list
+        [urb_sort] => 0
+        [urb_clazz] => supplier_createSupplier_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商管理
+        )
+        [31] => Array
+        (
+        [urb_id] => 39
+        [um_id] => 36
+        [ur_id] => 81
+        [urb_name] => 批量导入供应商
+        [urb_desc] => 批量导入供应商
+        [urb_url] => /supplier/supplier/list
+        [urb_sort] => 0
+        [urb_clazz] => supplier_uploadSupplier_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商管理
+        )
+        [32] => Array
+        (
+        [urb_id] => 40
+        [um_id] => 36
+        [ur_id] => 81
+        [urb_name] => 编辑
+        [urb_desc] => 编辑
+        [urb_url] => /supplier/supplier/list
+        [urb_sort] => 0
+        [urb_clazz] => supplier_supplierEditById_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商管理
+        )
+        [33] => Array
+        (
+        [urb_id] => 41
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 批量更新默认供应商
+        [urb_desc] => 批量更新默认供应商
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_defaultSupplierBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [34] => Array
+        (
+        [urb_id] => 42
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 添加产品/报价
+        [urb_desc] => 添加产品/报价
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_addProductBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [35] => Array
+        (
+        [urb_id] => 43
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 批量添加产品/报价
+        [urb_desc] => 批量添加产品/报价
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_uploadProductBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [36] => Array
+        (
+        [urb_id] => 44
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 编辑
+        [urb_desc] => 编辑
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_editById_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [37] => Array
+        (
+        [urb_id] => 45
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 删除
+        [urb_desc] => 删除
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_deleteById_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [38] => Array
+        (
+        [urb_id] => 46
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 历史报价
+        [urb_desc] => 历史报价
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_viewHistory_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [39] => Array
+        (
+        [urb_id] => 47
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 商品地址
+        [urb_desc] => 商品地址
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_address_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [40] => Array
+        (
+        [urb_id] => 48
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 添加供应商报价
+        [urb_desc] => 添加供应商报价
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_addSupplierProductBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [41] => Array
+        (
+        [urb_id] => 49
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 所有历史报价
+        [urb_desc] => 所有历史报价
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_viewAllHistory_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [42] => Array
+        (
+        [urb_id] => 50
+        [um_id] => 36
+        [ur_id] => 189
+        [urb_name] => 导出
+        [urb_desc] => 导出
+        [urb_url] => /kpi/supplier/list
+        [urb_sort] => 0
+        [urb_clazz] => supplier_exportBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商KPI
+        )
+        [43] => Array
+        (
+        [urb_id] => 51
+        [um_id] => 36
+        [ur_id] => 189
+        [urb_name] => 详情-产品-导出报价
+        [urb_desc] => 详情-产品-导出报价
+        [urb_url] => /kpi/supplier/list
+        [urb_sort] => 0
+        [urb_clazz] => supplier_exportSkuPriceBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商KPI
+        )
+        [44] => Array
+        (
+        [urb_id] => 52
+        [um_id] => 36
+        [ur_id] => 189
+        [urb_name] => 详情-采购单-导出
+        [urb_desc] => 详情-采购单-导出
+        [urb_url] => /kpi/supplier/list
+        [urb_sort] => 0
+        [urb_clazz] => supplier_exportPurchaseBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商KPI
+        )
+        [45] => Array
+        (
+        [urb_id] => 53
+        [um_id] => 57
+        [ur_id] => 144
+        [urb_name] => 提交复审
+        [urb_desc] => 提交复审
+        [urb_url] => /purchase/verify-purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => purchase_order_examine_clazz
+        [urb_status] => 1
+        [ur_name] => 采购审核
+        )
+        [46] => Array
+        (
+        [urb_id] => 54
+        [um_id] => 49
+        [ur_id] => 31
+        [urb_name] => 上传跟踪号
+        [urb_desc] => 上传跟踪号
+        [urb_url] => /order/orders/list
+        [urb_sort] => 0
+        [urb_clazz] => order_orders_uploadTrackingNo_clazz
+        [urb_status] => 1
+        [ur_name] => 订单查询
+        )
+        [47] => Array
+        (
+        [urb_id] => 55
+        [um_id] => 89
+        [ur_id] => 217
+        [urb_name] => 导出
+        [urb_desc] => 产品成本列表-导出
+        [urb_url] => /product/warehouse-cost/list
+        [urb_sort] => 0
+        [urb_clazz] => product_warehouse_exportButton_clazz
+        [urb_status] => 1
+        [ur_name] => 产品成本列表
+        )
+        [48] => Array
+        (
+        [urb_id] => 56
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 点击SKU
+        [urb_desc] => 产品资料管理-点击SKU
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_detailBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [49] => Array
+        (
+        [urb_id] => 57
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 点击SKU详情-编辑
+        [urb_desc] => 点击SKU详情-编辑
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_editProduct_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [50] => Array
+        (
+        [urb_id] => 58
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 售价分析设置
+        [urb_desc] => 售价分析设置
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_priceAnalysisSet_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [51] => Array
+        (
+        [urb_id] => 59
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 历史报价
+        [urb_desc] => 历史报价
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_showSupplierPrice_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [52] => Array
+        (
+        [urb_id] => 60
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 建议销售金额
+        [urb_desc] => 建议销售金额
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_countSaleFee_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [53] => Array
+        (
+        [urb_id] => 61
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 导入产品属性
+        [urb_desc] => 导入产品属性
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_uploadAdvancedProduct_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [54] => Array
+        (
+        [urb_id] => 62
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 批量删除图片
+        [urb_desc] => 批量删除图片
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_batchDeleteImagesButton_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [55] => Array
+        (
+        [urb_id] => 63
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 更新产品属性
+        [urb_desc] => 更新产品属性
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_updateProductAttr_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [56] => Array
+        (
+        [urb_id] => 64
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 导出产品
+        [urb_desc] => 导出产品
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_exportBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        )
+        [USER_RIGHT_BUTTON_CONTROL] => 1
+        [sql] => select c.* from user a INNER JOIN user_position_right_button_map b on a.up_id=b.up_id INNER JOIN user_right_button c on b.urb_id=c.urb_id where 1=1 and c.urb_status='1' and a.user_id='1' order by c.urb_sort;
+        )
+        -->
+        <style type="text/css">body .authBthClazz{display:none;}</style>
+        <script type="text/javascript">/* 权限按钮控制 start
+     */
+            var request_uri = '/';
+            var authBtnClazzJson = ["plan_orders_exportPurchase_clazz", "plan_orders_etaConfire_clazz", "plan_orders_derecognition_clazz", "plan_orders_revocationPurchase_clazz", "plan_orders_printPurchase_clazz", "plan_orders_createPurchase_clazz", "plan_orders_printContract_clazz", "plan_orders_downLoadContract_clazz", "plan_orders_downLoadContractPdf_clazz", "plan_orders_editAddr_clazz", "orders_exportAllPurchase_clazz", "orders_printPurchase_clazz", "orders_markEta_clazz", "orders_exportPurchase_clazz", "orders_updateTrack_clazz", "orders_doApplyForPayment_clazz", "orders_printContract_clazz", "orders_downLoadContract_clazz", "orders_downLoadContractPdf_clazz", "orders_addTrackingNote_clazz", "replenish_strategy_runReplenishBtn_clazz", "replenish_strategy_exportBtn_clazz", "replenish_strategy_baseDataSetBtn_clazz", "replenish_strategy_warehouseReplenishSetBtn_clazz", "replenish_strategy_batchWarehouseReplenishSetBtn_clazz", "replenish_strategy_importBtn_clazz", "replenish_strategy_edit_clazz", "replenish_strategy_deleteByKey_clazz", "receiving_forceComplete_clazz", "supplier_updateTreatyBatch_clazz", "supplier_createSupplier_clazz", "supplier_uploadSupplier_clazz", "supplier_supplierEditById_clazz", "product_defaultSupplierBtn_clazz", "product_addProductBtn_clazz", "product_uploadProductBtn_clazz", "product_editById_clazz", "product_deleteById_clazz", "product_viewHistory_clazz", "product_address_clazz", "product_addSupplierProductBtn_clazz", "product_viewAllHistory_clazz", "supplier_exportBtn_clazz", "supplier_exportSkuPriceBtn_clazz", "supplier_exportPurchaseBtn_clazz", "purchase_order_examine_clazz", "order_orders_uploadTrackingNo_clazz", "product_warehouse_exportButton_clazz", "product_develop_detailBtn_clazz", "product_develop_editProduct_clazz", "product_develop_priceAnalysisSet_clazz", "product_develop_showSupplierPrice_clazz", "product_develop_countSaleFee_clazz", "product_develop_uploadAdvancedProduct_clazz", "product_develop_batchDeleteImagesButton_clazz", "product_develop_updateProductAttr_clazz", "product_develop_exportBtn_clazz"];
+            function buttonAuth() {
+                if (authBtnClazzJson.length > 0) {
+                    $.each(authBtnClazzJson,
+                    function(k, v) {
+                        //alert(v);
+                        $('.' + v).show();
+                    });
+                } else {
+                    $('.authBthClazz').show();
+                }
+            }
+            $(function() {
+                buttonAuth();
+                $("body").ajaxComplete(function(event, request, settings) {
+                    buttonAuth();
+                });
+            });</script>
+        <!-- 权限按钮控制 end --></head>
+
+    <body>
+        <script type="text/javascript">//语言
+            var locale_message_language = 'zh_CN';</script>
+        <script type="text/javascript">EZ.userId = 1;
+            function showThisSubMenuHeader(obj, id) {
+                var mLeft = $(obj).children().position().left;
+                $("#" + id).css("left", mLeft - 1);
+                $("#" + id).show();
+                $(obj).children("li").addClass("headNavA");
+                $(obj).children("li").children("a").css("color", "#0090E1");
+            }
+            function closeThisSubMenuHeader(obj, id) {
+                $(obj).children("li").removeClass("headNavA");
+                $(obj).children("li").children("a").css("color", "#fff");
+                $("#" + id).hide();
+            }
+            function headMenu(id, title, url, obj) {}</script>
+
+        <div id="head">
+            <div class="headProduct">&nbsp;&nbsp;仓配管理系统
+                <div class="headPro_drop" style="display: none">
+                    <a href="./orders.html">订单管理系统</a>
+                    <a href="./sales.html">销售管理系统</a></div>
+            </div>
+
+            <div style="display:none;">
+                <iframe style='display: none;' src='http://dev-eb.eccang.com/default/system/api-login?session_id=pn1vq0g0mvnmebraobjbkd3433'></iframe>
+            </div>
+
+            <div class="headNav">
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu86')" onmouseout="closeThisSubMenuHeader(this,'headmenu86')">
+                    <li style="font-weight: bold;">
+                        <a href="#">产品管理</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu86">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>产品询价</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-257" onclick="leftMenu('257','询价管理','/pd/develop/list?quick=257')">询价管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-258" onclick="leftMenu('258','指派询价','/pd/develop/assign-inquiry-list?quick=258')">指派询价</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-277" onclick="leftMenu('277','询价录入','/pd/develop/be-assign-inquiry-list?quick=277')">询价录入</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-259" onclick="leftMenu('259','询价审核','/pd/develop/inquiry-check-list?quick=259')">询价审核</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>产品开发</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-260" onclick="leftMenu('260','产品开发','/pd/develop/info-list?quick=260')">产品开发</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-92" onclick="leftMenu('92','产品录入','/product/develop-process/list?quick=92')">产品录入</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-261" onclick="leftMenu('261','产品审核','/pd/develop/check-info-list?quick=261')">产品审核</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>产品管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-262" onclick="leftMenu('262','产品资料管理','/product/develop/list?quick=262')">产品资料管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-217" onclick="leftMenu('217','产品成本列表','/product/warehouse-cost/list?quick=217')">产品成本列表</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-133" onclick="leftMenu('133','产品品类管理','/common/product-category-new/list?quick=133')">产品品类管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-152" onclick="leftMenu('152','产品款式管理','/product/parent/list?quick=152')">产品款式管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-256" onclick="leftMenu('256','海外仓组合产品','/product/overseas-warehouse-combination-product/list?quick=256')">海外仓组合产品</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-283" onclick="leftMenu('283','FNSKU关系维护','/product/platform-relation/list?quick=283')">FNSKU关系维护</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-266" onclick="leftMenu('266','产品条码管理','/product/barcode-map/list?quick=266')">产品条码管理</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>工具</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-295" onclick="leftMenu('295','平台销售定价','/analysis/product-sales-price-analysis/list?quick=295')">平台销售定价</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-294" onclick="leftMenu('294','运费计算器','/ship/shipping-method/shipping-calculator?quick=294')">运费计算器</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-267" onclick="leftMenu('267','客户模板管理','/pd/pd-template/index?quick=267')">客户模板管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-268" onclick="leftMenu('268','客户模板导出','/pd/pd-export/index?quick=268')">客户模板导出</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-265" onclick="leftMenu('265','条码批量打印','product/product/print-barcode?quick=265')">条码批量打印</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>设置</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-269" onclick="leftMenu('269','产品开发流程','/pd/tab/list?quick=269')">产品开发流程</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-292" onclick="leftMenu('292','平台费用设置','/pd/cost-setting/index?quick=292')">平台费用设置</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-271" onclick="leftMenu('271','产品自定义属性','/pd/tab-node-diy/index?quick=271')">产品自定义属性</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-272" onclick="leftMenu('272','流程子状态控制','/pd/status-flow/list?quick=272')">流程子状态控制</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-286" onclick="leftMenu('286','通用头程参数设置','/pd/transfer-settings?quick=286')">通用头程参数设置</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-311" onclick="leftMenu('311','询价需求模板管理','/pd/pd-require-template/list?quick=311')">询价需求模板管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-17" onclick="leftMenu('17','产品质检项管理','/common/product-qc-options/list?quick=17')">产品质检项管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-146" onclick="leftMenu('146','产品质检内容模板','/template/product-qc/list?quick=146')">产品质检内容模板</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-16" onclick="leftMenu('16','产品单位管理','/common/product-uom/list?quick=16')">产品单位管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-273" onclick="leftMenu('273','产品品牌管理','/pd/brand/list?quick=273')">产品品牌管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-281" onclick="leftMenu('281','箱规管理','/common/boxes/list?quick=281')">箱规管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-284" onclick="leftMenu('284','产品尺寸管理','/product/size?quick=284')">产品尺寸管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-285" onclick="leftMenu('285','产品颜色管理','/product/color?quick=285')">产品颜色管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-274" onclick="leftMenu('274','产品自定义分类','/product/user-category/list?quick=274')">产品自定义分类</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-149" onclick="leftMenu('149','产品等级管理','/product/level/list?quick=149')">产品等级管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-148" onclick="leftMenu('148','产品销售状态管理','/product/sell/list?quick=148')">产品销售状态管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-322" onclick="leftMenu('322','SKU生成规则','/pd/sku-increase-rule/list?quick=322')">SKU生成规则</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu16')" onmouseout="closeThisSubMenuHeader(this,'headmenu16')">
+                    <li style="font-weight: bold;">
+                        <a href="#">采购管理</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu16">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>采购计划</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-70" onclick="leftMenu('70','采购建议','/product/purchase/list?quick=70')">采购建议</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-181" onclick="leftMenu('181','补货策略管理','/product/replenish-strategy/list?quick=181')">补货策略管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-248" onclick="leftMenu('248','采购建议（供应商）','product/purchase/purchase-list?quick=248')">采购建议（供应商）</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-280" onclick="leftMenu('280','头程预估计划','/transfer/transfer-purchase-plan-orders/list?quick=280')">头程预估计划</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>采购管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-145" onclick="leftMenu('145','采购确认','/purchase/plan-orders/list?quick=145')">采购确认</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-144" onclick="leftMenu('144','采购审核','/purchase/verify-purchase-orders/list?quick=144')">采购审核</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-142" onclick="leftMenu('142','采购复审','/purchase/re-verify-orders/list?quick=142')">采购复审</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-143" onclick="leftMenu('143','采购单','/purchase/orders/list?quick=143')">采购单</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-160" onclick="leftMenu('160','采购付款管理','/purchase/purchase-payment/list-purchase-payment?quick=160')">采购付款管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-175" onclick="leftMenu('175','采购收款管理','/purchase/purchase-payment/list-purchase-receipt?quick=175')">采购收款管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-188" onclick="leftMenu('188','跟单流设置','/purchase/purchase-track-status/list?quick=188')">跟单流设置</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>采购异常</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-150" onclick="leftMenu('150','收货异常处理','/purchase/purchase-receiving-exception/list?quick=150')">收货异常处理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-151" onclick="leftMenu('151','QC异常处理','/purchase/qc-exception/list?quick=151')">QC异常处理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-153" onclick="leftMenu('153','收货异常审核','/purchase/verify-receiving-exception/list?quick=153')">收货异常审核</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-137" onclick="leftMenu('137','收货异常处理单','/purchase/purchase-abnormal-notice/list?quick=137')">收货异常处理单</a></li>
+                        </ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu10')" onmouseout="closeThisSubMenuHeader(this,'headmenu10')">
+                    <li style="font-weight: bold;">
+                        <a href="#">入库管理</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu10">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>收货管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-25" onclick="leftMenu('25','收货','/receiving/received/list?quick=25')">收货</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-22" onclick="leftMenu('22','收货管理','/receiving/receiving/list?quick=22')">收货管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-289" onclick="leftMenu('289','按箱收货','receiving/received-by-box/list?quick=289')">按箱收货</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-64" onclick="leftMenu('64','导入ASN','/receiving/import/list?quick=64')">导入ASN</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-112" onclick="leftMenu('112','退件入库','/order/returns/create?quick=112')">退件入库</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>质检管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-102" onclick="leftMenu('102','质检','/receiving/quality-control/scan?quick=102')">质检</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-24" onclick="leftMenu('24','质检管理','/receiving/quality-control/list?quick=24')">质检管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>上架管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-27" onclick="leftMenu('27','上架','/receiving/putaway-detail/putaway?quick=27')">上架</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-23" onclick="leftMenu('23','上架管理','/receiving/Putaway-detail/list?quick=23')">上架管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>异常管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-139" onclick="leftMenu('139','重新入库','/receiving/abnormal/list?quick=139')">重新入库</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-140" onclick="leftMenu('140','采购退换货扫描','/receiving/completion-abnormal/list?quick=140')">采购退换货扫描</a></li>
+                        </ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu17')" onmouseout="closeThisSubMenuHeader(this,'headmenu17')">
+                    <li style="font-weight: bold;">
+                        <a href="#">头程管理</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu17">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>发货管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-119" onclick="leftMenu('119','发货计划','/transfer/inventory-batch/ship-plans-create?quick=119')">发货计划</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>拣货管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-141" onclick="leftMenu('141','拣货单打印','/transfer/packing/list?quick=141')">拣货单打印</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>装箱管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-309" onclick="leftMenu('309','快捷装箱(NEW)','/transfer/transfer/quick-packing-new?quick=309')">快捷装箱(NEW)</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-101" onclick="leftMenu('101','快捷装箱','/transfer/transfer/quick-packing?quick=101')">快捷装箱</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-123" onclick="leftMenu('123','装箱单管理(新)','/transfer/Product-Packing-new/list?quick=123')">装箱单管理(新)</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-87" onclick="leftMenu('87','装箱','transfer/transfer/packing?quick=87')">装箱</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-88" onclick="leftMenu('88','装箱单管理','/transfer/Product-Packing/list?quick=88')">装箱单管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-128" onclick="leftMenu('128','装箱单审核','/transfer/verity-product-packing/list?quick=128')">装箱单审核</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>出货管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-126" onclick="leftMenu('126','装箱单出货','/transfer/delivery/list?quick=126')">装箱单出货</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-209" onclick="leftMenu('209','上传装箱发货','/transfer/import/list?quick=209')">上传装箱发货</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-282" onclick="leftMenu('282','上传装箱发货(预估)','/transfer/import-for-purchase-plan-orders/list?quick=282')">上传装箱发货(预估)</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-90" onclick="leftMenu('90','出货单管理','/transfer/orders/ship-batch-list?quick=90')">出货单管理</a></li>
+                        </ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu4')" onmouseout="closeThisSubMenuHeader(this,'headmenu4')">
+                    <li style="font-weight: bold;">
+                        <a href="#">出货管理</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu4">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>下架管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-197" onclick="leftMenu('197','订单下架','/shipment/pick/list?quick=197')">订单下架</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-30" onclick="leftMenu('30','下架单列表','/shipment/picking/list?quick=30')">下架单列表</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>打包管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-38" onclick="leftMenu('38','打包贴标','/shipment/orders-pack/list?quick=38')">打包贴标</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-46" onclick="leftMenu('46','单票打包','/shipment/orders-one-pack/list?quick=46')">单票打包</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-196" onclick="leftMenu('196','二次分拣','/shipment/orders-pack/sorting?quick=196')">二次分拣</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>出货管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-37" onclick="leftMenu('37','订单出货','/shipment/orders/delivery?quick=37')">订单出货</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-180" onclick="leftMenu('180','更换渠道','/order/orders-operation/list?quick=180')">更换渠道</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-213" onclick="leftMenu('213','导入签出','/shipment/job-queue/list?quick=213')">导入签出</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-36" onclick="leftMenu('36','出货总单管理','/shipment/ship-batch/list?quick=36')">出货总单管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-200" onclick="leftMenu('200','打印Scan Form','/shipment/sync-print-scan/list?quick=200')">打印Scan Form</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-247" onclick="leftMenu('247','包装扫件','shipment/orders/package-scan?quick=247')">包装扫件</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>出货管理(NEW)</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-312" onclick="leftMenu('312','装袋规则管理','/common/outbound-bag-rule/list?quick=312')">装袋规则管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-313" onclick="leftMenu('313','签出装袋','/shipment/orders/scan-bagging?quick=313')">签出装袋</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-314" onclick="leftMenu('314','扫描装袋','/shipment/orders/scan-orders-bagging?quick=314')">扫描装袋</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-315" onclick="leftMenu('315','装袋管理','/shipment/outbound-bag/new-list?quick=315')">装袋管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-316" onclick="leftMenu('316','创建出库总单','/shipment/outbound-bag/scan-create-total-list?quick=316')">创建出库总单</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-317" onclick="leftMenu('317','总单管理','/shipment/outbound-batch/list?quick=317')">总单管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>出库单管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-215" onclick="leftMenu('215','出库单确认','/ceive/use/confirm-list?quick=215')">出库单确认</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-118" onclick="leftMenu('118','出库单管理','/ceive/use/index?quick=118')">出库单管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-205" onclick="leftMenu('205','出库单审核','/ceive/use/verify-list?quick=205')">出库单审核</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-207" onclick="leftMenu('207','确认出库','/ceive/use/ship/?quick=207')">确认出库</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-206" onclick="leftMenu('206','借用归还','/ceive/use/return/?quick=206')">借用归还</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-216" onclick="leftMenu('216','财务审核','/ceive/use/financial-list?quick=216')">财务审核</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-230" onclick="leftMenu('230','新产品入库','ceive/use/new-product-storage?quick=230')">新产品入库</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-231" onclick="leftMenu('231','次品上架','ceive/use/defective-goods-shelves?quick=231')">次品上架</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>异常处理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-178" onclick="leftMenu('178','交接班','/shipment/close-report/list?quick=178')">交接班</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-201" onclick="leftMenu('201','异常总单','/shipment/abnormal-order-batch/list?quick=201')">异常总单</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-202" onclick="leftMenu('202','完成异常总单','/shipment/abnormal-order-batch/scan?quick=202')">完成异常总单</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu6')" onmouseout="closeThisSubMenuHeader(this,'headmenu6')">
+                    <li style="font-weight: bold;">
+                        <a href="#">单据管理</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu6">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>订单管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-31" onclick="leftMenu('31','订单查询','/order/orders/list?quick=31')">订单查询</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-63" onclick="leftMenu('63','同步缺货订单','/order/import/list?quick=63')">同步缺货订单</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-113" onclick="leftMenu('113','退件管理','/order/returns/list?quick=113')">退件管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-69" onclick="leftMenu('69','导出订单','/order/import/export-order?quick=69')">导出订单</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-161" onclick="leftMenu('161','服务商问题件','/order/service-exception-orders/list?quick=161')">服务商问题件</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-190" onclick="leftMenu('190','服务商换号','/order/exchange-number/list?quick=190')">服务商换号</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>拦截管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-67" onclick="leftMenu('67','拦截管理','/order/orders/stop-list?quick=67')">拦截管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-68" onclick="leftMenu('68','完成拦截','/order/orders/confirm-stop?quick=68')">完成拦截</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>重打管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-62" onclick="leftMenu('62','打印单据','/warehouse/reprint-receipts-log/reprint?quick=62')">打印单据</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-60" onclick="leftMenu('60','重打单据日志','/warehouse/reprint-receipts-log/list?quick=60')">重打单据日志</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-310" onclick="leftMenu('310','打印机设置','/default/system/printer?quick=310')">打印机设置</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu18')" onmouseout="closeThisSubMenuHeader(this,'headmenu18')">
+                    <li style="font-weight: bold;">
+                        <a href="#">供应商管理</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu18">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>供应商管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-81" onclick="leftMenu('81','供应商管理','/supplier/supplier/list?quick=81')">供应商管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-189" onclick="leftMenu('189','供应商KPI','/kpi/supplier/list?quick=189')">供应商KPI</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>供应商产品管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-84" onclick="leftMenu('84','供应商产品','/supplier/product/list?quick=84')">供应商产品</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu5')" onmouseout="closeThisSubMenuHeader(this,'headmenu5')">
+                    <li style="font-weight: bold;">
+                        <a href="#">仓库管理</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu5">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>仓库设置</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-14" onclick="leftMenu('14','仓库设置','/warehouse/warehouse/list?quick=14')">仓库设置</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-15" onclick="leftMenu('15','分区管理','/warehouse/area/list?quick=15')">分区管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-18" onclick="leftMenu('18','包材管理','/common/package/list?quick=18')">包材管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-19" onclick="leftMenu('19','库位管理','/warehouse/location/list?quick=19')">库位管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-20" onclick="leftMenu('20','库位类型','/warehouse/location-type/list?quick=20')">库位类型</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-226" onclick="leftMenu('226','产品库位','/warehouse/product/list?quick=226')">产品库位</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>库存管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-218" onclick="leftMenu('218','导入库存','/receiving/import/inventory?quick=218')">导入库存</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-298" onclick="leftMenu('298','库存查询（仓库）','/warehouse/inventory/new-list?quick=298')">库存查询（仓库）</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-21" onclick="leftMenu('21','库存查询','/warehouse/inventory/list?quick=21')">库存查询</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-195" onclick="leftMenu('195','批次日志','/warehouse/inventory-batch-log/list?quick=195')">批次日志</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-29" onclick="leftMenu('29','批次库存','/warehouse/inventory-batch/list?quick=29')">批次库存</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-61" onclick="leftMenu('61','盘点单列表','/warehouse/take-stock/list?quick=61')">盘点单列表</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-203" onclick="leftMenu('203','批次库存(调库存)','/warehouse/inventory-batch/list/type/1?quick=203')">批次库存(调库存)</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-204" onclick="leftMenu('204','批次库存(移货架)','/warehouse/inventory-batch/list/type/2?quick=204')">批次库存(移货架)</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-176" onclick="leftMenu('176','服务商库存快照比对','warehouse/service-inventory/list?quick=176')">服务商库存快照比对</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-232" onclick="leftMenu('232','产品库存日志','warehouse/product-inventory-log/list?quick=232')">产品库存日志</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-279" onclick="leftMenu('279','批量调整货架/库存','/warehouse/import/batch-adjust-stock?quick=279')">批量调整货架/库存</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>调拨管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-183" onclick="leftMenu('183','调拨单管理','/warehouse/transfer-orders/list?quick=183')">调拨单管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-184" onclick="leftMenu('184','调拨审核','/warehouse/transfer-orders/to-audit-list?quick=184')">调拨审核</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-221" onclick="leftMenu('221','调拨单出库','/warehouse/transfer-orders/out-warehouse-list?quick=221')">调拨单出库</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu12')" onmouseout="closeThisSubMenuHeader(this,'headmenu12')">
+                    <li style="font-weight: bold;">
+                        <a href="#">物流管理</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu12">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>运输方式</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-39" onclick="leftMenu('39','运输方式管理','/ship/shipping-method/list?quick=39')">运输方式管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-170" onclick="leftMenu('170','服务商管理','/financial/service-provider/list?quick=170')">服务商管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>物流基础设置</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-40" onclick="leftMenu('40','分区方案管理','/channel/sp-zone-scheme/list?quick=40')">分区方案管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-165" onclick="leftMenu('165','重量段模板设置','/channel/sp-weight-template/list?quick=165')">重量段模板设置</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-185" onclick="leftMenu('185','API服务设置','/api/api-service/list?quick=185')">API服务设置</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-212" onclick="leftMenu('212','跟踪号号码池','/shipment/service-tracking-number-pool/list?quick=212')">跟踪号号码池</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-157" onclick="leftMenu('157','物流面单模板','/order/print-relation/list?quick=157')">物流面单模板</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-220" onclick="leftMenu('220','标签模板配置','/ship/ship-template/list?quick=220')">标签模板配置</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-291" onclick="leftMenu('291','洲城市简码映射','/ship/country-city-map/list?quick=291')">洲城市简码映射</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-169" onclick="leftMenu('169','特殊规则管理','/sundry/fees/list?quick=169')">特殊规则管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-253" onclick="leftMenu('253','标签/销售分区','ship/transport-pick-area/list?quick=253')">标签/销售分区</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-287" onclick="leftMenu('287','检查分区-国家','/channel/check-partition-state/list?quick=287')">检查分区-国家</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-288" onclick="leftMenu('288','检查分区-邮编','/channel/check-partition-state/check-zip?quick=288')">检查分区-邮编</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-319" onclick="leftMenu('319','快捷导入','/channel/import-logistics-price/list?quick=319')">快捷导入</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-320" onclick="leftMenu('320','物流设置引导','/ship/ship-setup-guide/list?quick=320')">物流设置引导</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu61')" onmouseout="closeThisSubMenuHeader(this,'headmenu61')">
+                    <li style="font-weight: bold;">
+                        <a href="#">费用管理</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu61">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>计费规则设置</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-166" onclick="leftMenu('166','物流费用规则','/channel/sp-freight-selling-price/list?quick=166')">物流费用规则</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-167" onclick="leftMenu('167','物流杂费规则','/channel/sp-surcharge-selling-price/list?quick=167')">物流杂费规则</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-168" onclick="leftMenu('168','特殊费用规则','/channel/sp-extra-selling-price/list?quick=168')">特殊费用规则</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-173" onclick="leftMenu('173','仓库杂费规则','/channel/sp-incidental-selling-price/list?quick=173')">仓库杂费规则</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>帐单管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-171" onclick="leftMenu('171','服务商帐单','/financial/bil-serve-bill/list?quick=171')">服务商帐单</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>应付</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-162" onclick="leftMenu('162','付款通知','/purchase/purchase-payment/list-for-approve?quick=162')">付款通知</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-158" onclick="leftMenu('158','出纳付款','/financial/fee-payment-records/list?quick=158')">出纳付款</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-159" onclick="leftMenu('159','付款管理','/financial/account-income-records/list?quick=159')">付款管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-172" onclick="leftMenu('172','未出帐查询','/financial/other-fee/detail-list?quick=172')">未出帐查询</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-321" onclick="leftMenu('321','支付小助手','/common/aides/list?quick=321')">支付小助手</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>应收</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-163" onclick="leftMenu('163','收款通知','/financial/fee-transfer-records/list?quick=163')">收款通知</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-164" onclick="leftMenu('164','应收管理','/financial/account-payment-records/list?quick=164')">应收管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>费用查询</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-223" onclick="leftMenu('223','订单费用查询','/fee/fee-query/list?quick=223')">订单费用查询</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-94" onclick="leftMenu('94','费用试算','/ship/shipping-method/trial?quick=94')">费用试算</a></li>
+                        </ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu51')" onmouseout="closeThisSubMenuHeader(this,'headmenu51')">
+                    <li style="font-weight: bold;">
+                        <a href="#">报表统计</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu51">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>运营统计</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-250" onclick="leftMenu('250','报告中心','/statistics/report-center/list?quick=250')">报告中心</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-111" onclick="leftMenu('111','运营报表','/statistics/operating-reports/list?quick=111')">运营报表</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-110" onclick="leftMenu('110','采购报表','/statistics/average-sales/list?quick=110')">采购报表</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-254" onclick="leftMenu('254','库存销售报表','/statistics/inventory-sales-statistics/list?quick=254')">库存销售报表</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-186" onclick="leftMenu('186','仓库日报表','/kpi/shipment/list?quick=186')">仓库日报表</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-255" onclick="leftMenu('255','盘盈盘亏统计','/statistics/take-stock-statistics/list?quick=255')">盘盈盘亏统计</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-307" onclick="leftMenu('307','物流发货报表','/statistics/shipping-channel/list?quick=307')">物流发货报表</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>销售分析</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-100" onclick="leftMenu('100','产品销售分析','/fee/fee-product/list?quick=100')">产品销售分析</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-198" onclick="leftMenu('198','产品动销分析','/product/product-analysis/list?quick=198')">产品动销分析</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-290" onclick="leftMenu('290','产品销量分析','/statistics/product-ship/list?quick=290')">产品销量分析</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-177" onclick="leftMenu('177','产品销量统计','/statistics/average-sales/product-sales-list?quick=177')">产品销量统计</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-211" onclick="leftMenu('211','产品售价分析','/analysis/product-report/detail-list?quick=211')">产品售价分析</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-249" onclick="leftMenu('249','产品问题统计','/product/product-trouble-head/list?quick=249')">产品问题统计</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-224" onclick="leftMenu('224','入库明细查询','/warehouse/inventory-batch/received-detail?quick=224')">入库明细查询</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-225" onclick="leftMenu('225','当前库存明细','/warehouse/inventory-batch/current-inv-list?quick=225')">当前库存明细</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-124" onclick="leftMenu('124','销售统计(订单)','/order/report/eb-list?quick=124')">销售统计(订单)</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-214" onclick="leftMenu('214','销售报表(SKU)','/account/cost-summary/list?quick=214')">销售报表(SKU)</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-299" onclick="leftMenu('299','售价分析明细','/analysis/product-report/detail-list?quick=299')">售价分析明细</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>统计面板</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-179" onclick="leftMenu('179','仓库统计面板','/common/panel/list?quick=179')">仓库统计面板</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-251" onclick="leftMenu('251','产品分析面板','statistics/product-analysis-panel/list?quick=251')">产品分析面板</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-252" onclick="leftMenu('252','利润分析面板','statistics/profit-analysis-panel/list?quick=252')">利润分析面板</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>自定义报表</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-296" onclick="leftMenu('296','自定义报表模板','/statistics/customer-report/list/?quick=296')">自定义报表模板</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-297" onclick="leftMenu('297','自定义报表导出','/statistics/customer-report-center/list/?quick=297')">自定义报表导出</a></li>
+                        </ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu1')" onmouseout="closeThisSubMenuHeader(this,'headmenu1')">
+                    <li style="font-weight: bold;">
+                        <a href="#">系统设置</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu1">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>基础数据</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-10" onclick="leftMenu('10','国家管理','/common/country/list?quick=10')">国家管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-11" onclick="leftMenu('11','货币管理','/common/currency/list?quick=11')">货币管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-325" onclick="leftMenu('325','城市管理','/ship/country-city-map/list?quick=325')">城市管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-34" onclick="leftMenu('34','订单操作代码','/common/order-operation-type/list?quick=34')">订单操作代码</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-194" onclick="leftMenu('194','银行卡管理','/financial/bank-account/list?quick=194')">银行卡管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-318" onclick="leftMenu('318','订单特殊操作','/common/order-special-operation-type/list?quick=318')">订单特殊操作</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-154" onclick="leftMenu('154','产品属性管理','/product/self-property/list?quick=154')">产品属性管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-155" onclick="leftMenu('155','产品属性模板管理','/template/property-template/list?quick=155')">产品属性模板管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-227" onclick="leftMenu('227','产品问题类型','product/product-trouble-type/list?quick=227')">产品问题类型</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-228" onclick="leftMenu('228','费用类型','/financial/fee-type/list?quick=228')">费用类型</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-278" onclick="leftMenu('278','国家区域管理','/common/country-region/list?quick=278')">国家区域管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-293" onclick="leftMenu('293','系统配置','/common/config/list?quick=293')">系统配置</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>权限管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-103" onclick="leftMenu('103','用户中心','/auth/user/user-center?quick=103')">用户中心</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-308" onclick="leftMenu('308','wechat授权','/auth/wechat/list?quick=308')">wechat授权</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-4" onclick="leftMenu('4','菜单管理','/auth/menu/list?quick=4')">菜单管理</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>系统配置</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-129" onclick="leftMenu('129','打印机设置','/default/system/printer?quick=129')">打印机设置</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu80')" onmouseout="closeThisSubMenuHeader(this,'headmenu80')">
+                    <li style="font-weight: bold;">
+                        <a href="#">海外仓操作</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu80">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>拣货管理(海外)</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-233" onclick="leftMenu('233','订单下架(海外)','/oversea/pick/list?quick=233')">订单下架(海外)</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-234" onclick="leftMenu('234','下架单列表(海外)','/oversea/picking/list?quick=234')">下架单列表(海外)</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>打包管理(海外)</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-235" onclick="leftMenu('235','按单打包(海外)','/oversea/orders-pack/list?quick=235')">按单打包(海外)</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-236" onclick="leftMenu('236','按SKU打包(海外)','/oversea/orders-one-pack/list?quick=236')">按SKU打包(海外)</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-237" onclick="leftMenu('237','二次分拣(海外)','/oversea/orders-pack/sorting?quick=237')">二次分拣(海外)</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>出货管理(海外)</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-246" onclick="leftMenu('246','订单列表(海外)','/oversea/orders/orders-list?quick=246')">订单列表(海外)</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-238" onclick="leftMenu('238','订单签出(海外)','/oversea/orders/delivery?quick=238')">订单签出(海外)</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-242" onclick="leftMenu('242','交接班(海外)','/oversea/orders/close-report?quick=242')">交接班(海外)</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-239" onclick="leftMenu('239','出货总单(海外)','/oversea/ship-batch/list?quick=239')">出货总单(海外)</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-240" onclick="leftMenu('240','Scan Form(海外)','/oversea/sync-print-scan/list?quick=240')">Scan Form(海外)</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-241" onclick="leftMenu('241','打印单据(海外)','/oversea/orders/reprint?quick=241')">打印单据(海外)</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>拦截管理(海外)</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-243" onclick="leftMenu('243','拦截管理(海外)','/oversea/orders/stop-list?quick=243')">拦截管理(海外)</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-244" onclick="leftMenu('244','完成拦截(海外)','/oversea/orders/confirm-stop?quick=244')">完成拦截(海外)</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>高级设置(海外)</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-245" onclick="leftMenu('245','打印机设置(海外)','/oversea/system/printer?quick=245')">打印机设置(海外)</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                    </div>
+                </ul>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div id="column">
+            <div class="logo2" onclick="leftMenu('0','首页','/system/home')">
+                <a href="javascript:void(0);"></a>
+            </div>
+            <div class="nav2"></div>
+        </div>
+        <div class="main_quit">欢迎您，
+            <a style='color: #0090E1;' onclick="leftMenu('user_set_1024','个人设置','/auth/user/user-set')" class="sub-menu-id-user_set_1024" href="javascript:void(0);">超级管理员</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="/default/index/logout">安全退出</a></div>
+        <div id="main-container">
+            <div class="shrink">&nbsp;</div>
+            <div class="main-right" id="main-right">
+                <link rel="stylesheet" type="text/css" href="http://dev-wms.eccang.com/css/public/step.css">
+                <link rel="stylesheet" type="text/css" href="http://dev-wms.eccang.com/css/public/help.css">
+                <script type="text/javascript" src="http://dev-wms.eccang.com/js/step.js?20131012"></script>
+                <script type="text/javascript" src="http://dev-wms.eccang.com/js/help.js?20131012"></script>
+                <div class="guild">
+                    <h2 style="cursor: pointer" id="menu0">
+                        <a href="javascript:void (0)" title="首页" onclick="leftMenu('0','首页','/system/home')">首页</a></h2>
+                    <h3 class="guild_drop" style="width:50px;">
+                        <a href="javascript:;" onclick="showHistory()">
+                            <img id="menuBtn" src="http://dev-wms.eccang.com/images/pack/bg_guild_drop01.gif" title="显示历史标签"></a>
+                        <a href="javascript:;" onclick="closeAllMenu(this)">
+                            <img id="menuBtn" src="http://dev-wms.eccang.com/images/pack/close_all.png" width="19" height="19" border="0" title="全部关闭" alt="全部关闭"></a>
+                        <div class="guild_drop_list" style="display: none;top:118px" id="menuList" onmouseout="showHistory()">
+                            <a href="javascript:void(0);" style="border-bottom:1px solid #a8ccee;" onclick="clearHis(this)">清空历史标签</a></div>
+                    </h3>
+                    <span class="sys_help" title="帮助">
+                        <a href="javascript:void (0)" style="text-decoration:none;">
+                            <strong>?</strong></a>
+                    </span>
+                </div>
+                <!-- 帮助页面，弹出窗体 -->
+                <div id="sys_help_dialog" style="display:none;">
+                    <table class="dialog-module" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr class="table-module-b1">
+                                <td class="stateFlow">
+                                    <!-- 状态流转区域 --></td>
+                            </tr>
+                            <tr class="table-module-b1">
+                                <td style="border: 1px solid #D9D9D9;height:400px;" valign="top">
+                                    <!-- 说明区域 -->
+                                    <div id="stateContent" style="width: 100%;height:400px;max-height: 400px;overflow-x: hidden;overflow-y: auto;"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="main-right-container" id="main-right-container-iframe">
+                    <iframe frameborder="0" src="#" width="100%" height="100%" id="iframe-container-0" name="iframe-container-0" class="iframe-container" style="display:block;"></iframe>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery-cookie.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery.form.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery.pagination.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/mod.js?20150517"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/skyeQuiKey.js?20150110"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery.myLoading.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/locale/oms-lang-en_US.js?201410"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/locale/oms-lang-zh_CN.js?201410"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/locale/locale_message.js?201408"></script>
+    </body>
+
+</html>

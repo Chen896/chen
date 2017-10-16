@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS，bootstrap表格控制当 td 内容过长时用省略号表示</title>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        .table-fixed{ table-layout:fixed } /*严格执行表格比例*/
+        .th-td-length{ overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+    </style>
+
+</head>
+<body>
+
+    <!-- 1.首先需要在table中设置table-layout:fixed; -->
+    <table class="table table-condensed table-hover table-bordered  table-fixed">
+        <tr>
+            <!-- 2.然后在表头th中设置每列的宽度 -->
+            <th width="5%">序号</th>
+            <th width="80%">标题</th>
+            <th width="15%">操作</th>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <!-- 3.然后在需要当长度大于一定数值时用省略号表示的td上面添加样式 -->
+            <td class="th-td-length">CSS，bootstrap表格控制当 td 内容过长时用省略号表示  CSS，bootstrap表格控制当 td 内容过长时用省略号表示   CSS，bootstrap表格控制当 td 内容过长时用省略号表示</td>
+            <td>查看</td>
+        </tr>
+    </table>
+    <!-- 4.bootstrap在设置表格大小时需要设置到th中，否则可能不会生效，以上在bootstrap中可用 -->
+
+</body>
+</html>

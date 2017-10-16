@@ -1,0 +1,1268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <!-- <meta http-equiv="x-ua-compatible" content="ie=7"/>-->
+        <link type="image/x-icon" rel="shortcut icon" href="/images/favicon.ico" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/ui-lightness/jquery-ui.min.css?20150110" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/global.css?20150110" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/public/index.css?20150110" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/public/layout.css?20150110" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/public/head.css?20141017?20150110" />
+        <link type="text/css" rel="stylesheet" href="/js/chosen/chosen.min.css" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/jquery.alerts.css" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/spinners.css" />
+        <title>仓配管理系统</title>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery-myProject.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery-myAjaxForm.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/chosen/chosen.jquery.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/init.js?v=20160228"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery.alerts.js"></script>
+        <script type="text/javascript">//语言
+            var locale_message_language = 'zh_CN';
+            var lodopCp = '深圳市易仓科技有限公司';
+            var lodopKey = 'BBF40FD5AB0D522BB007D05CDE381265';
+            var lodopToCp = 'Shenzhen YiCang Tech Co., Ltd';
+            var lodopToken = '57DE71008B8E0CC51AC40BA483F50330';
+            var lodopHkToCp = '深圳市易倉科技有限公司';
+            var lodopHkToken = '0766EB432548A72C846689E86DC5A7CA';</script>
+        <!-- 权限按钮控制 start -->
+        <!-- Array ( [state]=> 1
+        [ask] => 1
+        [clazz] => Array
+        (
+        [0] => plan_orders_exportPurchase_clazz
+        [1] => plan_orders_etaConfire_clazz
+        [2] => plan_orders_derecognition_clazz
+        [3] => plan_orders_revocationPurchase_clazz
+        [4] => plan_orders_printPurchase_clazz
+        [5] => plan_orders_createPurchase_clazz
+        [6] => plan_orders_printContract_clazz
+        [7] => plan_orders_downLoadContract_clazz
+        [8] => plan_orders_downLoadContractPdf_clazz
+        [9] => plan_orders_editAddr_clazz
+        [10] => orders_exportAllPurchase_clazz
+        [11] => orders_printPurchase_clazz
+        [12] => orders_markEta_clazz
+        [13] => orders_exportPurchase_clazz
+        [14] => orders_updateTrack_clazz
+        [15] => orders_doApplyForPayment_clazz
+        [16] => orders_printContract_clazz
+        [17] => orders_downLoadContract_clazz
+        [18] => orders_downLoadContractPdf_clazz
+        [19] => orders_addTrackingNote_clazz
+        [20] => replenish_strategy_runReplenishBtn_clazz
+        [21] => replenish_strategy_exportBtn_clazz
+        [22] => replenish_strategy_baseDataSetBtn_clazz
+        [23] => replenish_strategy_warehouseReplenishSetBtn_clazz
+        [24] => replenish_strategy_batchWarehouseReplenishSetBtn_clazz
+        [25] => replenish_strategy_importBtn_clazz
+        [26] => replenish_strategy_edit_clazz
+        [27] => replenish_strategy_deleteByKey_clazz
+        [28] => receiving_forceComplete_clazz
+        [29] => supplier_updateTreatyBatch_clazz
+        [30] => supplier_createSupplier_clazz
+        [31] => supplier_uploadSupplier_clazz
+        [32] => supplier_supplierEditById_clazz
+        [33] => product_defaultSupplierBtn_clazz
+        [34] => product_addProductBtn_clazz
+        [35] => product_uploadProductBtn_clazz
+        [36] => product_editById_clazz
+        [37] => product_deleteById_clazz
+        [38] => product_viewHistory_clazz
+        [39] => product_address_clazz
+        [40] => product_addSupplierProductBtn_clazz
+        [41] => product_viewAllHistory_clazz
+        [42] => supplier_exportBtn_clazz
+        [43] => supplier_exportSkuPriceBtn_clazz
+        [44] => supplier_exportPurchaseBtn_clazz
+        [45] => purchase_order_examine_clazz
+        [46] => order_orders_uploadTrackingNo_clazz
+        [47] => product_warehouse_exportButton_clazz
+        [48] => product_develop_detailBtn_clazz
+        [49] => product_develop_editProduct_clazz
+        [50] => product_develop_priceAnalysisSet_clazz
+        [51] => product_develop_showSupplierPrice_clazz
+        [52] => product_develop_countSaleFee_clazz
+        [53] => product_develop_uploadAdvancedProduct_clazz
+        [54] => product_develop_batchDeleteImagesButton_clazz
+        [55] => product_develop_updateProductAttr_clazz
+        [56] => product_develop_exportBtn_clazz
+        )
+        [data] => Array
+        (
+        [0] => Array
+        (
+        [urb_id] => 1
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 导出
+        [urb_desc] => 导出
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_exportPurchase_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [1] => Array
+        (
+        [urb_id] => 2
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 交货确认
+        [urb_desc] => 交货确认
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_etaConfire_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [2] => Array
+        (
+        [urb_id] => 10
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 撤销确认
+        [urb_desc] => 撤销确认
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_derecognition_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [3] => Array
+        (
+        [urb_id] => 11
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 撤销采购单
+        [urb_desc] => 撤销采购单
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_revocationPurchase_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [4] => Array
+        (
+        [urb_id] => 12
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 打印采购单
+        [urb_desc] => 打印采购单
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_printPurchase_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [5] => Array
+        (
+        [urb_id] => 13
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 手工创建采购单
+        [urb_desc] => 手工创建采购单
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_createPurchase_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [6] => Array
+        (
+        [urb_id] => 14
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 打印采购合同
+        [urb_desc] => 打印采购合同
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_printContract_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [7] => Array
+        (
+        [urb_id] => 15
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 下载采购合同
+        [urb_desc] => 下载采购合同
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_downLoadContract_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [8] => Array
+        (
+        [urb_id] => 16
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 导出PDF合同
+        [urb_desc] => 导出PDF合同
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_downLoadContractPdf_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [9] => Array
+        (
+        [urb_id] => 17
+        [um_id] => 57
+        [ur_id] => 145
+        [urb_name] => 采购单详情编辑信息
+        [urb_desc] => 采购单详情编辑信息
+        [urb_url] => /purchase/plan-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => plan_orders_editAddr_clazz
+        [urb_status] => 1
+        [ur_name] => 采购确认
+        )
+        [10] => Array
+        (
+        [urb_id] => 18
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 导出所有
+        [urb_desc] => 导出所有
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_exportAllPurchase_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [11] => Array
+        (
+        [urb_id] => 19
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 打印采购单
+        [urb_desc] => 打印采购单
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_printPurchase_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [12] => Array
+        (
+        [urb_id] => 20
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 标记到货日期
+        [urb_desc] => 标记到货日期
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_markEta_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [13] => Array
+        (
+        [urb_id] => 21
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 导出
+        [urb_desc] => 导出
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_exportPurchase_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [14] => Array
+        (
+        [urb_id] => 22
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 更新跟单状态
+        [urb_desc] => 更新跟单状态
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_updateTrack_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [15] => Array
+        (
+        [urb_id] => 23
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 申请付款
+        [urb_desc] => 申请付款
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_doApplyForPayment_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [16] => Array
+        (
+        [urb_id] => 24
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 打印采购合同
+        [urb_desc] => 打印采购合同
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_printContract_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [17] => Array
+        (
+        [urb_id] => 25
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 下载采购合同
+        [urb_desc] => 下载采购合同
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_downLoadContract_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [18] => Array
+        (
+        [urb_id] => 26
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 导出PDF合同
+        [urb_desc] => 导出PDF合同
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_downLoadContractPdf_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [19] => Array
+        (
+        [urb_id] => 27
+        [um_id] => 57
+        [ur_id] => 135
+        [urb_name] => 添加跟踪记录
+        [urb_desc] => 添加跟踪记录
+        [urb_url] => /purchase/purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => orders_addTrackingNote_clazz
+        [urb_status] => 1
+        [ur_name] => 采购单
+        )
+        [20] => Array
+        (
+        [urb_id] => 28
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 运行补货策略
+        [urb_desc] => 运行补货策略
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_runReplenishBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [21] => Array
+        (
+        [urb_id] => 29
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 导出
+        [urb_desc] => 导出
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_exportBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [22] => Array
+        (
+        [urb_id] => 30
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 基础数据设置
+        [urb_desc] => 基础数据设置
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_baseDataSetBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [23] => Array
+        (
+        [urb_id] => 31
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 仓库补货策略
+        [urb_desc] => 仓库补货策略
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_warehouseReplenishSetBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [24] => Array
+        (
+        [urb_id] => 32
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 批量设置补货策略
+        [urb_desc] => 批量设置补货策略
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_batchWarehouseReplenishSetBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [25] => Array
+        (
+        [urb_id] => 33
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 导入
+        [urb_desc] => 导入
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_importBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [26] => Array
+        (
+        [urb_id] => 34
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 编辑/查看
+        [urb_desc] => 编辑/查看
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_edit_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [27] => Array
+        (
+        [urb_id] => 35
+        [um_id] => 23
+        [ur_id] => 181
+        [urb_name] => 删除
+        [urb_desc] => 删除
+        [urb_url] => /product/replenish-strategy/list
+        [urb_sort] => 0
+        [urb_clazz] => replenish_strategy_deleteByKey_clazz
+        [urb_status] => 1
+        [ur_name] => 补货策略管理
+        )
+        [28] => Array
+        (
+        [urb_id] => 36
+        [um_id] => 27
+        [ur_id] => 22
+        [urb_name] => 强制收货完成
+        [urb_desc] => 强制收货完成
+        [urb_url] => /receiving/receiving/list
+        [urb_sort] => 0
+        [urb_clazz] => receiving_forceComplete_clazz
+        [urb_status] => 1
+        [ur_name] => 收货管理
+        )
+        [29] => Array
+        (
+        [urb_id] => 37
+        [um_id] => 36
+        [ur_id] => 81
+        [urb_name] => 批量修改供应商属性
+        [urb_desc] => 批量修改供应商属性
+        [urb_url] => /supplier/supplier/list
+        [urb_sort] => 0
+        [urb_clazz] => supplier_updateTreatyBatch_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商管理
+        )
+        [30] => Array
+        (
+        [urb_id] => 38
+        [um_id] => 36
+        [ur_id] => 81
+        [urb_name] => 添加供应商
+        [urb_desc] => 添加供应商
+        [urb_url] => /supplier/supplier/list
+        [urb_sort] => 0
+        [urb_clazz] => supplier_createSupplier_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商管理
+        )
+        [31] => Array
+        (
+        [urb_id] => 39
+        [um_id] => 36
+        [ur_id] => 81
+        [urb_name] => 批量导入供应商
+        [urb_desc] => 批量导入供应商
+        [urb_url] => /supplier/supplier/list
+        [urb_sort] => 0
+        [urb_clazz] => supplier_uploadSupplier_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商管理
+        )
+        [32] => Array
+        (
+        [urb_id] => 40
+        [um_id] => 36
+        [ur_id] => 81
+        [urb_name] => 编辑
+        [urb_desc] => 编辑
+        [urb_url] => /supplier/supplier/list
+        [urb_sort] => 0
+        [urb_clazz] => supplier_supplierEditById_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商管理
+        )
+        [33] => Array
+        (
+        [urb_id] => 41
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 批量更新默认供应商
+        [urb_desc] => 批量更新默认供应商
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_defaultSupplierBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [34] => Array
+        (
+        [urb_id] => 42
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 添加产品/报价
+        [urb_desc] => 添加产品/报价
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_addProductBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [35] => Array
+        (
+        [urb_id] => 43
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 批量添加产品/报价
+        [urb_desc] => 批量添加产品/报价
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_uploadProductBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [36] => Array
+        (
+        [urb_id] => 44
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 编辑
+        [urb_desc] => 编辑
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_editById_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [37] => Array
+        (
+        [urb_id] => 45
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 删除
+        [urb_desc] => 删除
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_deleteById_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [38] => Array
+        (
+        [urb_id] => 46
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 历史报价
+        [urb_desc] => 历史报价
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_viewHistory_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [39] => Array
+        (
+        [urb_id] => 47
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 商品地址
+        [urb_desc] => 商品地址
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_address_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [40] => Array
+        (
+        [urb_id] => 48
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 添加供应商报价
+        [urb_desc] => 添加供应商报价
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_addSupplierProductBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [41] => Array
+        (
+        [urb_id] => 49
+        [um_id] => 37
+        [ur_id] => 84
+        [urb_name] => 所有历史报价
+        [urb_desc] => 所有历史报价
+        [urb_url] => /supplier/product/list
+        [urb_sort] => 0
+        [urb_clazz] => product_viewAllHistory_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商产品
+        )
+        [42] => Array
+        (
+        [urb_id] => 50
+        [um_id] => 36
+        [ur_id] => 189
+        [urb_name] => 导出
+        [urb_desc] => 导出
+        [urb_url] => /kpi/supplier/list
+        [urb_sort] => 0
+        [urb_clazz] => supplier_exportBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商KPI
+        )
+        [43] => Array
+        (
+        [urb_id] => 51
+        [um_id] => 36
+        [ur_id] => 189
+        [urb_name] => 详情-产品-导出报价
+        [urb_desc] => 详情-产品-导出报价
+        [urb_url] => /kpi/supplier/list
+        [urb_sort] => 0
+        [urb_clazz] => supplier_exportSkuPriceBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商KPI
+        )
+        [44] => Array
+        (
+        [urb_id] => 52
+        [um_id] => 36
+        [ur_id] => 189
+        [urb_name] => 详情-采购单-导出
+        [urb_desc] => 详情-采购单-导出
+        [urb_url] => /kpi/supplier/list
+        [urb_sort] => 0
+        [urb_clazz] => supplier_exportPurchaseBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 供应商KPI
+        )
+        [45] => Array
+        (
+        [urb_id] => 53
+        [um_id] => 57
+        [ur_id] => 144
+        [urb_name] => 提交复审
+        [urb_desc] => 提交复审
+        [urb_url] => /purchase/verify-purchase-orders/list
+        [urb_sort] => 0
+        [urb_clazz] => purchase_order_examine_clazz
+        [urb_status] => 1
+        [ur_name] => 采购审核
+        )
+        [46] => Array
+        (
+        [urb_id] => 54
+        [um_id] => 49
+        [ur_id] => 31
+        [urb_name] => 上传跟踪号
+        [urb_desc] => 上传跟踪号
+        [urb_url] => /order/orders/list
+        [urb_sort] => 0
+        [urb_clazz] => order_orders_uploadTrackingNo_clazz
+        [urb_status] => 1
+        [ur_name] => 订单查询
+        )
+        [47] => Array
+        (
+        [urb_id] => 55
+        [um_id] => 89
+        [ur_id] => 217
+        [urb_name] => 导出
+        [urb_desc] => 产品成本列表-导出
+        [urb_url] => /product/warehouse-cost/list
+        [urb_sort] => 0
+        [urb_clazz] => product_warehouse_exportButton_clazz
+        [urb_status] => 1
+        [ur_name] => 产品成本列表
+        )
+        [48] => Array
+        (
+        [urb_id] => 56
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 点击SKU
+        [urb_desc] => 产品资料管理-点击SKU
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_detailBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [49] => Array
+        (
+        [urb_id] => 57
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 点击SKU详情-编辑
+        [urb_desc] => 点击SKU详情-编辑
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_editProduct_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [50] => Array
+        (
+        [urb_id] => 58
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 售价分析设置
+        [urb_desc] => 售价分析设置
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_priceAnalysisSet_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [51] => Array
+        (
+        [urb_id] => 59
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 历史报价
+        [urb_desc] => 历史报价
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_showSupplierPrice_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [52] => Array
+        (
+        [urb_id] => 60
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 建议销售金额
+        [urb_desc] => 建议销售金额
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_countSaleFee_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [53] => Array
+        (
+        [urb_id] => 61
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 导入产品属性
+        [urb_desc] => 导入产品属性
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_uploadAdvancedProduct_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [54] => Array
+        (
+        [urb_id] => 62
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 批量删除图片
+        [urb_desc] => 批量删除图片
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_batchDeleteImagesButton_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [55] => Array
+        (
+        [urb_id] => 63
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 更新产品属性
+        [urb_desc] => 更新产品属性
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_updateProductAttr_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        [56] => Array
+        (
+        [urb_id] => 64
+        [um_id] => 89
+        [ur_id] => 262
+        [urb_name] => 导出产品
+        [urb_desc] => 导出产品
+        [urb_url] => /product/develop/list
+        [urb_sort] => 0
+        [urb_clazz] => product_develop_exportBtn_clazz
+        [urb_status] => 1
+        [ur_name] => 产品资料管理
+        )
+        )
+        [USER_RIGHT_BUTTON_CONTROL] => 1
+        [sql] => select c.* from user a INNER JOIN user_position_right_button_map b on a.up_id=b.up_id INNER JOIN user_right_button c on b.urb_id=c.urb_id where 1=1 and c.urb_status='1' and a.user_id='1' order by c.urb_sort;
+        )
+        -->
+        <style type="text/css">body .authBthClazz{display:none;}</style>
+        <script type="text/javascript">/* 权限按钮控制 start
+     */
+            var request_uri = '/system/home';
+            var authBtnClazzJson = ["plan_orders_exportPurchase_clazz", "plan_orders_etaConfire_clazz", "plan_orders_derecognition_clazz", "plan_orders_revocationPurchase_clazz", "plan_orders_printPurchase_clazz", "plan_orders_createPurchase_clazz", "plan_orders_printContract_clazz", "plan_orders_downLoadContract_clazz", "plan_orders_downLoadContractPdf_clazz", "plan_orders_editAddr_clazz", "orders_exportAllPurchase_clazz", "orders_printPurchase_clazz", "orders_markEta_clazz", "orders_exportPurchase_clazz", "orders_updateTrack_clazz", "orders_doApplyForPayment_clazz", "orders_printContract_clazz", "orders_downLoadContract_clazz", "orders_downLoadContractPdf_clazz", "orders_addTrackingNote_clazz", "replenish_strategy_runReplenishBtn_clazz", "replenish_strategy_exportBtn_clazz", "replenish_strategy_baseDataSetBtn_clazz", "replenish_strategy_warehouseReplenishSetBtn_clazz", "replenish_strategy_batchWarehouseReplenishSetBtn_clazz", "replenish_strategy_importBtn_clazz", "replenish_strategy_edit_clazz", "replenish_strategy_deleteByKey_clazz", "receiving_forceComplete_clazz", "supplier_updateTreatyBatch_clazz", "supplier_createSupplier_clazz", "supplier_uploadSupplier_clazz", "supplier_supplierEditById_clazz", "product_defaultSupplierBtn_clazz", "product_addProductBtn_clazz", "product_uploadProductBtn_clazz", "product_editById_clazz", "product_deleteById_clazz", "product_viewHistory_clazz", "product_address_clazz", "product_addSupplierProductBtn_clazz", "product_viewAllHistory_clazz", "supplier_exportBtn_clazz", "supplier_exportSkuPriceBtn_clazz", "supplier_exportPurchaseBtn_clazz", "purchase_order_examine_clazz", "order_orders_uploadTrackingNo_clazz", "product_warehouse_exportButton_clazz", "product_develop_detailBtn_clazz", "product_develop_editProduct_clazz", "product_develop_priceAnalysisSet_clazz", "product_develop_showSupplierPrice_clazz", "product_develop_countSaleFee_clazz", "product_develop_uploadAdvancedProduct_clazz", "product_develop_batchDeleteImagesButton_clazz", "product_develop_updateProductAttr_clazz", "product_develop_exportBtn_clazz"];
+            function buttonAuth() {
+                if (authBtnClazzJson.length > 0) {
+                    $.each(authBtnClazzJson,
+                    function(k, v) {
+                        //alert(v);
+                        $('.' + v).show();
+                    });
+                } else {
+                    $('.authBthClazz').show();
+                }
+            }
+            $(function() {
+                buttonAuth();
+                $("body").ajaxComplete(function(event, request, settings) {
+                    buttonAuth();
+                });
+            });
+            /*
+     * 权限按钮控制 end
+     */
+            </script>
+        <!-- 权限按钮控制 end --></head>
+
+    <body>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/raphael/raphael.js?20131018"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/raphael/popup.js?20131018"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/raphael/analytics.js?20131018"></script>
+        <script type="text/javascript" src="./panel.js"></script>
+        <script type="text/javascript">jQuery.fn.closeMyLoading = function close() {
+                $(this).find(".loading").remove();
+            };
+            var warehouseArr = [{
+                "warehouse_id": "1",
+                "warehouse_desc": "\u4e2d\u56fd\u5934\u7a0b\u4ed3",
+                "warehouse_code": "CNZF"
+            },
+            {
+                "warehouse_id": "2",
+                "warehouse_desc": "\u6d77\u5916\u4e2d\u8f6c\u4ed3",
+                "warehouse_code": "CNHW"
+            },
+            {
+                "warehouse_id": "3",
+                "warehouse_desc": "\u6fb3\u6d32\u6089\u5c3c\u4ed3",
+                "warehouse_code": "AUSY"
+            },
+            {
+                "warehouse_id": "4",
+                "warehouse_desc": "\u82f1\u56fd\u66fc\u57ce\u4ed3",
+                "warehouse_code": "UKMC"
+            },
+            {
+                "warehouse_id": "5",
+                "warehouse_desc": "\u5fb7\u56fd\u6c49\u5821\u4ed3",
+                "warehouse_code": "DEHB"
+            },
+            {
+                "warehouse_id": "6",
+                "warehouse_desc": "\u7f8e\u56fd\u6d1b\u6749\u77f6\u4ed3",
+                "warehouse_code": "USLA"
+            },
+            {
+                "warehouse_id": "7",
+                "warehouse_desc": "\u5fb7\u56fd\u5361\u9c81\u4ed3",
+                "warehouse_code": "DEKL"
+            },
+            {
+                "warehouse_id": "8",
+                "warehouse_desc": "\u82f1\u56fdAmazon\u4ed3",
+                "warehouse_code": "UKAMAZON"
+            },
+            {
+                "warehouse_id": "9",
+                "warehouse_desc": "\u82f1\u56fd\u4f26\u6566\u4ed3",
+                "warehouse_code": "UKLD"
+            },
+            {
+                "warehouse_id": "10",
+                "warehouse_desc": "\u6df1\u5733\u4ed3",
+                "warehouse_code": "SZWH"
+            },
+            {
+                "warehouse_id": "12",
+                "warehouse_desc": "\u6613\u4ed3\u7f8e\u56fd",
+                "warehouse_code": "ECUS"
+            },
+            {
+                "warehouse_id": "14",
+                "warehouse_desc": "API-4PX\u7269\u6d41\u4ed3\u5e93",
+                "warehouse_code": "4PXAPI"
+            },
+            {
+                "warehouse_id": "17",
+                "warehouse_desc": "API\u5e55\u5229\u4ed3\u5e93",
+                "warehouse_code": "MERCURIUSAPI"
+            },
+            {
+                "warehouse_id": "18",
+                "warehouse_desc": "API\u5fb7\u56fd\u901f\u8fbe\u4ed3\u5e93",
+                "warehouse_code": "ISUREAPI"
+            },
+            {
+                "warehouse_id": "19",
+                "warehouse_desc": "API\u98de\u9e1f\u56fd\u9645\u4ed3\u5e93",
+                "warehouse_code": "BIRDSYSTEMAPI"
+            },
+            {
+                "warehouse_id": "20",
+                "warehouse_desc": "DFGDFGDF",
+                "warehouse_code": "FGDGDF"
+            },
+            {
+                "warehouse_id": "21",
+                "warehouse_desc": "FBA\u5fb7\u56fd\u4ed3",
+                "warehouse_code": "FBADE"
+            },
+            {
+                "warehouse_id": "22",
+                "warehouse_desc": "FBA\u7f8e\u56fd",
+                "warehouse_code": "FBAUS"
+            },
+            {
+                "warehouse_id": "23",
+                "warehouse_desc": "\u5e7f\u4e1c\u4e2d\u8f6c\u4ed3",
+                "warehouse_code": "GDZZ"
+            },
+            {
+                "warehouse_id": "25",
+                "warehouse_desc": "alwihdg",
+                "warehouse_code": "ALWIHDG"
+            },
+            {
+                "warehouse_id": "26",
+                "warehouse_desc": "ZYJcang",
+                "warehouse_code": "CKZYJ"
+            },
+            {
+                "warehouse_id": "28",
+                "warehouse_desc": "\u7f8e\u56fd\u6807\u51c6\u4ed3-\u6807\u51c6\u7406\u8d27\u6a21\u5f0f",
+                "warehouse_code": "BZBZ"
+            },
+            {
+                "warehouse_id": "29",
+                "warehouse_desc": "\u6807\u51c6\u4ed3-\u81ea\u52a8\u5316\u6a21\u5f0f",
+                "warehouse_code": "BZBZLH"
+            },
+            {
+                "warehouse_id": "30",
+                "warehouse_desc": "\u7b2c\u4e09\u65b9\u4ed3\u5e93-\u81ea\u52a8\u5316",
+                "warehouse_code": "SF"
+            },
+            {
+                "warehouse_id": "31",
+                "warehouse_desc": "FBA\u4ed3-\u81ea\u52a8\u51fa\u8d27",
+                "warehouse_code": "SFFBA"
+            },
+            {
+                "warehouse_id": "32",
+                "warehouse_desc": "\u4e2d\u8f6c\u4ed3-\u6807\u51c6\u7406\u8d27\u6a21\u5f0f",
+                "warehouse_code": "BZZZ"
+            },
+            {
+                "warehouse_id": "33",
+                "warehouse_desc": "\u6807\u51c6\u4ed3-\u6807\u51c6\u7406\u8d27\u6a21\u5f0f",
+                "warehouse_code": "BZ"
+            },
+            {
+                "warehouse_id": "34",
+                "warehouse_desc": "\u56fd\u5185\u76f4\u53d1-\u6df1\u5733\u4ed3",
+                "warehouse_code": "ZF01"
+            },
+            {
+                "warehouse_id": "35",
+                "warehouse_desc": "\u6d77\u5916\u4ed3-\u7f8e\u56fd\u76f4\u53d1\u4ed3",
+                "warehouse_code": "HW01"
+            },
+            {
+                "warehouse_id": "36",
+                "warehouse_desc": "\u6d77\u5916\u96c6\u8d27\u4ed3",
+                "warehouse_code": "GNZZ"
+            },
+            {
+                "warehouse_id": "37",
+                "warehouse_desc": "\u6df1\u5733\u5b9d\u5b89\u4ed3",
+                "warehouse_code": "SZ-BA-01"
+            },
+            {
+                "warehouse_id": "38",
+                "warehouse_desc": "alwihdg\u5934\u7a0b\u4ed3",
+                "warehouse_code": "TCALWIHDG"
+            },
+            {
+                "warehouse_id": "39",
+                "warehouse_desc": "\u4e0a\u6d77\u4e00\u53f7\u4ed3",
+                "warehouse_code": "SH01"
+            },
+            {
+                "warehouse_id": "40",
+                "warehouse_desc": "\u5b81\u6ce2\u4e2d\u8302",
+                "warehouse_code": "02"
+            },
+            {
+                "warehouse_id": "41",
+                "warehouse_desc": "",
+                "warehouse_code": "IT01"
+            },
+            {
+                "warehouse_id": "42",
+                "warehouse_desc": "\u6df1\u5733\u9f99\u534e1\u53f7\u4ed3",
+                "warehouse_code": "SZ01"
+            },
+            {
+                "warehouse_id": "43",
+                "warehouse_desc": "\u82f1\u56fd\u96c6\u8d27\u4ed3",
+                "warehouse_code": "YGJH01"
+            },
+            {
+                "warehouse_id": "44",
+                "warehouse_desc": "\u6df1\u5733\u9f99\u534e\u4e09\u65b9\u4ed3",
+                "warehouse_code": "SZLH03"
+            },
+            {
+                "warehouse_id": "45",
+                "warehouse_desc": "\u5357\u5c71\u4ed3",
+                "warehouse_code": "NANS"
+            },
+            {
+                "warehouse_id": "46",
+                "warehouse_desc": "\u6df1\u5733\u798f\u7530\u4ed3",
+                "warehouse_code": "SZ-FT-01"
+            },
+            {
+                "warehouse_id": "47",
+                "warehouse_desc": "001",
+                "warehouse_code": "01"
+            },
+            {
+                "warehouse_id": "48",
+                "warehouse_desc": "FBA\u4e13\u7528\u6d4b\u8bd5\u4ed3",
+                "warehouse_code": "CESCWDM123"
+            },
+            {
+                "warehouse_id": "49",
+                "warehouse_desc": "Frank\u7684\u5fb7\u56fd\u6c49\u5821\u4ed3",
+                "warehouse_code": "FRANK_DE_HB"
+            },
+            {
+                "warehouse_id": "50",
+                "warehouse_desc": "\u6d4b\u8bd5\u4ed3\u5e93",
+                "warehouse_code": "PJD"
+            },
+            {
+                "warehouse_id": "51",
+                "warehouse_desc": "\u6d4b\u8bd5\u8d27\u6e90",
+                "warehouse_code": "PJDCS"
+            },
+            {
+                "warehouse_id": "52",
+                "warehouse_desc": "\u6d4b\u8bd5",
+                "warehouse_code": "CS"
+            },
+            {
+                "warehouse_id": "54",
+                "warehouse_desc": "\u56fd\u9645\u4ed3\uff08\u5f6d\u955c\u4e1c\uff09",
+                "warehouse_code": "PENGJD"
+            },
+            {
+                "warehouse_id": "55",
+                "warehouse_desc": "Dingziqi\u4e01\u7d2b\u68cb\u4ed3",
+                "warehouse_code": "DZQ"
+            },
+            {
+                "warehouse_id": "56",
+                "warehouse_desc": "0001",
+                "warehouse_code": "0001"
+            },
+            {
+                "warehouse_id": "58",
+                "warehouse_desc": "1212",
+                "warehouse_code": "1212"
+            },
+            {
+                "warehouse_id": "59",
+                "warehouse_desc": "pw\u4ed3",
+                "warehouse_code": "PW"
+            },
+            {
+                "warehouse_id": "60",
+                "warehouse_desc": "BTUS",
+                "warehouse_code": "BTUS"
+            },
+            {
+                "warehouse_id": "61",
+                "warehouse_desc": "\u6df1\u5733\u4ed3",
+                "warehouse_code": "SZC"
+            },
+            {
+                "warehouse_id": "62",
+                "warehouse_desc": "pw_\u56fd\u5185\u4e2d\u8f6c\u4ed3",
+                "warehouse_code": "PW_ZZ"
+            },
+            {
+                "warehouse_id": "63",
+                "warehouse_desc": "\u56fd\u5185\u4e2d\u8f6c\u4ed3",
+                "warehouse_code": "GNSZ"
+            },
+            {
+                "warehouse_id": "64",
+                "warehouse_desc": "\u7b2c\u4e8c\u4ed3\u5e93",
+                "warehouse_code": "CK"
+            },
+            {
+                "warehouse_id": "66",
+                "warehouse_desc": "\u6df1\u5733\u8fd0\u8f93\u4ed3\u6d4b\u8bd5",
+                "warehouse_code": "SZ-YUNCS"
+            },
+            {
+                "warehouse_id": "67",
+                "warehouse_desc": "\u6df1\u5733\u6d4b\u8bd5\u4ed3\u5e93",
+                "warehouse_code": "SZ-CSC"
+            },
+            {
+                "warehouse_id": "68",
+                "warehouse_desc": "\u6df1\u5733\u5b9d\u5b893\u4ed3",
+                "warehouse_code": "SZ-BAN3"
+            },
+            {
+                "warehouse_id": "69",
+                "warehouse_desc": "\u5b9d\u5b89\u56fd\u9645\u4ed3",
+                "warehouse_code": "BAOAN-GJ"
+            },
+            {
+                "warehouse_id": "70",
+                "warehouse_desc": "\u4e2d\u56fd\u4e2d\u8f6c\u4ed3",
+                "warehouse_code": "ZGZZ"
+            },
+            {
+                "warehouse_id": "71",
+                "warehouse_desc": "\u6df1\u5733\u5b9d3\u3010\u4e2d\u8f6c\u4ed3\u3011",
+                "warehouse_code": "SZBAO3"
+            },
+            {
+                "warehouse_id": "72",
+                "warehouse_desc": "\u7f8e\u56fd\u66fc\u54c8\u987f\u4ed3",
+                "warehouse_code": "MHT"
+            },
+            {
+                "warehouse_id": "73",
+                "warehouse_desc": "001",
+                "warehouse_code": "001"
+            },
+            {
+                "warehouse_id": "74",
+                "warehouse_desc": "\u52a0\u5dde\u4ed3",
+                "warehouse_code": "002"
+            },
+            {
+                "warehouse_id": "75",
+                "warehouse_desc": "\u4e2d\u56fd\u76f4\u53d1\u4ed3",
+                "warehouse_code": "CN1"
+            },
+            {
+                "warehouse_id": "76",
+                "warehouse_desc": "\u4e2d\u56fd\u4e2d\u8f6c\u4ed3",
+                "warehouse_code": "CNZ"
+            },
+            {
+                "warehouse_id": "77",
+                "warehouse_desc": "\u82f1\u56fd\u53d1\u8d27\u4ed3",
+                "warehouse_code": "UK1"
+            },
+            {
+                "warehouse_id": "78",
+                "warehouse_desc": "FBA\u6d4b\u8bd5\u4ed3\u5e93",
+                "warehouse_code": "FBA-T"
+            },
+            {
+                "warehouse_id": "79",
+                "warehouse_desc": "\u676d\u5dde",
+                "warehouse_code": "HANGZHOU"
+            },
+            {
+                "warehouse_id": "88",
+                "warehouse_desc": "\u5357\u5c7101",
+                "warehouse_code": "NS001"
+            },
+            {
+                "warehouse_id": "110",
+                "warehouse_desc": "DLONS-US",
+                "warehouse_code": "DLONS-US"
+            },
+            {
+                "warehouse_id": "111",
+                "warehouse_desc": "DLONS-US-1",
+                "warehouse_code": "DLONS-US-1"
+            }];
+            var moduleCodeArr = ["po", "pp"];
+            $(function() {
+                loadVersions($('#main_right'), 'WMS');
+                loadPanel($("#main_left"), ['CS'], [9], warehouseArr, []);
+                taskPane($("#task_pane_container"), moduleCodeArr, warehouseArr);
+            });</script>
+        <!--面板-->
+        <div id="main_left" class="main_area" style="width: 70%;float: left"></div>
+        <!--公告-->
+        <div id="main_right" style="float:right;width:29%;"></div>
+        <!--任务面板-->
+        <div id="task_pane_container" class="task_pane_container"></div>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery-cookie.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery.form.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery.pagination.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/mod.js?20150517"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/searchFilter.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery.myLoading.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/common.js?201512005"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/locale/oms-lang-en_US.js?201410"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/locale/oms-lang-zh_CN.js?201410"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/locale/locale_message.js?201408"></script>
+    </body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>百度翻译Demo</title>
+    <meta charset="utf-8">
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="page-content">
+
+    <div class="main" style="margin:10px 20px;">
+        <h2>百度翻译Api</h2><hr>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Demo</h3>
+            </div>
+
+            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" role="form" style="margin:30px 0;">
+
+                <!--3 文本框 rows="3" -->
+                <div class="form-group">
+                    <label for="textarea" class="col-sm-1 control-label">翻译文本</label>
+                    <div class="col-sm-5">
+                        <textarea class="form-control" rows="3" name="textarea" id="textarea"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="textarea" class="col-sm-1 control-label">翻译后：</label>
+                    <div class="col-sm-5">
+                        <textarea class="form-control" rows="3" name="translate" id="translate"></textarea>
+                    </div>
+                </div>
+
+                <!--6 选择列表，给<select>元素添加multiple属性，展开选择框 -->
+                <div class="form-group">
+                    <label for="select" class="col-sm-1 control-label">选择语音</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="select" id="select">
+                            <option value="en" selected="">英语</option>
+                            <option value="jp">日语</option>
+                            <option value="fra">法语</option>
+                            <option value="de">德语</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-1 col-sm-2">
+                        <button type="button" id="button" class="btn btn-success">翻译</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $("#button").on("click", function(){
+        var text = $("#textarea").val(), to = $("#select").val();
+
+        $.post("./baidu_transapi.php", {text:text, to:to}, function(res){
+            $("#translate").val(res);
+        }, "text");
+    });
+</script>
+
+</body>
+</html>
+
+
+语言简写    名称
+auto    自动检测
+zh  中文
+en  英语
+jp  日语
+fra     法语 fr
+spa     西班牙语 es
+de  德语
+it  意大利语
+
+th  泰语
+ru  俄语
+pt  葡萄牙语
+

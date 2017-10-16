@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>返回顶部</title>
+        <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+        <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <div style="height:1800px; background-color:#f8f8f8;"></div>
+
+        <style type="text/css"> .top_scroll>div:hover{ color:#333; } </style>
+        <div class="top_scroll" id="top_scroll" style="display:none; position:fixed; right:20px; bottom:26px; cursor:pointer; color:#8c8888; font-size:18px; height:72px; padding:0 8px;">
+            <div id="_top">
+                <span aria-hidden="true" class="glyphicon glyphicon-plane" title="返回顶部"></span>
+            </div>
+            <div id="_bottom">
+                <span aria-hidden="true" class="glyphicon glyphicon-chevron-down" title="回到底部"></span>
+            </div>
+        </div>
+    <script type="text/javascript">
+        $(function() {
+                $(window).scroll(function() {
+                    $(this).scrollTop() > 100 ? $("#top_scroll").fadeIn() : $("#top_scroll").fadeOut()
+                });
+
+                $("#_top").click(function() {
+                    $("html,body").animate({
+                        scrollTop: 0
+                    }, 200)
+                });
+                $("#_bottom").click(function() {
+                    $("html,body").animate({
+                        scrollTop: $("body").height()
+                    }, 200)
+                })
+        })
+    </script>
+    </body>
+
+</html>

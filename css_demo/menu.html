@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Bootstrap 实例 - 响应式的导航栏</title>
+        <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+        <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <style type="text/css">
+            #main-container{ width:100%; padding:5px 0 15px 5px; border:1px solid pink; }
+            #menu-iframe-container{ height:auto; width:100%; min-width:1200px; margin:0; overflow:hidden; }
+            #head-nav .navbar{ margin-bottom:2px; background-color:#438eb9; }
+            /*#head-nav .navbar a { color:#fff; }*/
+
+            #head-nav .nav-tabs>li>a{ padding:5px 15px; display:inline-block; }
+            #head-nav .nav-tabs em{ font-size:18px; padding-left:8px; padding-right:0px; color:darkgray; position:relative; top:-5px; left:-22px; cursor:pointer; }
+        </style>
+    </head>
+
+    <body style="overflow:hidden;">
+        <!-- 1.导航栏 -->
+        <div id="head-nav">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#switch-navbar-collapse">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">W3Cschool</a></div>
+
+                <div class="collapse navbar-collapse" id="switch-navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class=" active">
+                            <a href="#">iOS</a></li>
+                        <li>
+                            <a href="#">SVN</a></li>
+
+                        <li class="dropdown" onmouseover="showSubMenu(this,'headmenu6')" onmouseout="closeSubMenu(this,'headmenu6')">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">PHP
+                                <b class="caret"></b></a>
+
+                            <ul class="dropdown-menu" id="headmenu6">
+                                <li>
+                                    <a href="javascript:void(0);" onclick="leftMenu('6','Composer','http://www.8.com')">Composer</a></li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="javascript:void(0);" onclick="leftMenu('7','eBay','http://php.net')">eBay</a></li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="javascript:void(0);" onclick="leftMenu('8','Amazon','http://localhost')">Amazon</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- 选项卡菜单管理 -->
+            <ul class="nav nav-tabs" id="menu-guild">
+               <li class="active" id="menu0"><a href="javascript:void(0)" title="首页" onclick="leftMenu('0','首页','/system/home')">Home</a></li>
+
+               <li><a href="#">SVN</a></li>
+               <li><a href="#">iOS</a></li>
+               <li><a href="#">Java</a></li>
+
+               <li id="menuBtn"><a href="javascript:;" onclick="closeAllMenu(this)">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true" style="color:#9a9595;" title="全部关闭" alt="全部关闭"></span></a></li>
+            </ul>
+        </div>
+
+        <!-- 2.正文 -->
+        <div id="main-container">
+            <div id="menu-iframe-container">
+                <iframe frameborder="0" src="http://www.8.com" width="100%" height="100%" id="iframe-container-0" name="iframe-container-0" class="iframe-container"></iframe>
+            </div>
+        </div>
+
+        <!-- 3.底部 -->
+        <div id="foot-nav"></div>
+        <script type="text/javascript">
+            // 1）菜单展开
+            function showSubMenu(obj, id){ $(obj).addClass("open"); $("#" + id).show(); }
+            function closeSubMenu(obj, id){ $(obj).removeClass("open"); $("#" + id).hide(); }
+
+            // 2）自适应Iframe高度
+            var resizeTimer = null;
+            window.onresize = function(){ resizeTimer = resizeTimer ? null : setTimeout(autoHeight, 0); }
+            $(function(){ autoHeight(); });
+
+            function autoHeight() {
+                // 窗口高度 Standard browsers (Mozilla, Safari, etc.)
+                var body_h = self.innerHeight ? self.innerHeight : 0;
+                if (body_h < 600)  body_h = 600;
+
+                var header_h = $("#head-nav").height();
+                $("#menu-iframe-container").css('height', body_h - header_h - 22);
+            } //autoHeight
+
+            // 3）选项卡菜单管理
+            function leftMenu(id, title, url){
+                $(window.parent.document).find("#menu-guild>li").removeClass("active");
+                var menulen = $(window.parent.document).find("#menu-guild>li").length;
+
+                //读取菜单栏是否已经存在此标签，存在则不再添加
+                obj = window.parent.document.getElementById("menu" + id);
+
+                //标签太长则省略号
+                var showTitle = title.length>12 ? title.substring(0, 12) + "..." : title;
+
+                // 添加标签
+                if (obj == null) {
+                    var tempOnclick = "leftMenu(" + "'" + id + "'" + ',\'' + title + '\',\'' + url + "\')";
+                    var tempOnclickLast = "closeMenu(this,'" + id + "')";
+
+                    var tempHtml = '<li class="active" id="' + "menu" + id + "" + '">';
+                        tempHtml+= '<a title="' + title + '" href="javascript:void(0)"';
+                        tempHtml+= ' onclick="' + tempOnclick + '">' + showTitle + '</a>';
+                        tempHtml+= '<em onclick="' + tempOnclickLast + '">×</em></li>';
+
+                    $(window.parent.document).find("#menuBtn").before(tempHtml);
+                } else {
+                    $(obj).addClass("active");
+                }
+
+                // 添加Iframe
+                var tHtml = '';
+                    tHtml+= '<iframe frameborder="0" src="' + url + '" width="100%" height="100%" id="iframe-container-' + id + '" name="iframe-container-' + id + '" class="iframe-container" ></iframe>';
+
+                var iframeObj = $(window.parent.document).find(".iframe-container");
+                    iframeObj.hide(); // 隐藏所有的Iframe
+                obj = $(window.parent.document).find("#iframe-container-" + id);
+
+                if (obj.length > 0) {
+                    url = id == '0' ? '/system/home?random=' + Math.random() : url;
+                    if (url != obj.attr('src')) {
+                        obj.remove();  // 刷新首页
+                        $(window.parent.document).find("#menu-iframe-container").append(tHtml);
+                    } else {
+                        obj.css('display', 'block');
+                    }
+                } else {
+                    $(window.parent.document).find("#menu-iframe-container").append(tHtml);
+                }
+
+                if (iframeObj.length > 9) { //最多打开8个页面
+                    iframeObj.eq(1).remove();
+                }
+            }
+
+
+
+
+
+
+
+            //全部关闭
+            function closeAllMenu(thisobj) {
+                var menuQty = $(thisobj).parent().parent().find("h2").length;
+                if (menuQty > 1) leftMenu('0', '首页', '/system/home');
+                $(thisobj).parent().parent().find("h2").each(function() {
+                    var id = $(this).attr("id");
+                    if (id != 'menu0') $(this).remove();
+                });
+            }
+
+            function closeMenu(obj, thisId) {
+                var id, title, url;
+                var tmpOnclick = $(obj).parent().prev().children().attr("onclick");
+                // alert(tmpOnclick);
+                var tmpId = tmpOnclick.split(",")[0];
+                id = tmpId.substring(tmpId.indexOf("'") + 1, tmpId.length - 1);
+
+                var tmpTitle = tmpOnclick.split(",")[1];
+                title = tmpTitle.substring(tmpTitle.indexOf("'") + 1, tmpTitle.length - 1);
+
+                var tmpUrl = tmpOnclick.split(",")[2];
+                url = tmpUrl.substring(tmpUrl.indexOf("'") + 1, tmpUrl.length - 2);
+
+                $(obj).parent().remove();
+                $(window.parent.document).find("#iframe-container-" + thisId).remove();
+                leftMenu(id, title, url);
+            }
+
+
+        </script>
+    </body>
+
+</html>

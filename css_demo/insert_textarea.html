@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JS 插入文字到 Textarea 中的光标位置</title>
+</head>
+<body>
+    <div style="margin:30px;">
+        <h3>JS 插入文字到 Textarea 中的光标位置</h3>
+        <p>=IE支持document.selection</p>
+        <p>=Firefox，Chrome,Safari以及Opera都有selectionStart和selectionEnd属性</p>
+
+        <p><textarea id="text" style="width:300px;height:100px;">【记录】JS在TextArea光标位置插入文字+移动光标到文字末尾</textarea></p>
+        <p><input type="button" value="插入文字" onclick="insertText(document.getElementById('text'),' 新文字—YoyiorLee ')"></p>
+        <p><input type="button" value="插入文字22" onclick="insertAtCursor(document.getElementById('text'),' 新文字—YoyiorLee ')"></p>
+        <p><input type="button" value="移到末尾" onclick="moveEnd(document.getElementById('text'))"></p>
+    </div>
+
+
+<script type="text/javascript">
+    //1.插入文字
+    function insertText(obj, str) {
+        if(document.selection){ //IE
+            obj.focus();
+            var sel = document.selection.createRange();
+            sel.text = str;
+            sel.select();
+        }else if(typeof obj.selectionStart==='number' && typeof obj.selectionEnd==='number'){
+            var startPos = obj.selectionStart,
+                endPos = obj.selectionEnd,
+                cursorPos = startPos,
+                tmpStr = obj.value;
+            obj.value = tmpStr.substring(0, startPos) + str + tmpStr.substring(endPos, tmpStr.length);
+            cursorPos += str.length;
+            obj.selectionStart = obj.selectionEnd = cursorPos;
+        }else{
+            obj.value += str;
+        }
+        obj.focus(); //继续保留光标2017-9-29 By Chen
+    }
+
+    //2.移到末尾
+    function moveEnd(obj){
+        obj.focus();
+        var len = obj.value.length;
+        if (document.selection) {
+            var sel = obj.createTextRange();
+            sel.moveStart('character',len);
+            sel.collapse();
+            sel.select();
+        } else if (typeof obj.selectionStart == 'number' && typeof obj.selectionEnd == 'number') {
+            obj.selectionStart = obj.selectionEnd = len;
+        }
+    }
+
+
+
+
+
+    function insertAtCursor(myField, myValue){
+        //IE support
+        if (document.selection) {
+            myField.focus();
+            sel            = document.selection.createRange();
+            sel.text    = myValue;
+            sel.select();
+        }
+
+        //MOZILLA/NETSCAPE support
+        else if (myField.selectionStart || myField.selectionStart == '0')
+        {
+            var startPos    = myField.selectionStart;
+            var endPos        = myField.selectionEnd;
+            // save scrollTop before insert
+            var restoreTop    = myField.scrollTop;
+            myField.value    = myField.value.substring(0, startPos) + myValue + myField.value.substring(endPos, myField.value.length);
+            if (restoreTop > 0)
+            {
+                // restore previous scrollTop
+                myField.scrollTop = restoreTop;
+            }
+            myField.focus();
+            myField.selectionStart    = startPos + myValue.length;
+            myField.selectionEnd    = startPos + myValue.length;
+        } else {
+            myField.value += myValue;
+            myField.focus();
+        }
+    }
+</script>
+</body>
+</html>

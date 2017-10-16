@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>H5 Ajax上传图片</title>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <form style="margin:50px;" class="form-inline" id="ajax-file">
+        <input style="display:none" type="file" name="file" id="file">
+
+        <input id="photoCover" style="width:200px;" class="form-control" type="text" readonly="readonly">
+        <a class="btn btn-default" id="fileClick" onclick="$('input[id=file]').click();">选择文件</a>
+        <span class="help-block">允许文件格式：.xlsx .xls</span>
+    </form>
+
+    <script type="text/javascript">
+        $('#file').on("change",function() {
+            $('#photoCover').val($(this).val());
+
+            doUpload();
+        });
+
+        //Ajax上传文件
+        function doUpload() {
+            var formData = new FormData($( "#ajax-file" )[0]); //HTML5异步上传文件
+            $.ajax({
+                url: './ajax_upload.php',
+                type: 'POST',
+                dataType: 'html',
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (returndata) {
+                    // $("#win-show").dialog('open');
+                    // $("#win-show").html(returndata);
+                    alert(returndata);
+                },
+                error: function (returndata) {
+                    alert(returndata);
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+{
+    "ask": 1,
+    "data": {
+        "module": [[{
+            "panelId": "7",
+            "panel_type": "0",
+            "name": "\u51fa\u8d27\u770b\u677f",
+            "title": [{
+                "text": "\u66f4\u65b0\u65f6\u95f4",
+                "type": "date"
+            },
+            {
+                "text": "\u8ba2\u5355\u603b\u6570",
+                "type": "int"
+            },
+            {
+                "text": "\u7f3a\u8d27\u4e2d",
+                "type": "int"
+            },
+            {
+                "text": "\u5f85\u4e0b\u67b6",
+                "type": "int"
+            },
+            {
+                "text": "\u5df2\u4e0b\u67b6",
+                "type": "int"
+            },
+            {
+                "text": "\u5df2\u6253\u5305",
+                "type": "int"
+            },
+            {
+                "text": "\u5df2\u88c5\u888b",
+                "type": "int"
+            },
+            {
+                "text": "\u5df2\u51fa\u5e93",
+                "type": "int"
+            },
+            {
+                "text": "\u5df2\u4f5c\u5e9f",
+                "type": "int"
+            }],
+            "val": [["2014-03-17 23:55:01", 1443, 2, 1223, 0, 0, 0, 2163, 117], ["2014-03-18 23:55:02", 1161, 7, 1047, 0, 0, 0, 1201, 102], ["2014-03-19 23:55:01", 1152, 6, 988, 0, 0, 2, 1066, 83], ["2014-03-20 23:55:01", 1081, 14, 933, 0, 0, 7, 988, 66], ["2014-03-21 23:55:01", 864, 9, 747, 0, 0, 2, 778, 69], ["2014-03-22 23:55:01", 670, 12, 624, 0, 0, 0, 68, 34], ["2014-03-23 23:55:01", 656, 30, 600, 0, 0, 0, 0, 26]],
+            "ur_id": [[null, null, null, null, null, null, null, null, null], [null, null, null, null, null, null, null, null, null], [null, null, null, null, null, null, null, null, null], [null, null, null, null, null, null, null, null, null], [null, null, null, null, null, null, null, null, null], [null, null, null, null, null, null, null, null, null], [null, null, null, null, null, null, null, null, null]]
+        },
+        {
+            "panelId": "6",
+            "panel_type": "0",
+            "name": "\u5165\u5e93\u770b\u677f",
+            "title": [{
+                "text": "\u5728\u9014SKU",
+                "type": "int"
+            },
+            {
+                "text": "\u5f85\u8d28\u68c0",
+                "type": "int"
+            },
+            {
+                "text": "\u8d28\u68c0\u5f02\u5e38",
+                "type": "int"
+            },
+            {
+                "text": "\u5f85\u4e0a\u67b6",
+                "type": "int"
+            },
+            {
+                "text": "\u5df2\u4e0a\u67b6",
+                "type": "int"
+            },
+            {
+                "text": "\u66f4\u65b0\u65f6\u95f4",
+                "type": "date"
+            }],
+            "val": [[489, 0, 0, 0, 1, "2014-03-17 23:55:04"], [456, 0, 0, 0, 111, "2014-03-18 23:55:04"], [457, 0, 0, 0, 40, "2014-03-19 23:55:04"], [461, 0, 0, 0, 9, "2014-03-20 23:55:04"], [462, 0, 0, 0, 7, "2014-03-21 23:55:03"], [462, 0, 0, 0, 0, "2014-03-22 23:55:03"], [462, 0, 0, 0, 0, "2014-03-23 23:55:04"]],
+            "ur_id": [[null, null, null, null, null, ""], [null, null, null, null, null, ""], [null, null, null, null, null, ""], [null, null, null, null, null, ""], [null, null, null, null, null, ""], [null, null, null, null, null, ""], [null, null, null, null, null, ""]]
+        }]],
+        "unModule": [[{
+            "panelId": "9",
+            "panel_type": "2",
+            "name": "\u8fd1\u671f(15\u5929)\u8ba2\u5355\u6570",
+            "title": [{
+                "text": "\u9500\u552e{0}\u8ba2\u5355",
+                "type": "int"
+            },
+            {
+                "text": "\u65f6\u95f4",
+                "type": "date"
+            }],
+            "val": [[696, "03-08"], [490, "03-09"], [1224, "03-10"], [1015, "03-11"], [914, "03-12"], [962, "03-13"], [894, "03-14"], [715, "03-15"], [679, "03-16"], [1326, "03-17"], [1059, "03-18"], [1069, "03-19"], [1015, "03-20"], [795, "03-21"], [636, "03-22"], [630, "03-23"]],
+            "ur_id": [[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null]]
+        }]]
+    }
+}

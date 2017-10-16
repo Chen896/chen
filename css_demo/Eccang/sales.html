@@ -1,0 +1,432 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=7" />
+        <title>易仓销售系统</title>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery-myProject.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery-myAjaxForm.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/chosen/chosen.jquery.js"></script>
+        <script type="text/javascript" src="http://erp.ez-wms.com/js/init.js?20141117"></script>
+        <link href="http://dev-wms.eccang.com/css/ui-lightness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/global.css?20141027" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/public/index.css?20141101" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/public/layout.css?20141027" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/css/public/head.css?20141027" />
+        <link type="text/css" rel="stylesheet" href="http://dev-wms.eccang.com/js/chosen/chosen.min.css" />
+        <link type="image/x-icon" rel="shortcut icon" href="http://dev-wms.eccang.com/images/favicon.ico" /></head>
+
+    <body>
+        <script type="text/javascript">//语言
+            var locale_message_language = 'zh_CN';</script>
+        <script type="text/javascript">EZ.userId = 1;
+            function showThisSubMenuHeader(obj, id) {
+                var mLeft = $(obj).children().position().left;
+                $("#" + id).css("left", mLeft - 1);
+                $("#" + id).show();
+                $(obj).children("li").addClass("headNavA");
+                $(obj).children("li").children("a").css("color", "#0090E1");
+            }
+            function closeThisSubMenuHeader(obj, id) {
+                $(obj).children("li").removeClass("headNavA");
+                $(obj).children("li").children("a").css("color", "#fff");
+                $("#" + id).hide();
+            }
+            function headMenu(id, title, url, obj) {}
+
+            $(function(){
+                $('.headProduct').hover(function(){
+                    $('.headPro_drop',this).show();
+                },function(){
+                    $('.headPro_drop',this).hide();
+                })
+            });
+        </script>
+
+        <div id="head">
+            <div class="headProduct">&nbsp;&nbsp;销售管理系统
+                <div class="headPro_drop" style="display: none">
+                    <a href="./orders.html">订单管理系统</a>
+                    <a href="./warehouse.html">仓配管理系统</a></div>
+            </div>
+
+            <div class="headNav">
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu9')" onmouseout="closeThisSubMenuHeader(this,'headmenu9')">
+                    <li style="font-weight: bold;">
+                        <a href="javascript:;">订单管理</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu9">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>平台订单</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-16" onclick="leftMenu('16','eBay销售订单','/order/order-list/list/platform/ebay/?quick=16')">eBay销售订单</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-38" onclick="leftMenu('38','Amazon销售订单','/order/order-list/list/platform/amazon/?quick=38')">Amazon销售订单</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-105" onclick="leftMenu('105','Aliexpress销售订单','/order/order-list/list/platform/aliexpress/?quick=105')">Aliexpress销售订单</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-26" onclick="leftMenu('26','PayPal线下订单','/fee/paypal-transation/list?quick=26')">PayPal线下订单</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-106" onclick="leftMenu('106','Wish销售订单','/order/order-list/list/platform/wish/?quick=106')">Wish销售订单</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>API服务</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-101" onclick="leftMenu('101','EUB订单','/order_service/eub-service/list?quick=101')">EUB订单</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-103" onclick="leftMenu('103','直发订单','/order_service/logistic-service/list?quick=103')">直发订单</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-100" onclick="leftMenu('100','API服务','/order_service/api-user-service/list?quick=100')">API服务</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>高级设置</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-30" onclick="leftMenu('30','分仓规则设置','/order/order-allot/index?quick=30')">分仓规则设置</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu5')" onmouseout="closeThisSubMenuHeader(this,'headmenu5')">
+                    <li style="font-weight: bold;">
+                        <a href="javascript:;">仓配收发货</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu5">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>商品管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-46" onclick="leftMenu('46','商品管理','/product/product/list?quick=46')">商品管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-32" onclick="leftMenu('32','商品映射','/product/product-combine-relation/list?quick=32')">商品映射</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>入库管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-45" onclick="leftMenu('45','ASN单管理','/receiving/receiving/index?quick=45')">ASN单管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-51" onclick="leftMenu('51','导入ASN','/receiving/import/list?quick=51')">导入ASN</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-52" onclick="leftMenu('52','ASN收货','/receiving/received/list?quick=52')">ASN收货</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>出库管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-62" onclick="leftMenu('62','第三方出库','/shipment/orders/delivery-third-part?quick=62')">第三方出库</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-61" onclick="leftMenu('61','订单出库','/shipment/orders/delivery?quick=61')">订单出库</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>库存管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-53" onclick="leftMenu('53','库存查询','/warehouse/inventory/list?quick=53')">库存查询</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>高级设置</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-63" onclick="leftMenu('63','分区管理','/warehouse/area/list?quick=63')">分区管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-64" onclick="leftMenu('64','货架类型','/warehouse/location-type/list?quick=64')">货架类型</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-65" onclick="leftMenu('65','货位管理','/warehouse/location/list?quick=65')">货位管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-48" onclick="leftMenu('48','运输方式管理','/ship/shipping-method/?quick=48')">运输方式管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-47" onclick="leftMenu('47','仓库管理','/warehouse/warehouse/index?quick=47')">仓库管理</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu8')" onmouseout="closeThisSubMenuHeader(this,'headmenu8')">
+                    <li style="font-weight: bold;">
+                        <a href="javascript:;">客服管理</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu8">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>消息管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-20" onclick="leftMenu('20','eBay消息','/message/ebay/index?quick=20')">eBay消息</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-21" onclick="leftMenu('21','eBay消息模板','message/template/index?quick=21')">eBay消息模板</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-40" onclick="leftMenu('40','站内信拦截','/message/ebay-feedback-message/list?quick=40')">站内信拦截</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>评价与纠纷</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-34" onclick="leftMenu('34','评价管理','/feedback/ebay-customer-feedback/list?quick=34')">评价管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-36" onclick="leftMenu('36','纠纷管理','/case/ebay-user-cases?quick=36')">纠纷管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>客户管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-41" onclick="leftMenu('41','客户管理','/buyer/buyer/list?quick=41')">客户管理</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>退件管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-29" onclick="leftMenu('29','退件管理','/order/rma/list?quick=29')">退件管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-27" onclick="leftMenu('27','PayPal退款管理','/fee/paypal-refund/list?quick=27')">PayPal退款管理</a></li>
+                        </ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu2')" onmouseout="closeThisSubMenuHeader(this,'headmenu2')">
+                    <li style="font-weight: bold;">
+                        <a href="javascript:;">产品管理</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu2">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>供应商管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-55" onclick="leftMenu('55','供应商管理','/supplier/supplier/index?quick=55')">供应商管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-56" onclick="leftMenu('56','供应商产品','/supplier/product/list?quick=56')">供应商产品</a></li>
+                        </ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu7')" onmouseout="closeThisSubMenuHeader(this,'headmenu7')">
+                    <li style="font-weight: bold;">
+                        <a href="javascript:;">应用中心</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu7">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>小工具</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-37" onclick="leftMenu('37','在线商品管理','/product/seller-item/index?quick=37')">在线商品管理</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>平台数据同步</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-35" onclick="leftMenu('35','下载PayPal交易记录','/fee/paypal-transation/paypal-tool?quick=35')">下载PayPal交易记录</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                    </div>
+                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu1')" onmouseout="closeThisSubMenuHeader(this,'headmenu1')">
+                    <li style="font-weight: bold;">
+                        <a href="javascript:;">系统管理</a></li>
+                    <div class="topMenu" style="display: none" id="headmenu1">
+                        <div class="topMenu_cover"></div>
+                        <ul>
+                            <li class="noline">
+                                <span>权限管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-3" onclick="leftMenu('3','部门管理','/auth/user-department/list?quick=3')">部门管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-5" onclick="leftMenu('5','职位管理','/auth/position/list?quick=5')">职位管理</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-2" onclick="leftMenu('2','用户中心','/auth/user/index?quick=2')">用户中心</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-22" onclick="leftMenu('22','用户店铺绑定','/auth/service/index?quick=22')">用户店铺绑定</a></li>
+                        </ul>
+                        <ul>
+                            <li class="noline">
+                                <span>平台账号管理</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-12" onclick="leftMenu('12','平台账户授权列表','/order/Platform-User/list?quick=12')">平台账户授权列表</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-28" onclick="leftMenu('28','PayPal账户关联','/auth/ebay-paypal/list?quick=28')">PayPal账户关联</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-25" onclick="leftMenu('25','EUB账号管理','/auth/eub-account/?quick=25')">EUB账号管理</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="noline">
+                                <span>高级设置</span></li>
+                            <li class="noline">&nbsp;</li></ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-42" onclick="leftMenu('42','定时任务管理','/auth/run-control/?quick=42')">定时任务管理</a></li>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-108" onclick="leftMenu('108','系统操作指引','/default/system/help-system?quick=108')">系统操作指引</a></li>
+                        </ul>
+                        <ul>
+                            <li class="title">
+                                <a href="javascript:void(0);" class="sub-menu-id-31" onclick="leftMenu('31','平台运输方式映射','/auth/shipping-method-platform/?quick=31')">平台运输方式映射</a></li>
+                            <li class="noline">&nbsp;</li></ul>
+                    </div>
+                </ul>
+            </div>
+            <div class="clr"></div>
+            <div class="headHelp" style="float: right;height: 34px;position: absolute;right: 5px;">
+                <span style="line-height: 45px;">
+                    <!-- 2201095168 柏川 -->
+                    <!-- 2799701857 小小宋 -->
+                    <!-- 2851148921 易小仓 -->
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2851148921&site=qq&menu=yes">
+                        <img border="0" src="http://wpa.qq.com/pa?p=2:2258801729:41" alt="在线帮助" title="在线帮助" /></a>
+                </span>
+            </div>
+        </div>
+        <div id="column">
+            <div class="logo2" onclick="leftMenu('0','首页','/system/home')">
+                <a href="javascript:void(0);"></a>
+            </div>
+
+            <div class="nav2">
+                <dl title="eBay销售订单">
+                    <a href="javascript:void(0)" onclick="leftMenu('16','eBay销售订单','/order/order-list/list/platform/ebay/?quick=16')">
+                        <dt>
+                            <img src="http://dev-wms.eccang.com/images/header/20120326105252319.png"></dt>
+                        <dd>eBay销售订单</dd></a>
+                </dl>
+                <dl title="eBay消息">
+                    <a href="javascript:void(0)" onclick="leftMenu('20','eBay消息','/message/ebay/index?quick=20')">
+                        <dt>
+                            <img src="http://dev-wms.eccang.com/images/header/20120326105256701.png"></dt>
+                        <dd>eBay消息</dd></a>
+                </dl>
+                <dl title="PayPal退款管理">
+                    <a href="javascript:void(0)" onclick="leftMenu('27','PayPal退款管理','/fee/paypal-refund/list?quick=27')">
+                        <dt>
+                            <img src="http://erp.ez-wms.com/images/header/png-0096.png"></dt>
+                        <dd>PayPal退款管理</dd></a>
+                </dl>
+                <dl title="评价管理">
+                    <a href="javascript:void(0)" onclick="leftMenu('34','评价管理','/feedback/ebay-customer-feedback/list?quick=34')">
+                        <dt>
+                            <img src="http://dev-wms.eccang.com/images/header/20120326105253418.png"></dt>
+                        <dd>评价管理</dd></a>
+                </dl>
+                <dl title="纠纷管理">
+                    <a href="javascript:void(0)" onclick="leftMenu('36','纠纷管理','/case/ebay-user-cases?quick=36')">
+                        <dt>
+                            <img src="http://dev-wms.eccang.com/images/header/20120326105253418.png"></dt>
+                        <dd>纠纷管理</dd></a>
+                </dl>
+                <dl title="在线商品管理">
+                    <a href="javascript:void(0)" onclick="leftMenu('37','在线商品管理','/product/seller-item/index?quick=37')">
+                        <dt>
+                            <img src="http://dev-wms.eccang.com/images/header/20120326105253418.png"></dt>
+                        <dd>在线商品管理</dd></a>
+                </dl>
+                <dl>
+                    <a href="javascript:void (0);" id="SkyeQuiKey">
+                        <dt>
+                            <img src="http://dev-wms.eccang.com/images/header/icon_nav088.png"></dt>
+                        <dd>添加</dd></a>
+                </dl>
+            </div>
+        </div>
+
+        <div class="main_quit">欢迎您，
+            <a style='color: #0090E1;' onclick="leftMenu('user_set_1024','个人中心','/auth/user/user-set')" class="sub-menu-id-user_set_1024" href="javascript:void(0);">Chen先生</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="/default/index/logout" class='logout'>安全退出</a></div>
+        <div id="main-container">
+            <div class="shrink">&nbsp;</div>
+            <div class="main-right" id="main-right">
+                <link rel="stylesheet" type="text/css" href="http://dev-wms.eccang.com/css/public/step.css">
+                <link rel="stylesheet" type="text/css" href="http://dev-wms.eccang.com/css/public/help.css">
+                <script type="text/javascript" src="http://dev-wms.eccang.com/js/help.js?20140128"></script>
+                <script type="text/javascript" src="http://dev-wms.eccang.com/js/step.js?20140128"></script>
+                <div class="guild">
+                    <h2 style="cursor: pointer" id="menu0">
+                        <a href="javascript:void (0)" title="首页" onclick="leftMenu('0','首页','/system/home')">首页</a></h2>
+                    <h3 class="guild_drop">
+                        <a href="javascript:;" onclick="showHistory()">
+                            <img id="menuBtn" src="http://dev-wms.eccang.com/images/pack/bg_guild_drop01.gif" title="显示历史标签"></a>
+                        <div class="guild_drop_list" style="display: none;top:118px" id="menuList" onmouseout="showHistory()">
+                            <a href="javascript:void(0);" style="border-bottom:1px solid #a8ccee;" onclick="clearHis(this)">清空历史标签</a></div>
+                    </h3>
+                    <span class="sys_help" title="帮助">
+                        <a href="javascript:void (0)" style="text-decoration:none;">
+                            <strong>?</strong></a>
+                    </span>
+                </div>
+                <!-- 帮助页面，弹出窗体 -->
+                <div id="sys_help_dialog" style="display:none;">
+                    <table class="dialog-module" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr class="table-module-b1">
+                                <td class="stateFlow" style="padding: 0 0 3px;">
+                                    <!-- 状态流转区域 --></td>
+                            </tr>
+                            <tr class="table-module-b1">
+                                <td style="border: 1px solid #D9D9D9;height:400px;" valign="top">
+                                    <!-- 说明区域 -->
+                                    <div id="stateContent" style="width: 100%;height:400px;max-height: 400px;overflow-x: hidden;overflow-y: auto;"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="main-right-container" id="main-right-container-iframe">
+                    <iframe frameborder="0" src="/system/home" width="100%" height="100%" id="iframe-container-0" name="iframe-container-0" class="iframe-container"></iframe>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery-cookie.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery.form.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery.pagination.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/mod.js"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/skyeQuiKey.js?20141116"></script>
+        <script type="text/javascript" src="http://dev-wms.eccang.com/js/jquery.myLoading.js"></script>
+    </body>
+
+</html>
