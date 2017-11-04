@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>全屏布局 - EasyUI</title>
+    <!-- 避免IE使用兼容模式[360双核浏览器] -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+
+    <link rel="stylesheet" href="http://www.jeasyui.net/Public/js/easyui/themes/icon.css">
+    <link rel="stylesheet" href="http://www.jeasyui.net/Public/js/easyui/themes/default/easyui.css">
+    <script src="http://www.jeasyui.net/Public/js/jquery.js"></script>
+    <script src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
+    <script src="http://www.jeasyui.net/Public/js/easyui/locale/easyui-lang-zh_CN.js"></script>
+
+    <style type="text/css">
+        html,body{ margin:0; padding:0; font-family:"Hiragino Sans GB",sans-serif; }
+    </style>
+</head>
+
+<body class="easyui-layout">
+    <!-- 1.Nav -->
+    <div data-options="region:'north',border:false" style="height:50px;background:#B3DFDA;padding:10px">CMS - 后台管理</div>
+
+    <!-- 2.Menu -->
+    <div data-options="region:'west',split:true" style="width:150px;padding:10px;">
+
+        <div id="menu" class="easyui-accordion" fit="true" border="false">
+
+            <!-- <div title="系统设置" data-options="iconCls:'icon-shezhi',selected:true" style="overflow:auto;padding:10px;">
+                <ul id="tt" class="easyui-tree" data-options="animate:true,lines:true">
+                    <li>
+                        <span>用户管理</span>
+                        <ul>
+                            <li>
+                                <span><a href="#" onclick="addTab('系统管理','index.html')">系统管理</a></span>
+                            </li>
+                            <li>
+                                <span><a href="#" onclick="addTab('服务商用户','index.html')">服务商用户</a></span>
+                            </li>
+                            <li>
+                                <span><a href="#" onclick="addTab('个人用户','index.html')">个人用户</a></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>添加用户</span>
+                        <ul>
+                            <li>
+                                <span><a href="#" onclick="addTab('其他用户0','index.html')">其他用户0</a></span>
+                            </li>
+                            <li>
+                                <span><a href="#" onclick="addTab('其他用户1','index.html')">其他用户1</a></span>
+                            </li>
+                            <li>
+                                <span><a href="#" onclick="addTab('其他用户2','index.html')">其他用户2</a></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div title="商户管理" data-options="iconCls:'icon-guanli'" style="padding:10px;">
+                content2
+            </div>
+            <div title="注册用户管理" data-options="iconCls:'icon-guanli'" style="overflow:auto;padding:10px;">
+                content3
+            </div>
+            <div title="用户积分设置" data-options="iconCls:'icon-shezhi'" style="overflow:auto;padding:10px;">
+                content3
+            </div> -->
+        </div>
+
+    </div>
+
+    <!-- 3.Content -->
+    <div data-options="region:'center'" style="overflow:hidden;">
+        <div class="content" style="width:100%;height:100%">
+
+            <div id="tabs" class="easyui-tabs" data-options="tools:'#tab-tools',fit:true">
+                <div title="我的主页" style="padding:15px;">
+                    <iframe scrolling="auto" frameborder="0" src="./index.html" style="width:100%;height:100%;"></iframe>
+                </div>
+            </div>
+
+            <div id="tab-tools">
+                <a href="javascript:void(0)" onclick="removePanel()">关闭当前</a>
+                <span>丨</span>
+                <a href="javascript:void(0)" onclick="closeAll()">关闭全部</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 4.Footer -->
+    <div data-options="region:'south',border:false" style="height:30px;background:#A9FACD;padding:10px;">CMS - V1.0 版本</div>
+
+
+<script type="text/javascript">
+    // 1.打开tab----------------------------------------------------
+    function addTab(title, url){
+        if($("#tabs").tabs('exists', title)){
+            $("#tabs").tabs('select', title);
+        }else{
+            var content = '<iframe scrolling="auto" frameborder="0" src="'+url+'" style="width:100%;height:100%;"></iframe>';
+            $("#tabs").tabs('add',{
+                title:title,
+                content:content,
+                closable:true
+            });
+        }
+    }
+    // 2.关闭所有的tab
+    function closeAll(){
+        var tiles = new Array(), tabs = $("#tabs").tabs('tabs'), len = tabs.length;
+        if(len>0){
+            for(var j=0; j<len; j++){
+                var a = tabs[j].panel('options').title;
+                tiles.push(a);
+            }
+            for(var i=1; i<tiles.length; i++){
+                $("#tabs").tabs('close', tiles[i]);
+            }
+        }
+    }
+    // 3.关闭当前的tab
+    function removePanel(){
+        var tab = $("#tabs").tabs('getSelected');
+        if(tab){
+            var index = $("#tabs").tabs('getTabIndex', tab);
+            if(index >= 1) $("#tabs").tabs('close', index);
+        }
+    }
+    //----------------------------------------------------------
+
+    // 4.菜单
+    $(function(){
+        $.get("./easyui-json/menu.json", function(data){
+
+            var html = '';
+            $.each(data, function(k1, v1){
+                html += '<div title="'+k1+'" data-options="iconCls:\'icon-shezhi\',selected:true" style="overflow:auto;padding:10px;">'+k1;
+                html += '<ul id="tt'+k1+'" class="easyui-tree" data-options="animate:true,lines:true">';
+
+                $.each(v1, function(k2, v2){
+                    html += '<li><span>'+k2+'</span><ul>';
+
+                    $.each(v2, function(k3, v3){
+                        html += '<li><span><a href="#" onclick="addTab(\''+v3.name+'\',\''+v3.url+'\')">'+v3.name+'</a></span></li>';
+                    });
+
+                    html += '</ul></li>'
+                })
+
+                html += '</ul>'
+                html += '</div>'
+            });
+
+            $("#menu").append(html);
+            $.parser.parse("#menu");
+        }, 'json');
+    });
+
+</script>
+</body>
+</html>

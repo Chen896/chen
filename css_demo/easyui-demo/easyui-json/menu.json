@@ -1,0 +1,41 @@
+{
+    "系统管理":{
+        "用户管理":[
+            {
+                "name":"系统设置0",
+                "url":"system.html"
+            },
+            {
+                "name":"系统设置1",
+                "url":"system.html"
+            },
+            {
+                "name":"系统设置2",
+                "url":"system.html"
+            }
+        ],
+        "添加用户":[
+            {
+                "name":"其他用户0",
+                "url":"system.html"
+            },
+            {
+                "name":"其他用户1",
+                "url":"system.html"
+            },
+            {
+                "name":"其他用户2",
+                "url":"system.html"
+            }
+        ]
+    },
+    "商户管理":[
+
+    ],
+    "订单管理":[
+
+    ],
+    "积分管理":[
+
+    ]
+}

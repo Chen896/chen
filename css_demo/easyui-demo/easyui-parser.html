@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>EasyUI Parser 解析器</title>
+    <link rel="stylesheet" href="http://www.jeasyui.net/Public/js/easyui/themes/icon.css">
+    <link rel="stylesheet" href="http://www.jeasyui.net/Public/js/easyui/themes/default/easyui.css">
+    <script src="http://www.jeasyui.net/Public/js/jquery.js"></script>
+    <script src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
+    <script src="http://www.jeasyui.net/Public/js/easyui/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body style="padding:200px;">
+
+    <!-- open -->
+    <h3>EasyUI Parser 解析器</h3>
+    <button onclick="openWin()">打开</button>
+
+    <!-- window -->
+    <div id="win" class="easyui-window" title="标题" closed="true" data-options="iconCls:'icon-save',modal:true"></div>
+
+    <script type="text/javascript">
+
+        function openWin(){
+            $.get("./easyui-json/parser.html", function(html){
+                $("#win").html(html);
+                $("#win").window({
+                    title:'查看',
+                    width:475,
+                    modal:true,
+                    shadow:false,
+                    minimizable:false,
+                    maximizable:false
+                });
+
+                $("#win").window('center');
+                $("#win").window('open');
+            }, "html");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>窗口 Window</title>
+    <link rel="stylesheet" href="http://www.jeasyui.net/Public/js/easyui/themes/icon.css">
+    <link rel="stylesheet" href="http://www.jeasyui.net/Public/js/easyui/themes/default/easyui.css">
+    <script src="http://www.jeasyui.net/Public/js/jquery.js"></script>
+    <script src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
+    <script src="http://www.jeasyui.net/Public/js/easyui/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body style="padding:200px;">
+
+    <!-- open -->
+    <h3>窗口 Window - easyui</h3>
+    <button onclick="openWin()">打开窗口</button>
+
+    <!-- window -->
+    <div id="win" class="easyui-window" title="标题" closed="true" data-options="iconCls:'icon-save',modal:true"></div>
+
+    <script type="text/javascript">
+        function openWin(){
+            var html = '<div style="height:200px;">窗口 Window Demo</div>';
+
+            $("#win").html(html);
+            $("#win").window({
+                title:'查看',
+                width:475,
+                modal:true,
+                shadow:false,
+                minimizable:false,
+                maximizable:false
+            });
+
+            $("#win").window('center');
+            $("#win").window('open');
+        }
+    </script>
+
+</body>
+</html>

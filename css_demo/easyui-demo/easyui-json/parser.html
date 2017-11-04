@@ -1,0 +1,10 @@
+
+<!-- Ajax加载本页面时，需要 EasyUI Parser 解析器[$.parser.parse(); // 解析整个页面] -->
+<div style="width:300px; height:200px; padding:10px;">
+    <input id="dd" type="text" style="width:200px;" class="easyui-datebox" required="required">
+</div>
+
+<script type="text/javascript">
+    $.parser.parse(); // 解析整个页面
+    // $.parser.parse('#dd'); // 解析某个具体节点
+</script>

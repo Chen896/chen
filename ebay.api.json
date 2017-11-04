@@ -1,0 +1,136 @@
+// 一、买家（Buy API）
+    // 1、Browse API允许购物者通过关键字、类别、产品或项目方面搜索特定项，并检索条目的详细信息。
+        https://api.ebay.com/oauth/api_scope
+        https://api.ebay.com/oauth/api_scope
+        https://api.ebay.com/oauth/api_scope
+        https://api.ebay.com/oauth/api_scope
+
+    // 2.Feed API提供下载每日TSV_GZIP提要文件的能力，这些文件包含所有新列出的eBay项目的特定类别和日期。
+        https://api.ebay.com/oauth/api_scope/buy.item.feed
+        https://api.ebay.com/oauth/api_scope/buy.item.feed
+        https://api.ebay.com/oauth/api_scope/buy.marketing
+        https://api.ebay.com/oauth/api_scope/buy.order
+        https://api.ebay.com/oauth/api_scope/buy.order.readonly
+        https://api.ebay.com/oauth/api_scope/buy.guest.order
+
+    // 3.Marketing API根据一个指标来检索eBay产品，比如最好的销售，以及同样被购买和查看的产品。
+        https://api.ebay.com/oauth/api_scope/buy.marketing
+        https://api.ebay.com/oauth/api_scope/buy.marketing
+        https://api.ebay.com/oauth/api_scope/buy.marketing
+
+    // 4.Order API提供启动一个签出会话的接口，可以让购物者为项目(包括客户和eBay成员的购买者)支付费用。它还允许销售者跟踪订单的支付和配送状态，使他们能够使用Post订单API来获得退货和取消订单。
+        https://api.ebay.com/oauth/api_scope/buy.order
+        https://api.ebay.com/oauth/api_scope/buy.order
+        https://api.ebay.com/oauth/api_scope/buy.order
+        https://api.ebay.com/oauth/api_scope/buy.order
+        https://api.ebay.com/oauth/api_scope/buy.order
+        https://api.ebay.com/oauth/api_scope/buy.order
+        https://api.ebay.com/oauth/api_scope/buy.order
+
+        https://api.ebay.com/oauth/api_scope/buy.guest.order
+        https://api.ebay.com/oauth/api_scope/buy.guest.order
+        https://api.ebay.com/oauth/api_scope/buy.guest.order
+        https://api.ebay.com/oauth/api_scope/buy.guest.order
+        https://api.ebay.com/oauth/api_scope/buy.guest.order
+        https://api.ebay.com/oauth/api_scope/buy.guest.order
+        https://api.ebay.com/oauth/api_scope/buy.guest.order
+
+        https://api.ebay.com/oauth/api_scope/buy.guest.order
+        https://api.ebay.com/oauth/api_scope/buy.order.readonly
+
+
+// 二、卖家（Sell API）
+    // 1.Account API给卖家提供了配置eBay卖家账户的能力，包括卖家的政策(执行政策、付款政策和退货政策)，选择进出eBay卖家的程序，配置销售税表，并获取账户信息。
+        https://api.ebay.com/oauth/api_scope/sell.account
+        https://api.ebay.com/oauth/api_scope/sell.account
+        https://api.ebay.com/oauth/api_scope/sell.account
+        https://api.ebay.com/oauth/api_scope/sell.account
+        https://api.ebay.com/oauth/api_scope/sell.account
+        https://api.ebay.com/oauth/api_scope/sell.account
+
+        https://api.ebay.com/oauth/api_scope/sell.account
+        https://api.ebay.com/oauth/api_scope/sell.account
+        https://api.ebay.com/oauth/api_scope/sell.account
+        https://api.ebay.com/oauth/api_scope/sell.account
+        https://api.ebay.com/oauth/api_scope/sell.account
+        https://api.ebay.com/oauth/api_scope/sell.account
+
+    // 2.Inventory API用于创建和管理库存，然后在eBay市场上发布和管理这些库存。在这个API中还有一个调用，可以将有资格的、活跃的eBay清单转换为库存API模型。
+        https://api.ebay.com/oauth/api_scope/sell.inventory
+        https://api.ebay.com/oauth/api_scope/sell.inventory
+        https://api.ebay.com/oauth/api_scope/sell.inventory
+        https://api.ebay.com/oauth/api_scope/sell.inventory
+        https://api.ebay.com/oauth/api_scope/sell.inventory.readonly
+        https://api.ebay.com/oauth/api_scope/sell.inventory.readonly
+        https://api.ebay.com/oauth/api_scope/sell.inventory
+
+        https://api.ebay.com/oauth/api_scope/sell.inventory
+        https://api.ebay.com/oauth/api_scope/sell.inventory.readonly
+        https://api.ebay.com/oauth/api_scope/sell.inventory.readonly
+        https://api.ebay.com/oauth/api_scope/sell.inventory
+        https://api.ebay.com/oauth/api_scope/sell.inventory
+
+        https://api.ebay.com/oauth/api_scope/sell.inventory
+        https://api.ebay.com/oauth/api_scope/sell.inventory.readonly
+        https://api.ebay.com/oauth/api_scope/sell.inventory
+
+    // 3.Fulfillment API根据付款方式和付款时间安排，使用履行API完成包装、处理、处理和发货的过程。
+        https://api.ebay.com/oauth/api_scope/sell.fulfillment
+        https://api.ebay.com/oauth/api_scope/sell.fulfillment
+        https://api.ebay.com/oauth/api_scope/sell.fulfillment
+        https://api.ebay.com/oauth/api_scope/sell.fulfillment
+        https://api.ebay.com/oauth/api_scope/sell.fulfillment
+
+    // 4.Marketing API提供了两个paltform，让卖家可以推广和宣传他们的产品: 【重要！商店订阅】
+        https://api.ebay.com/oauth/api_scope/sell.marketing
+        https://api.ebay.com/oauth/api_scope
+        https://api.ebay.com/oauth/api_scope
+
+        https://api.ebay.com/oauth/api_scope/sell.marketing
+        https://api.ebay.com/oauth/api_scope/sell.marketing
+        https://api.ebay.com/oauth/api_scope/sell.marketing
+        https://api.ebay.com/oauth/api_scope/sell.marketing
+
+        https://api.ebay.com/oauth/api_scope/sell.marketing.readonly
+        https://api.ebay.com/oauth/api_scope/sell.marketing.readonly
+
+    // 5.Analytics API提供关于一个卖方的业务性能的信息分析。getTrafficReport调用显示了如何与买家列表,和getSellerStandardsProfile调用显示如果卖方满足买家的期望。
+        https://api.ebay.com/oauth/api_scope/sell.analytics.readonly
+        https://api.ebay.com/oauth/api_scope/sell.analytics.readonly
+        https://api.ebay.com/oauth/api_scope/sell.analytics.readonly
+
+    // 6.Metadata API有一些操作[元数据]，这些操作可以重构与不同的eBay市场有关的配置细节。除了市场信息外，该API还拥有一些操作，可以获得帮助卖家在eBay上列出商品的信息。
+        https://api.ebay.com/oauth/api_scope
+        https://api.ebay.com/oauth/api_scope
+        https://api.ebay.com/oauth/api_scope
+        https://api.ebay.com/oauth/api_scope
+        https://api.ebay.com/oauth/api_scope
+        https://api.ebay.com/oauth/api_scope
+
+
+// 三、商业（Commerce API）
+    // 1.Taxonomy API来发现最合适的eBay类别，在这个类别下，卖家可以提供出售的库存物品，以及最可能的类别，买家可以浏览或搜索物品购买。
+        https://api.ebay.com/oauth/api_scope
+        https://api.ebay.com/oauth/api_scope
+        https://api.ebay.com/oauth/api_scope
+        https://api.ebay.com/oauth/api_scope
+
+/* ------------------------------------------------------------------------------------------
+    $str = <<<EOF
+        .......
+EOF;
+
+    $str = str_replace(array("\r\n", "\r", "\n"), '|-|', $str);
+    $arr = explode('|-|', $str);
+
+    foreach($arr as $k=>&$v){
+        $v = trim($v);
+
+        if(empty($v)) unset($arr[$k]);
+        if(strpos($v, '//') === 0) unset($arr[$k]);
+    }
+    $arr = array_unique($arr);
+------------------------------------------------------------------------------------------*/
+
+
+// 旧API：eBay Trading API 提供对eBay私人数据的认证访问，并依此实现下列功能的自动同步和更新：刊登商品、检索卖家销售状态、管理售后服务信息、管理私人eBay用户信息如My eBay和Feedback的细节。
