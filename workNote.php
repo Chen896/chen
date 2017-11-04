@@ -100,9 +100,17 @@
     #b.查看数据库 `erp` 中各数据表的占用空间
     SELECT `table_name`, `table_rows`, CONCAT(TRUNCATE(`data_length`/1024/1024,2),' MB') AS `data_size`,
         CONCAT(TRUNCATE(`index_length`/1024/1024,2),' MB') AS `index_size`
-        FROM `information_schema`.tables WHERE `table_schema` = 'erp'
+        FROM `information_schema`.tables WHERE `table_schema`='erp'
         GROUP BY `table_name`
     ORDER BY `data_length` DESC;
+
+    #c.查看数据库 `erp` 中指定表的占用空间
+    SELECT `table_name`, `table_rows`, CONCAT(TRUNCATE(`data_length`/1024/1024,2),' MB') AS `data_size`,
+        CONCAT(TRUNCATE(`index_length`/1024/1024,2),' MB') AS `index_size`
+        FROM `information_schema`.tables WHERE `table_schema`='erp' AND `table_name`='erp_wish_listing'
+        GROUP BY `table_name`
+    ORDER BY `data_length` DESC;
+
 
 /**
  * 5）MySQL查询数据表的字段信息[便于字段映射]
@@ -165,3 +173,53 @@ $(".checkAll").on("click", function(){
  * @date 2017-09-23 10:40
  */
 SELECT COUNT(*) FROM `erp_distribute_ebay_listing` WHERE `status`=3 AND account_id!=7 AND TO_DAYS(`publish_start_date`) - TO_DAYS(`create_date`) > 28;
+
+
+/**
+ * 9）MySQL 多条件联表查询优化【单例索引、多列索引以及最左前缀原则】
+ * @date 2017-10-19 15:45
+ */
+    #添加索引【多列索引】
+    ALTER TABLE `erp`.`erp_ebay_v2_listing` ADD INDEX `ebay_status` (`id`, `ebay_status`);
+
+    #去重
+    SELECT COUNT(DISTINCT(a.`listing_id`)) AS `count` FROM `erp_products_status_listing_log` a
+
+/**
+ * 10）MySQL 两种表复制语句【SELECT INTO 和 INSERT INTO SELECT】
+ * @date 2017-10-20 9:45
+ */
+    # 1.INSERT INTO SELECT语句
+    # 语句形式为：Insert into Table2(field1,field2,...) select value1,value2,... from Table1
+    # 要求目标表Table2必须存在，由于目标表Table2已经存在，除了插入源表Table1的字段外，还可以插入常量。
+    INSERT INTO `erp_ebay_seller_events_task`(`account_id`) SELECT `id` FROM `erp_basics_account` WHERE `platform_id`=2;
+
+    # 2.SELECT INTO FROM语句
+    # 语句形式为：SELECT vale1, value2 into Table2 from Table1
+    # 要求目标表Table2不存在，因为在插入时会自动创建表Table2，并将Table1中指定字段数据复制到Table2中。
+
+    # 3.复制多表的字段到同一个表【需要注意的是嵌套查询部分最后一定要有设置表别名[`tb`]】
+    INSERT INTO a (field1,field2) SELECT * FROM(SELECT b.f1,c.f2 FROM b JOIN c) AS tb;
+
+/**
+ * 11）执行 PHP 脚本任务时，使用 JS 自动刷新页面
+ * @date 2017-10-25 16:07
+ */
+    echo '当前系统时间：' . date('Y-m-d H:i:s');
+    #<!-- JS 页面自动刷新 -->
+    echo '<script type="text/javascript">';
+    echo     'setTimeout("window.location.reload()", 100);';
+    echo '</script>';
+
+
+/**
+ * 12）UPDATE from SELECT
+ * @date 2017-10-30 18:17
+ */
+    "UPDATE `erp_products_status_listing_log` c SET c.`status`=33
+            WHERE c.id IN (SELECT d.id FROM
+                (SELECT a.id FROM `erp_products_status_listing_log` a
+                    JOIN erp_ebay_v2_listing b ON a.`listing_id` = b.`id`
+                    WHERE a.platform_id=2 AND a.`status`=0 AND a.`type` IN (2) AND b.Quantity>0) d
+            )";
+

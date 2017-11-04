@@ -302,6 +302,62 @@ ZR ZAR 180 Zaire, Republic of
     新体积重计算： 100x100x100/5000=200KG 计费重量200KG。
 #---------------------------------------------------------------------------------------------
 
+
+#---------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------
+    <?php
+
+    # Country codes in ISO 3166
+    $str = <<<EFO
+    AI AIA 660 Anguilla
+    AQ ATA 010 Antarctica (the territory South of 60 deg S)
+    AG ATG 028 Antigua and Barbuda
+    AR ARG 032 Argentina, Argentine Republic
+    AM ARM 051 Armenia
+    AW ABW 533 Aruba
+    AU AUS 036 Australia, Commonwealth of
+    AT AUT 040 Austria, Republic of
+    AZ AZE 031 Azerbaijan, Republic of
+    BS BHS 044 Bahamas, Commonwealth of the
+    BH BHR 048 Bahrain, Kingdom of
+    BD BGD 050 Bangladesh, People's Republic of
+    BB BRB 052 Barbados
+    BY BLR 112 Belarus
+    EFO;
+
+    // $str = str_replace(array("\n", "\r", ' '), array("','", '', ''), $str);
+    $str = str_replace(', ', '||', $str);
+    $str = str_replace(array("\r\n"), ',', $str);
+    $str = str_replace(array(',,'), ',', $str);
+    // $arr = explode(',', "'".$str."'");
+    $arr = explode(',', $str);
+
+    // $field = '';
+    // foreach($arr as $v){
+    //     $field .= '$temp['.$v.'] = $v3['.$v.'];'."\n";
+    // }
+    $temp = array();
+    foreach($arr as $k=>$v){
+        $str = explode('||', $v);
+        $temp_str = $str[0];
+
+       $temp_arr = explode(' ', $temp_str);
+
+       $len = count($temp_arr);
+       $temp[$temp_arr[0]]['code'] = $temp_arr[0];
+       $temp[$temp_arr[0]]['numeric'] = $temp_arr[2];
+
+       $country = array();
+       for($i=3; $i<$len; $i++){
+            $country[] = $temp_arr[$i];
+       }
+       $temp[$temp_arr[0]]['country'] = implode(' ', $country);
+    }
+
+    asort($temp);
+    $arr = var_export($temp);
+#---------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------
 array (
   'AD' =>
   array (
@@ -1977,3 +2033,96 @@ array (
     'zh_name' => '津巴布韦',
   ),
 )[Finished in 32.8s]
+
+#-------------------------------------------------------------------------------------------------
+# EBAY国家排行2017-10-24
+#-------------------------------------------------------------------------------------------------
+e_ShippingCountryName     e_ShippingCountryCode  count(`order`)
+------------------------  ---------------------  --------------
+United States             US                       250342
+United Kingdom            GB                       145986
+Australia                 AU                       117340
+Deutschland               DE                        96807
+Israel                    IL                        55860
+Canada                    CA                        49369
+Norway                    NO                        34864
+Hungary                   HU                        17742
+Russian Federation        RU                        17267
+Croatia, Republic of      HR                        13211
+Sweden                    SE                        13000
+Brazil                    BR                        12757
+Denmark                   DK                        12532
+Portugal                  PT                        11485
+Sri Lanka                 LK                        11245
+Finland                   FI                        11022
+Czech Republic            CZ                         8550
+Mexico                    MX                         8063
+France                    FR                         7696
+New Zealand               NZ                         7386
+Spain                     ES                         7345
+Chile                     CL                         7151
+Ireland                   IE                         6840
+Peru                      PE                         6725
+Singapore                 SG                         5575
+Netherlands               NL                         5535
+Slovakia                  SK                         5409
+Thailand                  TH                         5061
+Latvia                    LV                         4560
+Slovenia                  SI                         4470
+Lithuania                 LT                         3752
+Italy                     IT                         3702
+MT                        MT                         3440
+Cyprus                    CY                         3223
+South Africa              ZA                         2896
+Österreich                AT                         2432
+Romania                   RO                         2373
+Saudi Arabia              SA                         2340
+Japan                     JP                         2333
+Bulgaria                  BG                         2212
+Qatar                     QA                         2094
+Belgium                   BE                         1953
+Greece                    GR                         1885
+Maldives                  MV                         1782
+Malaysia                  MY                         1755
+AE                        AE                         1641
+Indonesia                 ID                         1638
+Ukraine                   UA                         1617
+Serbia                    RS                         1532
+Poland                    PL                         1336
+Brunei Darussalam         BN                         1263
+Korea, South              KR                         1103
+Morocco                   MA                          916
+Iceland                   IS                          853
+Philippines               PH                          849
+Schweiz                   CH                          819
+Bahrain                   BH                          815
+Azerbaijan Republic       AZ                          799
+Oman                      OM                          781
+India                     IN                          733
+Vietnam                   VN                          700
+Moldova                   MD                          676
+Macedonia                 MK                          651
+Estonia                   EE                          623
+Belarus                   BY                          594
+Colombia                  CO                          532
+Ecuador                   EC                          460
+Turkey                    TR                          445
+Argentina                 AR                          437
+Georgia                   GE                          433
+Croatia, Republic of the  Cus                         405
+Bosnia and Herzegovina    BA                          400
+Uruguay                   UY                          369
+PR                        PR                          357
+Cambodia                  KH                          309
+Venezuela                 VE                          290
+Luxembourg                LU                          254
+Montenegro                ME                          229
+Greenland                 GL                          191
+Mauritius                 MU                          159
+Egypt                     EG                          151
+Bangladesh                BD                          146
+Gibraltar                 GI                          138
+Pakistan                  PK                          132
+Paraguay                  PY                          111
+#-------------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------

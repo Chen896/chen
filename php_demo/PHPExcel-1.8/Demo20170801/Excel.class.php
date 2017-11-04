@@ -33,7 +33,6 @@ class Excel
                 $sheetData[$i] = $objExcel->getSheet($i)->toArray(null, true, true, true);
             }
         }
-
         return $sheetData;
     }
 
@@ -102,16 +101,16 @@ class Excel
             $name=$this->getCellName($i);
             $k=$i-1;
 
+            $objColumn = $this->objPHPExcel->getActiveSheet()->getColumnDimension($name);
             if(isset($width[$k]) && $width[$k]){
-                $this->objPHPExcel->getActiveSheet()->getColumnDimension($name)->setWidth($width[$k]);
+                $objColumn->setWidth($width[$k]);
             }else{
-                $this->objPHPExcel->getActiveSheet()->getColumnDimension($name)->setAutoSize(true);
+                $objColumn->setAutoSize(true);
             }
 
             $this->objPHPExcel->getActiveSheet()->setCellValue($name.'1', $v);
             $i++;
         }
-
         return true;
     }
 
@@ -125,17 +124,19 @@ class Excel
                 $name=$this->getCellName($i).$row;
                 $k=$i-1;
 
+                # 1.指定图片在第几列
                 if(isset($imgIndex[$k]) && $imgIndex[$k]==1){
                     if(file_exists($v)){
-                        $this->setCellImage($name,$v);
+                        $this->setCellImage($name, $v);
 
+                        $objRow = $this->objPHPExcel->getActiveSheet()->getRowDimension($row);
                         if(isset($height[$k]) && $height[$k]){
-                            $this->objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight($height[$k]);
+                            $objRow->setRowHeight($height[$k]);
                         }else{
-                            $this->objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(60);
+                            $objRow->setRowHeight(60);
                         }
-
                     }
+                # 2.文本内容
                 }else{
                     $this->objPHPExcel->getActiveSheet()->setCellValue($name, $v,PHPExcel_Cell_DataType::TYPE_STRING);
                 }
@@ -143,7 +144,6 @@ class Excel
             }
             $row++;
         }
-
         return true;
     }
 
@@ -166,7 +166,6 @@ class Excel
     private function getCellName($i)
     {
         $code = null;
-
         while($i){
             $i = $i-1;
             $n = $i%26+1;
@@ -174,7 +173,6 @@ class Excel
             $code = chr($n+64).$code;  #返回对应的字母
             $i = floor($i/26);         #舍去法取整
         }
-
         return $code;
     }
 
@@ -223,20 +221,20 @@ class Excel
 // var_dump($data);
 
  #标题
-$title1 = array('产品SKU','产品名称','产品英文名称','产品品类（代码）','重量','长','宽','高','海关申报代码','英文申报品名','中文申报品名','申报价值','申报币种','采购价','采购币种','默认供应商代码','销售价格','销售运费','建立原因','供应商产品地址','供应商品号','款式代码','成品','运营方式','贴标容易度','产品销售状态','销售负责人','开发负责人','自定义分类','是否需要质检','组织机构（代码）','申报说明','是否包含电池','是否为仿制品','样品数量');  #产品
+$title1 = array('产品SKU','产品主图','产品名称','产品英文名称','产品品类（代码）','重量','长','宽','高','海关申报代码','英文申报品名','中文申报品名','申报价值','申报币种','采购价','采购币种','默认供应商代码','销售价格','销售运费','建立原因','供应商产品地址','供应商品号','款式代码','成品','运营方式','贴标容易度','产品销售状态','销售负责人','开发负责人','自定义分类','是否需要质检','组织机构（代码）','申报说明','是否包含电池','是否为仿制品','样品数量');  #产品
 
 $title2 = array('产品SKU','图片URL','是否主图(Y/N)');   #产品图片
 $title3 = array('产品SKU','包材代码','包材数量','仓库代码');   #产品包材
 
 $dataList = array(
     "title"=>array('产品'=>$title1, '产品图片'=>$title2, '产品包材'=>$title3),
-    "imgIndex"=>array(0),
+    "imgIndex"=>array(0, 1),  #第二列生成图片
     "width"=>array(0),
     "height"=>array(0)
 );
 
-$temp1 = array(array('A'=>'111'));
-$temp2 = array(array('A'=>'222'));
+$temp1 = array(array('A'=>'111', 'B'=>'./Tulips.jpg'));
+$temp2 = array(array('A'=>'222', 'B'=>'D:/www/Chen/php_demo/PHPExcel-1.8/Demo20170801/Tulips.jpg'));
 $temp3 = array(array('A'=>'333'));
 
 

@@ -37,9 +37,8 @@
                 contentType: false,
                 processData: false,
                 success: function (returndata) {
-                    // $("#win-show").dialog('open');
-                    // $("#win-show").html(returndata);
-                    alert(returndata);
+                    $("#fileClick").attr("disabled", true);
+                    // alert(returndata);
                 },
                 error: function (returndata) {
                     alert(returndata);

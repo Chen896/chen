@@ -4,9 +4,14 @@
     <head>
         <meta charset="utf-8">
         <title>返回顶部</title>
+        <!-- 1.bootstrap -->
         <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
         <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
         <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+        <!-- 2.进度条 -->
+        <link rel="stylesheet" href="http://apps.bdimg.com/libs/nprogress/0.2.0/nprogress.min.css">
+        <script src="http://apps.bdimg.com/libs/nprogress/0.2.0/nprogress.min.js"></script>
     </head>
 
     <body>
@@ -21,6 +26,8 @@
                 <span aria-hidden="true" class="glyphicon glyphicon-chevron-down" title="回到底部"></span>
             </div>
         </div>
+
+    <!-- 3.返回顶部 -->
     <script type="text/javascript">
         $(function() {
                 $(window).scroll(function() {
@@ -39,6 +46,36 @@
                 })
         })
     </script>
-    </body>
 
+    <!-- 4.进度条 -->
+    <script type="text/javascript">
+        $(function(){
+            // 1）调用 Ajax 时，绑定 NProgress 到 jQuery ajaxStart[NProgress.start()] 和 ajaxStop[NProgress.done()] 事件上。
+            // 2）绑定到 $(document).ready[NProgress.start()] 和 $(window).load[NProgress.done()] 。
+
+            //注意：通过ajax回调填充的情况下，使用$(window).load()会出现有时有效，有时无效的情况。
+
+            // $(document).ready() 是页面中的DOM元素加载完成后便可执行；$(window).load() 等同于 window.onload=function(){} 是页面中的所有元素（包括图片、flash）等都加载完毕后，才能执行。
+
+            // NProgress.configure({ showSpinner: false });  //禁用进度环
+            // NProgress.configure({ template: '<div class="bar" role="bar"></div>' });  //加载样式
+
+            // 默认加载样式 template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+
+            // 遮罩层、居中 TODO-------
+            var node = '<div class="bar" role="bar"><div class="peg"></div></div>';  //进度条
+                node+= '<div class="spinner" role="spinner" style="position:fixed; top:50%; left:50%;"><div class="spinner-icon">加载中···</div></div>';     //加载样式
+                node+= '<div style="z-index:1000;background-color:#999;opacity:0.3;filter:alpha(opacity=30); position:fixed;top:0;left:0;width:100%;height:100%; border:1px solid red;"></div>';   //遮罩层
+            NProgress.configure({
+                template: node
+            });
+
+            NProgress.start();
+            $(window).load(function(){
+                NProgress.done();
+            });
+        });
+    </script>
+
+    </body>
 </html>
