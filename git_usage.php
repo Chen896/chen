@@ -41,7 +41,8 @@
     // $ git status
 
     # 2.7比较文件被修改的内容
-    // $ git diff workNote/git_usage.php
+    // $ git diff workNote/git_usage.php                            #提交前
+    // $ git diff [commit-id(git log获取)] workNote/git_usage.php   #提交后
 
     # 2.8复制到’E‘盘[GitClone目录] chineon@chineon-PC MINGW64 /e
     // $ git clone /d/www/Chen GitClone

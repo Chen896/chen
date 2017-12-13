@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>合并行、合并列</title>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="margin:100px 50px;">
+
+    <!-- 1.首先需要在table中设置table-layout:fixed; -->
+    <table class="table table-bordered">
+        <tr>
+            <th style="width:380px;">产品属性</th>
+            <th style="width:80px;">SKU后缀</th>
+            <th style="width:80px;">采购价/RMB</th>
+            <th style="width:80px;">重量/g</th>
+            <th style="width:80px;">长/cm</th>
+            <th style="width:80px;">宽/cm</th>
+            <th style="width:80px;">高/cm</th>
+            <th style="width:80px;">操作</th>
+        </tr>
+
+        <tr>
+            <!-- 1.行合并 -->
+            <td rowspan="2">
+                <input type="" name="" class="form-control">
+            </td>
+
+            <td><input type="" name="" class="form-control"></td>
+            <td><input type="" name="" class="form-control"></td>
+            <td><input type="" name="" class="form-control"></td>
+            <td><input type="" name="" class="form-control"></td>
+            <td><input type="" name="" class="form-control"></td>
+            <td><input type="" name="" class="form-control"></td>
+
+            <td rowspan="2">
+                <input type="" name="" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <!-- 2.列合并 -->
+            <td colspan="6">
+                <button class="btn">添加图片</button>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

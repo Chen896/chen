@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>窗口 Alert</title>
+    <link rel="stylesheet" href="http://www.jeasyui.net/Public/js/easyui/themes/icon.css">
+    <link rel="stylesheet" href="http://www.jeasyui.net/Public/js/easyui/themes/default/easyui.css">
+    <script src="http://www.jeasyui.net/Public/js/jquery.js"></script>
+    <script src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
+    <script src="http://www.jeasyui.net/Public/js/easyui/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body style="padding:200px;">
+
+    <!-- open -->
+    <h3>窗口 Alert - easyui</h3>
+    <button onclick="openWin()">打开窗口</button>
+
+    <!-- window -->
+    <div id="win" class="easyui-window" title="标题" closed="true" data-options="iconCls:'icon-save',modal:true"></div>
+
+    <script type="text/javascript">
+        function openWin(){
+            var res = new Object();
+                res.msg = '请填写采购价！<br>请填写单品重量！<br>请填写产品长度！<br>请填写产品宽度！<br>请填写产品高度！';
+            $.messager.alert('提示', '<div style="padding-left:50px;">'+res.msg+'</div>', 'error');
+        }
+    </script>
+
+</body>
+</html>

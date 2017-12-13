@@ -7,6 +7,9 @@
     <style type="text/css">
         .table-fixed{ table-layout:fixed } /*严格执行表格比例*/
         .th-td-length{ overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+
+        /*a标签固定长度，超出用省略号表示*/
+        .a-length{ display:inline-block; width:120px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     </style>
 
 </head>
@@ -17,7 +20,8 @@
         <tr>
             <!-- 2.然后在表头th中设置每列的宽度 -->
             <th width="5%">序号</th>
-            <th width="80%">标题</th>
+            <th width="70%">标题</th>
+            <th width="10%">a标签固定长度</th>
             <th width="15%">操作</th>
         </tr>
 
@@ -25,6 +29,7 @@
             <td>1</td>
             <!-- 3.然后在需要当长度大于一定数值时用省略号表示的td上面添加样式 -->
             <td class="th-td-length">CSS，bootstrap表格控制当 td 内容过长时用省略号表示  CSS，bootstrap表格控制当 td 内容过长时用省略号表示   CSS，bootstrap表格控制当 td 内容过长时用省略号表示</td>
+            <td class="a-length">a标签固定长度，超出用省略号表示</td>
             <td>查看</td>
         </tr>
     </table>
