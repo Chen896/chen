@@ -45,7 +45,8 @@
     // $ git diff [commit-id(git log获取)] workNote/git_usage.php   #提交后
 
     # 2.8复制到’E‘盘[GitClone目录] chineon@chineon-PC MINGW64 /e
-    // $ git clone /d/www/Chen GitClone
+    // $ cd /e                              #第一步进入E盘
+    // $ git clone /d/www/Chen GitClone     #第二部克隆目标文件[/d/www/Chen], 命令为[GitClone]
 
 
 /**********************************************************************************************

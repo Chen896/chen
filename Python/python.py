@@ -4,8 +4,15 @@
 #1.这是单行注释
 '''这是多行注释
     第1行是告诉操作系统执行这个脚本的时候，调用 /usr/bin 下的 python 解释器。
-    [#!/usr/bin/env python]会去环境设置寻找 python 目录,推荐这种写法。
+    [#!/usr/bin/env python]会去环境变量寻找 python 目录,推荐这种写法。
     第2行用来申明编码，中文必须。
+
+    #-----------------------------------------------------------------------
+    #创建Sublime Text编译环境2017-12-29
+        #1）【Tools】->【Build System】->【选中Python、或者Automatic】
+        #2）或点击【New Build System...】创建 /Packages/User/Python.sublime-build 文件，内容如下
+            {"cmd":["python", "$file"], "file_regex":"py$", "selector":"source.python"}
+    #-----------------------------------------------------------------------
 '''
 
 #2.导入模块[os.py]

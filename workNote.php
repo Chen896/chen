@@ -18,6 +18,11 @@
 
     json_decode($json, true);       # 返回数组
 
+    # PHP中的类型强制转换和 C 中的非常像：在要转换的变量之前加上用括号括起来的目标类型。
+    (int)$str;  (bool)$str;  (float)$str;  (string)$str;  (array)$str;  (object)$str;
+
+    Sublime Text3 使用快捷键[Ctrl + N]新建文件，重新打开，文件格式为[ASCII] 2017-12-19
+
 /**
  * 2）MySQL中多条件组查找：FIND_IN_SET() 精确匹配
  * 条件：被匹配字段`to_id`的值必须用‘逗号’隔开
@@ -291,4 +296,59 @@ SELECT COUNT(*) FROM `erp_distribute_ebay_listing` WHERE `status`=3 AND account_
 <script type='text/javascript'>function load_submit(){document.form1.submit()}load_submit();</script>";
 
 
+/**
+ * 18）Failed to execute 'getComputedStyle' on 'Window':
+ * @date 2017-12-14 15:53
+ */
+/*
+<!-- 变体属性[不能放在html标签外面] -->
+<?php if ($this->key=="variant"){ ?>
+    <html>
+        ...
+        $("#winEdit").window({
+            //title:'Wish数据导入',
+            closed:false,
+            width:$(data).width(),  //BUG【'getComputedStyle'】
+            shadow:false,
+            minimizable:false,
+            maximizable:false
+        });
+    </html>
+<?php }?>
+ */
 
+
+/**
+ * 19）Bootstrap 标签页（Tab）
+ * @date 2017-12-14 16:53
+ */
+    /*
+        <tr>
+            <td  align="right">SKU</td>
+            <!-- Tab标签页 -->
+            <td><ul id="myTab" class="nav nav-tabs">
+                <?php foreach($this->attr as $k=>$v){?>
+                    <li <?if($k==0){?>class="active"<?}?>><a href="#Tab-<?=$v['id']?>" data-toggle="tab"><?=$v['sku']?></a></li>
+                <?php }?>
+            </ul></td>
+        </tr>
+        <tr>
+            <td  align="right">标题</td>
+            <!-- Tab标签页-内容 -->
+            <td><div id="myTabContent" class="tab-content">
+                <?php foreach($this->attr as $k2=>$v2){?>
+                    <div class="tab-pane fade <?if($k2==0){?>in active<?}?>" id="Tab-<?=$v2['id']?>">
+                        <input name="title[]" style="width:500px;" class="form-control" type="text" value="<?=$v2['title']?>">
+                    </div>
+                <?php }?>
+            </div></td>
+        </tr>
+     */
+
+
+
+/**
+ * 20）Bootstrap 弹出框（Popover）宽度限制
+ * @date 2017-12-22 18:05
+ */
+    .popover { max-width:800px; }  #默认最多宽度是 275px
