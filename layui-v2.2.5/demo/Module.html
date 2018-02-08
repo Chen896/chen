@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>模块</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+        <script src="../layui/layui.js" charset="utf-8"></script>
+        <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 --></head>
+
+    <body style="margin:50px 200px;">
+
+        <!-- 1.倒计时+++++++++++++++++++++++++++++++++++++++++++++++++ -->
+        <blockquote class="layui-elem-quote layui-text"> 倒计时 </blockquote>
+        <div id="test"></div> <hr class="layui-bg-green">
+        <script>
+            layui.use('util', function() {
+                var util = layui.util;
+
+                //示例
+                var endTime = new Date(2099, 1, 1).getTime() //假设为结束日期
+                ,
+                serverTime = new Date().getTime(); //假设为当前服务器时间，这里采用的是本地时间，实际使用一般是取服务端的
+                util.countdown(endTime, serverTime,
+                function(date, serverTime, timer) {
+                    var str = date[0] + '天' + date[1] + '时' + date[2] + '分' + date[3] + '秒';
+                    layui.$('#test').html('距离2099年1月1日还有：' + str);
+                });
+            });
+        </script>
+
+
+        <!-- 2.富文本编辑器+++++++++++++++++++++++++++++++++++++++++++++++++ -->
+        <blockquote class="layui-elem-quote layui-text"> 富文本编辑器 </blockquote>
+        <textarea id="demo" style="display: none;"></textarea>
+        <script>
+            layui.use('layedit', function() {
+                var layedit = layui.layedit;
+
+                layedit.set({
+                    uploadImage: {
+                        url: '' //接口url
+                        ,type: '' //默认post
+                    }
+                }); //注意：layedit.set 一定要放在 build 前面，否则配置全局接口将无效。
+
+                layedit.build('demo', {height:150}); //建立编辑器
+            });
+        </script>
+
+
+    </body>
+</html>

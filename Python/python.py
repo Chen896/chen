@@ -13,6 +13,8 @@
         #2）或点击【New Build System...】创建 /Packages/User/Python.sublime-build 文件，内容如下
             {"cmd":["python", "$file"], "file_regex":"py$", "selector":"source.python"}
     #-----------------------------------------------------------------------
+
+    # 正则表达式字符串的开头字母“r”。 它告诉Python这是个原始字符串，不需要处理里面的反斜杠（转义字符）。
 '''
 
 #2.导入模块[os.py]

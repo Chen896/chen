@@ -1,115 +1,115 @@
 <?php
 /**
- * 1£©json_decode() ·µ»Ø NULL Ô­Òò£¬¼°´¦Àí·½·¨
+ * 1ï¼‰json_decode() è¿”å› NULL åŸå› ï¼ŒåŠå¤„ç†æ–¹æ³•
  * 2017-4-7 10:07 Chineon
  *
- * json_decodeÒªÇóµÄ×Ö·û´®±È½ÏÑÏ¸ñ£º
- * 1. Ê¹ÓÃUTF-8±àÂë
- * 2. ²»ÄÜÔÚ×îºóÔªËØÓĞ¶ººÅ
- * 3. ²»ÄÜÊ¹ÓÃµ¥ÒıºÅ
- * 4. ²»ÄÜÓĞ·´Ğ±¸Ü
+ * json_decodeè¦æ±‚çš„å­—ç¬¦ä¸²æ¯”è¾ƒä¸¥æ ¼ï¼š
+ * 1. ä½¿ç”¨UTF-8ç¼–ç 
+ * 2. ä¸èƒ½åœ¨æœ€åå…ƒç´ æœ‰é€—å·
+ * 3. ä¸èƒ½ä½¿ç”¨å•å¼•å·
+ * 4. ä¸èƒ½æœ‰åæ–œæ 
  */
-    json_last_error();               # Êä³ö4 Óï·¨´íÎó
-    htmlspecialchars_decode($json);  # ´¦Àí json ×Ö·û´®ÖĞ·´Ğ±¸Ü±»×ªÒå
+    json_last_error();               # è¾“å‡º4 è¯­æ³•é”™è¯¯
+    htmlspecialchars_decode($json);  # å¤„ç† json å­—ç¬¦ä¸²ä¸­åæ–œæ è¢«è½¬ä¹‰
 
-    # ±ÜÃâ·´Ğ±¸Ü×ªÒåÔì³ÉµÄÎŞ·¨½âÎö
-    urlencode(json_encode($json));  # Êä³öÊ±£»AjaxÊ¹ÓÃ JSON.stringify() °Ñjson¶ÔÏó×ª»»³É json ×Ö·û´®
-    urldecode($json);               # ½ÓÊÕÊ±
+    # é¿å…åæ–œæ è½¬ä¹‰é€ æˆçš„æ— æ³•è§£æ
+    urlencode(json_encode($json));  # è¾“å‡ºæ—¶ï¼›Ajaxä½¿ç”¨ JSON.stringify() æŠŠjsonå¯¹è±¡è½¬æ¢æˆ json å­—ç¬¦ä¸²
+    urldecode($json);               # æ¥æ”¶æ—¶
 
-    json_decode($json, true);       # ·µ»ØÊı×é
+    json_decode($json, true);       # è¿”å›æ•°ç»„
 
-    # PHPÖĞµÄÀàĞÍÇ¿ÖÆ×ª»»ºÍ C ÖĞµÄ·Ç³£Ïñ£ºÔÚÒª×ª»»µÄ±äÁ¿Ö®Ç°¼ÓÉÏÓÃÀ¨ºÅÀ¨ÆğÀ´µÄÄ¿±êÀàĞÍ¡£
+    # PHPä¸­çš„ç±»å‹å¼ºåˆ¶è½¬æ¢å’Œ C ä¸­çš„éå¸¸åƒï¼šåœ¨è¦è½¬æ¢çš„å˜é‡ä¹‹å‰åŠ ä¸Šç”¨æ‹¬å·æ‹¬èµ·æ¥çš„ç›®æ ‡ç±»å‹ã€‚
     (int)$str;  (bool)$str;  (float)$str;  (string)$str;  (array)$str;  (object)$str;
 
-    Sublime Text3 Ê¹ÓÃ¿ì½İ¼ü[Ctrl + N]ĞÂ½¨ÎÄ¼ş£¬ÖØĞÂ´ò¿ª£¬ÎÄ¼ş¸ñÊ½Îª[ASCII] 2017-12-19
+    Sublime Text3 ä½¿ç”¨å¿«æ·é”®[Ctrl + N]æ–°å»ºæ–‡ä»¶ï¼Œé‡æ–°æ‰“å¼€ï¼Œæ–‡ä»¶æ ¼å¼ä¸º[ASCII] 2017-12-19
 
 /**
- * 2£©MySQLÖĞ¶àÌõ¼ş×é²éÕÒ£ºFIND_IN_SET() ¾«È·Æ¥Åä
- * Ìõ¼ş£º±»Æ¥Åä×Ö¶Î`to_id`µÄÖµ±ØĞëÓÃ¡®¶ººÅ¡¯¸ô¿ª
+ * 2ï¼‰MySQLä¸­å¤šæ¡ä»¶ç»„æŸ¥æ‰¾ï¼šFIND_IN_SET() ç²¾ç¡®åŒ¹é…
+ * æ¡ä»¶ï¼šè¢«åŒ¹é…å­—æ®µ`to_id`çš„å€¼å¿…é¡»ç”¨â€˜é€—å·â€™éš”å¼€
  * 2017-4-7 16:37
  */
-    # MySQLÖĞ find_in_set Óë in¡¢likeµÄÇø±ğ£ºin Ïàµ±ÓÚ¶à¸ö or µş¼Ó¡¢like Ä£ºıÆ¥Åä¡£
+    # MySQLä¸­ find_in_set ä¸ inã€likeçš„åŒºåˆ«ï¼šin ç›¸å½“äºå¤šä¸ª or å åŠ ã€like æ¨¡ç³ŠåŒ¹é…ã€‚
     $sql = 'SELECT * FROM `notify` WHERE ((FIND_IN_SET("'.$group_id.'",`to_id`)>0 AND `type`=1) OR (FIND_IN_SET("'.$uid.'",`to_id`)>0 AND `type`=2)) AND `status`>0';
 
 /*
-    MySQLÓÉÓÚÏµÍ³»º³åÇø¿Õ¼ä²»×ã»ò¶ÓÁĞÒÑÂú,²»ÄÜÖ´ĞĞÌ×½Ó×ÖÉÏµÄ²Ù×÷:
+    MySQLç”±äºç³»ç»Ÿç¼“å†²åŒºç©ºé—´ä¸è¶³æˆ–é˜Ÿåˆ—å·²æ»¡,ä¸èƒ½æ‰§è¡Œå¥—æ¥å­—ä¸Šçš„æ“ä½œ:
 
-    ÃèÊö£ºÈ·¶¨ TCP/IP ÔÚÊÍ·ÅÒÑ¹Ø±ÕµÄÁ¬½Ó²¢ÔÙ´ÎÊ¹ÓÃÆä×ÊÔ´Ç°±ØĞë¾­¹ıµÄÊ±¼ä¡£¹Ø±ÕÓëÊÍ·ÅÖ®¼äµÄÕâ¶ÎÊ±¼ä³ÆÎª TIME_WAIT ×´Ì¬»òÕßÁ½±¶×î´ó¶ÎÉú´æÆÚ£¨2MSL£©×´Ì¬¡£
+    æè¿°ï¼šç¡®å®š TCP/IP åœ¨é‡Šæ”¾å·²å…³é—­çš„è¿æ¥å¹¶å†æ¬¡ä½¿ç”¨å…¶èµ„æºå‰å¿…é¡»ç»è¿‡çš„æ—¶é—´ã€‚å…³é—­ä¸é‡Šæ”¾ä¹‹é—´çš„è¿™æ®µæ—¶é—´ç§°ä¸º TIME_WAIT çŠ¶æ€æˆ–è€…ä¸¤å€æœ€å¤§æ®µç”Ÿå­˜æœŸï¼ˆ2MSLï¼‰çŠ¶æ€ã€‚
 
-    ÔËĞĞDOSÃüÁî:
+    è¿è¡ŒDOSå‘½ä»¤:
     netstat -an | find /C "TIME_WAIT"
-    ¼ì²éµ±Ç°ÓĞ¶àÉÙ¸ö´ó¸ÅÓĞTCPÁ¬½Ó:
+    æ£€æŸ¥å½“å‰æœ‰å¤šå°‘ä¸ªå¤§æ¦‚æœ‰TCPè¿æ¥:
     netstat -an | find /C "TCP"
 
-    Mysql·şÎñÆ÷Ä¬ÈÏµÄ¡°wait_timeout¡±ÊÇ8Ğ¡Ê±¡¾Ò²¾ÍÊÇÄ¬ÈÏµÄÖµÄ¬ÈÏÊÇ28800Ãë¡¿
-    wait_timeout¹ı´óÓĞ±×¶Ë£¬ÆäÌåÏÖ¾ÍÊÇMySQLÀï´óÁ¿µÄSLEEP½ø³ÌÎŞ·¨¼°Ê±ÊÍ·Å£¬ÍÏÀÛÏµÍ³ĞÔÄÜ
+    MysqlæœåŠ¡å™¨é»˜è®¤çš„â€œwait_timeoutâ€æ˜¯8å°æ—¶ã€ä¹Ÿå°±æ˜¯é»˜è®¤çš„å€¼é»˜è®¤æ˜¯28800ç§’ã€‘
+    wait_timeoutè¿‡å¤§æœ‰å¼Šç«¯ï¼Œå…¶ä½“ç°å°±æ˜¯MySQLé‡Œå¤§é‡çš„SLEEPè¿›ç¨‹æ— æ³•åŠæ—¶é‡Šæ”¾ï¼Œæ‹–ç´¯ç³»ç»Ÿæ€§èƒ½
     mysql> set global wait_timeout=10;
     mysql> show global variables like 'wait_timeout';
 
-    # ±à¼­Æ÷Ìá½»ÎÄ±¾Ê±£¬×ªÒåºó²»ÄÜä¯ÀÀÆ÷Êä³ö²é¿´Ğ§¹û£¡£¡£¡
-    htmlspecialchar()º¯ÊıºÍhtmlentities()º¯ÊıÀàËÆ¶¼ÊÇ°Ñhtml´úÂë×ª»»£¬htmlspecialchars_decodeÊÇ°Ñ×ª»¯µÄhtmlµÄ±àÂë×ª»»³É×ª»»»ØÀ´¡£
-    ½áÂÛ£ºhtmlentities ºÍ htmlspecialchars µÄÇø±ğÔÚÓÚ htmlentities »á×ª»¯ËùÓĞµÄ html character entity£¬¶øhtmlspecialchars Ö»»á×ª»¯ÊÖ²áÉÏÁĞ³öµÄ¼¸¸ö html character entity £¨Ò²¾ÍÊÇ»áÓ°Ïì html ½âÎöµÄÄÇ¼¸¸ö»ù±¾×Ö·û£©¡£Ò»°ãÀ´Ëµ£¬Ê¹ÓÃ htmlspecialchars ×ª»¯µô»ù±¾×Ö·û¾ÍÒÑ¾­×ã¹»ÁË£¬Ã»ÓĞ±ØÒªÊ¹ÓÃ htmlentities¡£ÊµÔÚÒªÊ¹ÓÃ htmlentities Ê±£¬Òª×¢ÒâÎªµÚÈı¸ö²ÎÊı´«µİÕıÈ·µÄ±àÂë¡£
-    $data['note'] = htmlentities($this->request->post('note'), ENT_COMPAT, 'utf-8'); //×ªÒåÊµÌå
+    # ç¼–è¾‘å™¨æäº¤æ–‡æœ¬æ—¶ï¼Œè½¬ä¹‰åä¸èƒ½æµè§ˆå™¨è¾“å‡ºæŸ¥çœ‹æ•ˆæœï¼ï¼ï¼
+    htmlspecialchar()å‡½æ•°å’Œhtmlentities()å‡½æ•°ç±»ä¼¼éƒ½æ˜¯æŠŠhtmlä»£ç è½¬æ¢ï¼Œhtmlspecialchars_decodeæ˜¯æŠŠè½¬åŒ–çš„htmlçš„ç¼–ç è½¬æ¢æˆè½¬æ¢å›æ¥ã€‚
+    ç»“è®ºï¼šhtmlentities å’Œ htmlspecialchars çš„åŒºåˆ«åœ¨äº htmlentities ä¼šè½¬åŒ–æ‰€æœ‰çš„ html character entityï¼Œè€Œhtmlspecialchars åªä¼šè½¬åŒ–æ‰‹å†Œä¸Šåˆ—å‡ºçš„å‡ ä¸ª html character entity ï¼ˆä¹Ÿå°±æ˜¯ä¼šå½±å“ html è§£æçš„é‚£å‡ ä¸ªåŸºæœ¬å­—ç¬¦ï¼‰ã€‚ä¸€èˆ¬æ¥è¯´ï¼Œä½¿ç”¨ htmlspecialchars è½¬åŒ–æ‰åŸºæœ¬å­—ç¬¦å°±å·²ç»è¶³å¤Ÿäº†ï¼Œæ²¡æœ‰å¿…è¦ä½¿ç”¨ htmlentitiesã€‚å®åœ¨è¦ä½¿ç”¨ htmlentities æ—¶ï¼Œè¦æ³¨æ„ä¸ºç¬¬ä¸‰ä¸ªå‚æ•°ä¼ é€’æ­£ç¡®çš„ç¼–ç ã€‚
+    $data['note'] = htmlentities($this->request->post('note'), ENT_COMPAT, 'utf-8'); //è½¬ä¹‰å®ä½“
 
-    MySQLÊı×ÖÀàĞÍintÓëtinyint¡¢floatÓëdecimalÈçºÎÑ¡Ôñ
-    ¡°ÖÚËùÖÜÖª£¬¼ÆËã»úÖĞÊ¹ÓÃµÄÊÇ0ºÍ1£¬¼´¶ş½øÖÆ£¬Ê¹ÓÃ¶ş½øÖÆ±íÊ¾ÕûÊıÊÇÊ®·ÖÈİÒ×µÄÒ»¼şÊÂÇé¡±¡£
-    Èç¹ûÒª½«Ê®½øÖÆµÄ0.1×ª»»Îª¶ş½øÖÆĞ¡Êı£¬Ôò»á³öÏÖ1100Ñ­»·µÄ×´¿ö¡£
+    MySQLæ•°å­—ç±»å‹intä¸tinyintã€floatä¸decimalå¦‚ä½•é€‰æ‹©
+    â€œä¼—æ‰€å‘¨çŸ¥ï¼Œè®¡ç®—æœºä¸­ä½¿ç”¨çš„æ˜¯0å’Œ1ï¼Œå³äºŒè¿›åˆ¶ï¼Œä½¿ç”¨äºŒè¿›åˆ¶è¡¨ç¤ºæ•´æ•°æ˜¯ååˆ†å®¹æ˜“çš„ä¸€ä»¶äº‹æƒ…â€ã€‚
+    å¦‚æœè¦å°†åè¿›åˆ¶çš„0.1è½¬æ¢ä¸ºäºŒè¿›åˆ¶å°æ•°ï¼Œåˆ™ä¼šå‡ºç°1100å¾ªç¯çš„çŠ¶å†µã€‚
 
-    ÔÚ±à³ÌÖĞÓ¦¾¡Á¿±ÜÃâ×ö¸¡µãÊıµÄ±È½Ï£¬·ñÔò¿ÉÄÜ»áµ¼ÖÂÒ»Ğ©Ç±ÔÚµÄÎÊÌâ¡£
-    ¼á¾ö²»ÔÊĞíÊ¹ÓÃfloatÈ¥´æmoney£¬Ê¹ÓÃdecimal¸ü¼ÓÎÈÍ×£¬µ«Ê¹ÓÃdecimal×ö³ı·¨ÒÀ¾É»á²úÉú¸¡µãĞÍ£¬ËùÒÔÌØÊâÇé¿öÇë¿¼ÂÇÊ¹ÓÃÕûĞÍ£¬»õ±Òµ¥Î»Ê¹ÓÃ ·Ö £¬»òÕß³ı·¨ÔÚ×îºó½øĞĞ¡£
+    åœ¨ç¼–ç¨‹ä¸­åº”å°½é‡é¿å…åšæµ®ç‚¹æ•°çš„æ¯”è¾ƒï¼Œå¦åˆ™å¯èƒ½ä¼šå¯¼è‡´ä¸€äº›æ½œåœ¨çš„é—®é¢˜ã€‚
+    åšå†³ä¸å…è®¸ä½¿ç”¨floatå»å­˜moneyï¼Œä½¿ç”¨decimalæ›´åŠ ç¨³å¦¥ï¼Œä½†ä½¿ç”¨decimalåšé™¤æ³•ä¾æ—§ä¼šäº§ç”Ÿæµ®ç‚¹å‹ï¼Œæ‰€ä»¥ç‰¹æ®Šæƒ…å†µè¯·è€ƒè™‘ä½¿ç”¨æ•´å‹ï¼Œè´§å¸å•ä½ä½¿ç”¨ åˆ† ï¼Œæˆ–è€…é™¤æ³•åœ¨æœ€åè¿›è¡Œã€‚
 */
-    trim()º¯ÊıÉ¾³ıÖĞÎÄ×Ö·ûÒıÆğµÄBUG 2017-4-17+++++++++++++++++++++++++++
-    // $country = trim($country_tmp, '¡¢');
+    trim()å‡½æ•°åˆ é™¤ä¸­æ–‡å­—ç¬¦å¼•èµ·çš„BUG 2017-4-17+++++++++++++++++++++++++++
+    // $country = trim($country_tmp, 'ã€');
     $country = trim($country_tmp, ',');
-    $country = str_replace(',', '¡¢', $country);
+    $country = str_replace(',', 'ã€', $country);
 
 
-    MySQL ¡®ÁªºÏË÷Òı¡¯Óë¡®µ¥ÁĞË÷Òı¡¯, ¡®explain¡¯
+    MySQL â€˜è”åˆç´¢å¼•â€™ä¸â€˜å•åˆ—ç´¢å¼•â€™, â€˜explainâ€™
 
-    #È¥µô¶àÓà¿Õ¸ñ
+    #å»æ‰å¤šä½™ç©ºæ ¼
     $title = preg_replace('/\s\s+/', ' ', $title);
 
-    #É¾³ı¿Õ¸ñºÍ»Ø³µ
+    #åˆ é™¤ç©ºæ ¼å’Œå›è½¦
     function trimall($str){
-        $qian=array(" ","¡¡","\t","\n","\r");
+        $qian=array(" ","ã€€","\t","\n","\r");
         return str_replace($qian, '', $str);
     }
 
-    #É¾³ı»»ĞĞ·û
+    #åˆ é™¤æ¢è¡Œç¬¦
     str_replace("\r\n","",string);
 
-    #È¥µô¶àÓàµÄ»»ĞĞ·û
+    #å»æ‰å¤šä½™çš„æ¢è¡Œç¬¦
     $detail = strip_tags(str_replace( array("\n","<br/>","<br />","\r","<p>","<li>","</p>"), "\n", $detail ));
-    $detail = preg_replace("/\n\n+/", "\n", $detail); #È¥µô¶àÓàµÄ»»ĞĞ·û
+    $detail = preg_replace("/\n\n+/", "\n", $detail); #å»æ‰å¤šä½™çš„æ¢è¡Œç¬¦
 
 
 /**
- * 3£©WebºóÌ¨Ê¹ÓÃÉ¨ÂëÇ¹£¬É¨ÂëÉÌÆ·¶şÎ¬Âë£¬×Ô¶¯´òÓ¡¿ìµİµ¥
+ * 3ï¼‰Webåå°ä½¿ç”¨æ‰«ç æªï¼Œæ‰«ç å•†å“äºŒç»´ç ï¼Œè‡ªåŠ¨æ‰“å°å¿«é€’å•
  * @date 2017-08-16 17:35
  */
-    // lodop×÷ÎªÏÖÏÂÊ¹ÓÃ×î¹ã·ºµÄÒ»¿îWEB´òÓ¡¿Ø¼ş£¬Ìå»ıĞ¡¹¦ÄÜÈ´Ïàµ±Ç¿´ó£¬´ò±¨±í¡¢ÌõĞÎÂë¡¢Í¼±íµÈ¡£
+    // lodopä½œä¸ºç°ä¸‹ä½¿ç”¨æœ€å¹¿æ³›çš„ä¸€æ¬¾WEBæ‰“å°æ§ä»¶ï¼Œä½“ç§¯å°åŠŸèƒ½å´ç›¸å½“å¼ºå¤§ï¼Œæ‰“æŠ¥è¡¨ã€æ¡å½¢ç ã€å›¾è¡¨ç­‰ã€‚
 
-    // É¨ÃèÇ¹¾ÍÊÇÒ»ÆÕÍ¨µÄÊäÈë¶Ë£¬Óë¼üÅÌÀàËÆ¡£µ±°Ñ¹â±ê½¹µã·Åµ½Ò»¸öÊäÈë¿òÊ±£¬É¨ÃèÇ¹É¨Ãèµ½Ò»ÌõÂëÎª¡°86142345¡±Ê±£¬´ËÊäÈë¿ò¾Í»áÏÔÊ¾Îª¡°86142345¡±£¬µ±È»¿ÉÒÔÉè¶¨É¨ÃèÇ¹ÔÚÊäÈëÌõÂëºó£¬ÔÙÊäÈëÏàµ±ÓÚ¼üÅÌµÄ¡°»Ø³µ¼ü¡±£¬ÕâÑù±íµ¥¾Í¿ÉÒÔ×Ô¶¯Ìá½»ÁË¡£
+    // æ‰«ææªå°±æ˜¯ä¸€æ™®é€šçš„è¾“å…¥ç«¯ï¼Œä¸é”®ç›˜ç±»ä¼¼ã€‚å½“æŠŠå…‰æ ‡ç„¦ç‚¹æ”¾åˆ°ä¸€ä¸ªè¾“å…¥æ¡†æ—¶ï¼Œæ‰«ææªæ‰«æåˆ°ä¸€æ¡ç ä¸ºâ€œ86142345â€æ—¶ï¼Œæ­¤è¾“å…¥æ¡†å°±ä¼šæ˜¾ç¤ºä¸ºâ€œ86142345â€ï¼Œå½“ç„¶å¯ä»¥è®¾å®šæ‰«ææªåœ¨è¾“å…¥æ¡ç åï¼Œå†è¾“å…¥ç›¸å½“äºé”®ç›˜çš„â€œå›è½¦é”®â€ï¼Œè¿™æ ·è¡¨å•å°±å¯ä»¥è‡ªåŠ¨æäº¤äº†ã€‚
 
 /**
- * 4£©MySQLÊı¾İ¿â´ÅÅÌÕ¼ÓÃ¿Õ¼ä´óĞ¡Í³¼Æ
+ * 4ï¼‰MySQLæ•°æ®åº“ç£ç›˜å ç”¨ç©ºé—´å¤§å°ç»Ÿè®¡
  * @date 2017-08-29 15:29
  */
-    #a.²é¿´¸÷Êı¾İ¿âÕ¼ÓÃ´ÅÅÌ¿Õ¼ä
+    #a.æŸ¥çœ‹å„æ•°æ®åº“å ç”¨ç£ç›˜ç©ºé—´
     SELECT `table_schema`, CONCAT(TRUNCATE(SUM(`data_length`)/1024/1024,2),' MB') AS `data_size`,
         CONCAT(TRUNCATE(SUM(`index_length`)/1024/1024,2),' MB') AS `index_size`
         FROM `information_schema`.tables
         GROUP BY `table_schema`
     ORDER BY SUM(`data_length`) DESC;
 
-    #b.²é¿´Êı¾İ¿â `erp` ÖĞ¸÷Êı¾İ±íµÄÕ¼ÓÃ¿Õ¼ä
+    #b.æŸ¥çœ‹æ•°æ®åº“ `erp` ä¸­å„æ•°æ®è¡¨çš„å ç”¨ç©ºé—´
     SELECT `table_name`, `table_rows`, CONCAT(TRUNCATE(`data_length`/1024/1024,2),' MB') AS `data_size`,
         CONCAT(TRUNCATE(`index_length`/1024/1024,2),' MB') AS `index_size`
         FROM `information_schema`.tables WHERE `table_schema`='erp'
         GROUP BY `table_name`
     ORDER BY `data_length` DESC;
 
-    #c.²é¿´Êı¾İ¿â `erp` ÖĞÖ¸¶¨±íµÄÕ¼ÓÃ¿Õ¼ä
+    #c.æŸ¥çœ‹æ•°æ®åº“ `erp` ä¸­æŒ‡å®šè¡¨çš„å ç”¨ç©ºé—´
     SELECT `table_name`, `table_rows`, CONCAT(TRUNCATE(`data_length`/1024/1024,2),' MB') AS `data_size`,
         CONCAT(TRUNCATE(`index_length`/1024/1024,2),' MB') AS `index_size`
         FROM `information_schema`.tables WHERE `table_schema`='erp' AND `table_name`='erp_wish_listing'
@@ -118,51 +118,51 @@
 
 
 /**
- * 5£©MySQL²éÑ¯Êı¾İ±íµÄ×Ö¶ÎĞÅÏ¢[±ãÓÚ×Ö¶ÎÓ³Éä]
+ * 5ï¼‰MySQLæŸ¥è¯¢æ•°æ®è¡¨çš„å­—æ®µä¿¡æ¯[ä¾¿äºå­—æ®µæ˜ å°„]
  * @date 2017-09-04 12:19
  */
-    #information_schema¿âÖĞÓĞÒ»¸öÃûÎªCOLUMNSµÄ±í£¬Õâ¸ö±íÖĞ¼ÇÂ¼ÁËÊı¾İ¿âÖĞËùÓĞ±íµÄ×Ö¶ÎĞÅÏ¢
+    #information_schemaåº“ä¸­æœ‰ä¸€ä¸ªåä¸ºCOLUMNSçš„è¡¨ï¼Œè¿™ä¸ªè¡¨ä¸­è®°å½•äº†æ•°æ®åº“ä¸­æ‰€æœ‰è¡¨çš„å­—æ®µä¿¡æ¯
     SELECT `COLUMN_NAME` FROM information_schema.`COLUMNS` WHERE `TABLE_SCHEMA`='erp' AND `TABLE_NAME`='sys_order'
 
 
 /**
- * 6£©PHP SOAPÀàĞÍµÄ½Ó¿Ú
+ * 6ï¼‰PHP SOAPç±»å‹çš„æ¥å£
  * @date 2017-09-13 14:59
  */
 
-// [±¸×¢£ºXMLÖĞµÄ£¨i:nil="true"£©±íÊ¾±êÇ©ÖµÎª¡®null¡¯]
+// [å¤‡æ³¨ï¼šXMLä¸­çš„ï¼ˆi:nil="true"ï¼‰è¡¨ç¤ºæ ‡ç­¾å€¼ä¸ºâ€˜nullâ€™]
 $client = new SoapClient('https://wsvc.cdiscount.com/MarketplaceAPIService.svc?wsdl');
 var_dump($client);
 
-/*phpÖĞsoap µÄÊ¹ÓÃÊµÀıÎŞĞèÊÖĞ´WSDLÎÄ¼ş£¬Ìá¹©×Ô¶¯Éú³ÉWSDLÎÄ¼şÀà
+/*phpä¸­soap çš„ä½¿ç”¨å®ä¾‹æ— éœ€æ‰‹å†™WSDLæ–‡ä»¶ï¼Œæä¾›è‡ªåŠ¨ç”ŸæˆWSDLæ–‡ä»¶ç±»
 http://www.cnblogs.com/phpdragon/archive/2012/06/10/2544171.html
-×î½ü¹¤×÷µÄÄÚÈİÊ¹ÓÃµ½ÁË½Ó¿Ú£¡
-¶ÔÓÚÏµÍ³½Ó¿Ú£º
-ÏÖÏÂ½Ó´¥µÄÓĞÁ½ÖÖ£¡
+æœ€è¿‘å·¥ä½œçš„å†…å®¹ä½¿ç”¨åˆ°äº†æ¥å£ï¼
+å¯¹äºç³»ç»Ÿæ¥å£ï¼š
+ç°ä¸‹æ¥è§¦çš„æœ‰ä¸¤ç§ï¼
 
-1¡¢URLÀàĞÍµÄ½Ó¿Ú
-URLÂ·ÓÉ´ø²ÎÊıÊ½µÄ½Ó¿Ú£¡Õâ¸öºÜºÃ×ö£¡Ö»ÒªÓĞ¹ıWeb¿ª·¢¾­ÑéµÄÈË¶¼ÄÜÍê³É£¡
-ÕâÖÖ½Ó¿ÚÊı¾İ²»¹»Òş±ÎĞÔ£¬¿ÉÒÔÖ±½ÓÔÚä¯ÀÀÆäÖĞ¿´µ½£¬
+1ã€URLç±»å‹çš„æ¥å£
+URLè·¯ç”±å¸¦å‚æ•°å¼çš„æ¥å£ï¼è¿™ä¸ªå¾ˆå¥½åšï¼åªè¦æœ‰è¿‡Webå¼€å‘ç»éªŒçš„äººéƒ½èƒ½å®Œæˆï¼
+è¿™ç§æ¥å£æ•°æ®ä¸å¤Ÿéšè”½æ€§ï¼Œå¯ä»¥ç›´æ¥åœ¨æµè§ˆå…¶ä¸­çœ‹åˆ°ï¼Œ
 
-ÈçÖ§¸¶±¦µÄ½»Ò×ÇëÇóURL¡£ĞèÒª¼ÓÒ»¸öMD5Ç©Ãû£¬ºÍ·şÎñÆ÷¶ËµÄÔÙ´ÎÏòÖ§¸¶±¦·şÎñÆ÷·¢ËÍÑéÖ¤£¡
-ËäÈ»soap·½Ê½´«µİµÄÊı¾İÒş±ÎĞÔºÜºÃ!µ«ÎªÁËÊı¾İ°²È«£¬ÄÑÃâÒ²ĞèÒª½øĞĞÊı¾İÇ©Ãû¡£
+å¦‚æ”¯ä»˜å®çš„äº¤æ˜“è¯·æ±‚URLã€‚éœ€è¦åŠ ä¸€ä¸ªMD5ç­¾åï¼Œå’ŒæœåŠ¡å™¨ç«¯çš„å†æ¬¡å‘æ”¯ä»˜å®æœåŠ¡å™¨å‘é€éªŒè¯ï¼
+è™½ç„¶soapæ–¹å¼ä¼ é€’çš„æ•°æ®éšè”½æ€§å¾ˆå¥½!ä½†ä¸ºäº†æ•°æ®å®‰å…¨ï¼Œéš¾å…ä¹Ÿéœ€è¦è¿›è¡Œæ•°æ®ç­¾åã€‚
 
-2¡¢SOAPÀàĞÍµÄ½Ó¿Ú
-ÎŞ¹Ø±à³ÌÓïÑÔ¡¢ÎŞ¹ØÆ½Ì¨¡¢À©Õ¹ĞÔºÜºÃ
-ÒªÊµÏÖÒ»¸öSOAP ĞÍµÄ½Ó¿Ú£¬ÓĞÁ½ÖÖ·½Ê½£ºÒ»ÖÖÓĞWSDLÎÄ¼ş·½Ê½¡¢Ò»ÖĞÎŞWSDLÎÄ¼ş·½Ê½£¡
+2ã€SOAPç±»å‹çš„æ¥å£
+æ— å…³ç¼–ç¨‹è¯­è¨€ã€æ— å…³å¹³å°ã€æ‰©å±•æ€§å¾ˆå¥½
+è¦å®ç°ä¸€ä¸ªSOAP å‹çš„æ¥å£ï¼Œæœ‰ä¸¤ç§æ–¹å¼ï¼šä¸€ç§æœ‰WSDLæ–‡ä»¶æ–¹å¼ã€ä¸€ä¸­æ— WSDLæ–‡ä»¶æ–¹å¼ï¼
 
-¶ÔÓÚÈÈ°®ÑĞ¾¿ĞÍµÄÈËÀ´Ëµ,Ê¹ÓÃµÚÒ»ÖÖ·½Ê½¿ÉÒÔÈÃÄãÇå³şµÄÁË½âPHPÊÇÔõÃ´´´½¨ÁËÒ»¸öWeb Service£¡
-µ«µÚÒ»ÖÖ¶ÔÓÚĞÂÊÖÀ´Ëµ£¬´´½¨Ò»¸öXML¸ñÊ½µÄWSDLÎÄ¼ş£¬ÊÇ±È½ÏÄÑµÄ£¬ÕâÄãµÄÏÈÁË½âÊìÏ¤Ê²Ã´ÊÇXML£¡
-Ñ§»áXMLÓï·¨£¡
-  µ«¶ÔÓÚÒ»¸ö¼±ÓÚ½â¾öÎÊÌâµÄÈËÀ´Ëµ£¡Ã»ÓĞÕâÃ´¶àµÄÊ±¼äÈ¥ÊìÏ¤£¡ËùÒÔÕâÊÇ¼ş·³ÄÕµÄÊÂ£¡
-²»¹ı²»¼±£¬ÉÏÃæËµÁË£¬»¹ÓĞÒ»ÖÖÎŞĞèWSDLÎÄ¼şµÄ·½Ê½£¡¶øÇÒ£¬±¾½²½â»¹Ìá¹©ÁËÒ»¸ö×Ô¶¯Éú³ÉWSDLÎÄ¼şµÄÀà£¡
+å¯¹äºçƒ­çˆ±ç ”ç©¶å‹çš„äººæ¥è¯´,ä½¿ç”¨ç¬¬ä¸€ç§æ–¹å¼å¯ä»¥è®©ä½ æ¸…æ¥šçš„äº†è§£PHPæ˜¯æ€ä¹ˆåˆ›å»ºäº†ä¸€ä¸ªWeb Serviceï¼
+ä½†ç¬¬ä¸€ç§å¯¹äºæ–°æ‰‹æ¥è¯´ï¼Œåˆ›å»ºä¸€ä¸ªXMLæ ¼å¼çš„WSDLæ–‡ä»¶ï¼Œæ˜¯æ¯”è¾ƒéš¾çš„ï¼Œè¿™ä½ çš„å…ˆäº†è§£ç†Ÿæ‚‰ä»€ä¹ˆæ˜¯XMLï¼
+å­¦ä¼šXMLè¯­æ³•ï¼
+  ä½†å¯¹äºä¸€ä¸ªæ€¥äºè§£å†³é—®é¢˜çš„äººæ¥è¯´ï¼æ²¡æœ‰è¿™ä¹ˆå¤šçš„æ—¶é—´å»ç†Ÿæ‚‰ï¼æ‰€ä»¥è¿™æ˜¯ä»¶çƒ¦æ¼çš„äº‹ï¼
+ä¸è¿‡ä¸æ€¥ï¼Œä¸Šé¢è¯´äº†ï¼Œè¿˜æœ‰ä¸€ç§æ— éœ€WSDLæ–‡ä»¶çš„æ–¹å¼ï¼è€Œä¸”ï¼Œæœ¬è®²è§£è¿˜æä¾›äº†ä¸€ä¸ªè‡ªåŠ¨ç”ŸæˆWSDLæ–‡ä»¶çš„ç±»ï¼
 
-½²½âÇ°£¬ÏÈÅäÖÃÏÂPHPµÄsoap»·¾³Ö§³Ö£ºÕÒµ½php.iniÎÄ¼ş
-£»extension=php_soap.dll
-É¾³ıµô"£»" £¬ÖØÆôapache·şÎñÆ÷*/
+è®²è§£å‰ï¼Œå…ˆé…ç½®ä¸‹PHPçš„soapç¯å¢ƒæ”¯æŒï¼šæ‰¾åˆ°php.iniæ–‡ä»¶
+ï¼›extension=php_soap.dll
+åˆ é™¤æ‰"ï¼›" ï¼Œé‡å¯apacheæœåŠ¡å™¨*/
 
 /**
- * 7£©JS È«Ñ¡/·´Ñ¡[±íµ¥¿Ø¼ş]
+ * 7ï¼‰JS å…¨é€‰/åé€‰[è¡¨å•æ§ä»¶]
  * @date 2017-09-21 15:59
  */
 $(".checkAll").on("click", function(){
@@ -172,56 +172,56 @@ $(".checkAll").on("click", function(){
 });
 
 /**
- * 8£©MySQL ±È½ÏÁ½¸ö×Ö¶ÎµÄÊ±¼ä²î [¿¯µÇÊ±¼äÏà¾à´´½¨Ê±¼ä³¬¹ı28Ìì]
+ * 8ï¼‰MySQL æ¯”è¾ƒä¸¤ä¸ªå­—æ®µçš„æ—¶é—´å·® [åˆŠç™»æ—¶é—´ç›¸è·åˆ›å»ºæ—¶é—´è¶…è¿‡28å¤©]
  * https://wenku.baidu.com/view/ad6d5415f242336c1eb95eae.html
- * MySQL Êı¾İ¿âÒª°´µ±Ìì¡¢×òÌì¡¢Ç°ÆßÈÕ¡¢½üÈıÊ®Ìì¡¢¼¾¶È¡¢Äê²éÑ¯
+ * MySQL æ•°æ®åº“è¦æŒ‰å½“å¤©ã€æ˜¨å¤©ã€å‰ä¸ƒæ—¥ã€è¿‘ä¸‰åå¤©ã€å­£åº¦ã€å¹´æŸ¥è¯¢
  * @date 2017-09-23 10:40
  */
 SELECT COUNT(*) FROM `erp_distribute_ebay_listing` WHERE `status`=3 AND account_id!=7 AND TO_DAYS(`publish_start_date`) - TO_DAYS(`create_date`) > 28;
 
 
 /**
- * 9£©MySQL ¶àÌõ¼şÁª±í²éÑ¯ÓÅ»¯¡¾µ¥ÀıË÷Òı¡¢¶àÁĞË÷ÒıÒÔ¼°×î×óÇ°×ºÔ­Ôò¡¿
+ * 9ï¼‰MySQL å¤šæ¡ä»¶è”è¡¨æŸ¥è¯¢ä¼˜åŒ–ã€å•ä¾‹ç´¢å¼•ã€å¤šåˆ—ç´¢å¼•ä»¥åŠæœ€å·¦å‰ç¼€åŸåˆ™ã€‘
  * @date 2017-10-19 15:45
  */
-    #Ìí¼ÓË÷Òı¡¾¶àÁĞË÷Òı¡¿
+    #æ·»åŠ ç´¢å¼•ã€å¤šåˆ—ç´¢å¼•ã€‘
     ALTER TABLE `erp`.`erp_ebay_v2_listing` ADD INDEX `ebay_status` (`id`, `ebay_status`);
 
-    #È¥ÖØ[distinct]
+    #å»é‡[distinct]
     SELECT COUNT(DISTINCT(a.`listing_id`)) AS `count` FROM `erp_products_status_listing_log` a
 
-    #É¸Ñ¡ÖØ¸´¼ÇÂ¼[group by .. having ..]
+    #ç­›é€‰é‡å¤è®°å½•[group by .. having ..]
     SELECT *,COUNT(*) cc FROM `erp_products_status_log` WHERE `status`=0 GROUP BY `product_id` HAVING cc>1
 
 /**
- * 10£©MySQL Á½ÖÖ±í¸´ÖÆÓï¾ä¡¾SELECT INTO ºÍ INSERT INTO SELECT¡¿
+ * 10ï¼‰MySQL ä¸¤ç§è¡¨å¤åˆ¶è¯­å¥ã€SELECT INTO å’Œ INSERT INTO SELECTã€‘
  * @date 2017-10-20 9:45
  */
-    # 1.INSERT INTO SELECTÓï¾ä
-    # Óï¾äĞÎÊ½Îª£ºInsert into Table2(field1,field2,...) select value1,value2,... from Table1
-    # ÒªÇóÄ¿±ê±íTable2±ØĞë´æÔÚ£¬ÓÉÓÚÄ¿±ê±íTable2ÒÑ¾­´æÔÚ£¬³ıÁË²åÈëÔ´±íTable1µÄ×Ö¶ÎÍâ£¬»¹¿ÉÒÔ²åÈë³£Á¿¡£
+    # 1.INSERT INTO SELECTè¯­å¥
+    # è¯­å¥å½¢å¼ä¸ºï¼šInsert into Table2(field1,field2,...) select value1,value2,... from Table1
+    # è¦æ±‚ç›®æ ‡è¡¨Table2å¿…é¡»å­˜åœ¨ï¼Œç”±äºç›®æ ‡è¡¨Table2å·²ç»å­˜åœ¨ï¼Œé™¤äº†æ’å…¥æºè¡¨Table1çš„å­—æ®µå¤–ï¼Œè¿˜å¯ä»¥æ’å…¥å¸¸é‡ã€‚
     INSERT INTO `erp_ebay_seller_events_task`(`account_id`) SELECT `id` FROM `erp_basics_account` WHERE `platform_id`=2;
 
-    # 2.SELECT INTO FROMÓï¾ä
-    # Óï¾äĞÎÊ½Îª£ºSELECT vale1, value2 into Table2 from Table1
-    # ÒªÇóÄ¿±ê±íTable2²»´æÔÚ£¬ÒòÎªÔÚ²åÈëÊ±»á×Ô¶¯´´½¨±íTable2£¬²¢½«Table1ÖĞÖ¸¶¨×Ö¶ÎÊı¾İ¸´ÖÆµ½Table2ÖĞ¡£
+    # 2.SELECT INTO FROMè¯­å¥
+    # è¯­å¥å½¢å¼ä¸ºï¼šSELECT vale1, value2 into Table2 from Table1
+    # è¦æ±‚ç›®æ ‡è¡¨Table2ä¸å­˜åœ¨ï¼Œå› ä¸ºåœ¨æ’å…¥æ—¶ä¼šè‡ªåŠ¨åˆ›å»ºè¡¨Table2ï¼Œå¹¶å°†Table1ä¸­æŒ‡å®šå­—æ®µæ•°æ®å¤åˆ¶åˆ°Table2ä¸­ã€‚
 
-    # 3.¸´ÖÆ¶à±íµÄ×Ö¶Îµ½Í¬Ò»¸ö±í¡¾ĞèÒª×¢ÒâµÄÊÇÇ¶Ì×²éÑ¯²¿·Ö×îºóÒ»¶¨ÒªÓĞÉèÖÃ±í±ğÃû[`tb`]¡¿
+    # 3.å¤åˆ¶å¤šè¡¨çš„å­—æ®µåˆ°åŒä¸€ä¸ªè¡¨ã€éœ€è¦æ³¨æ„çš„æ˜¯åµŒå¥—æŸ¥è¯¢éƒ¨åˆ†æœ€åä¸€å®šè¦æœ‰è®¾ç½®è¡¨åˆ«å[`tb`]ã€‘
     INSERT INTO a (field1,field2) SELECT * FROM(SELECT b.f1,c.f2 FROM b JOIN c) AS tb;
 
 /**
- * 11£©Ö´ĞĞ PHP ½Å±¾ÈÎÎñÊ±£¬Ê¹ÓÃ JS ×Ô¶¯Ë¢ĞÂÒ³Ãæ
+ * 11ï¼‰æ‰§è¡Œ PHP è„šæœ¬ä»»åŠ¡æ—¶ï¼Œä½¿ç”¨ JS è‡ªåŠ¨åˆ·æ–°é¡µé¢
  * @date 2017-10-25 16:07
  */
-    echo 'µ±Ç°ÏµÍ³Ê±¼ä£º' . date('Y-m-d H:i:s');
-    #<!-- JS Ò³Ãæ×Ô¶¯Ë¢ĞÂ -->
+    echo 'å½“å‰ç³»ç»Ÿæ—¶é—´ï¼š' . date('Y-m-d H:i:s');
+    #<!-- JS é¡µé¢è‡ªåŠ¨åˆ·æ–° -->
     echo '<script type="text/javascript">';
     echo     'setTimeout("window.location.reload()", 100);';
     echo '</script>';
 
 
 /**
- * 12£©UPDATE from SELECT
+ * 12ï¼‰UPDATE from SELECT
  * @date 2017-10-30 18:17
  */
     "UPDATE `erp_products_status_listing_log` c SET c.`status`=33
@@ -231,28 +231,28 @@ SELECT COUNT(*) FROM `erp_distribute_ebay_listing` WHERE `status`=3 AND account_
                     WHERE a.platform_id=2 AND a.`status`=0 AND a.`type` IN (2) AND b.Quantity>0) d
             )";
 
-    # Áª±í²éÑ¯[¸üĞÂÀûÈóÂÊ2017-11-17]
+    # è”è¡¨æŸ¥è¯¢[æ›´æ–°åˆ©æ¶¦ç‡2017-11-17]
     "UPDATE `erp_ebay_order_profit_log` a JOIN `erp_ebay_order_profit_log` b ON a.`id`=b.`id` SET a.`profit_rate`=ROUND(b.`profit`/b.`shipping_min_price`*1000)";
 
-    #MySQLÓÃÒ»¸ö±í¸üĞÂÁíÒ»¸ö±í
-    # ĞŞ¸Ä1ÁĞ
+    #MySQLç”¨ä¸€ä¸ªè¡¨æ›´æ–°å¦ä¸€ä¸ªè¡¨
+    # ä¿®æ”¹1åˆ—
         "UPDATE `student` s, `city` c SET s.`city_name` = c.`name` WHERE s.`city_code` = c.`code`";
-    # ĞŞ¸Ä¶à¸öÁĞ
+    # ä¿®æ”¹å¤šä¸ªåˆ—
         "UPDATE a, b SET a.`title`=b.`title`, a.`name`=b.`name` WHERE a.`id`=b.`id`";
-    # ²ÉÓÃ×Ó²éÑ¯
+    # é‡‡ç”¨å­æŸ¥è¯¢
         "UPDATE `erp_ebay_v2_listing` a SET a.`QC_profit` = (SELECT MIN(b.`QC_profit`) FROM `erp_ebay_v2_listing_variation` b WHERE a.`id`=b.`listing_id` AND b.`QC_rate` IS NOT NULL)";
 
 
 /**
- * 13£©°´ÓÅÏÈ¼¶×Ô¶¯·Ö²Ö--Æ¥Åä·Ö²Ö¹æÔòBUG
+ * 13ï¼‰æŒ‰ä¼˜å…ˆçº§è‡ªåŠ¨åˆ†ä»“--åŒ¹é…åˆ†ä»“è§„åˆ™BUG
  * @date 2017-11-21 14:15
  */
-    #1) empty() ²»ÄÜÅĞ¶Ï '0.00' ÊÇ·ñÎª¿Õ¡£
-    #2) µ÷ÓÃµİ¹é·½·¨Ê±£¬Íü¼ÇÔÚ·½·¨Ç°¼Ó ¡¯return¡® ½áÊøµİ¹é¡£
+    #1) empty() ä¸èƒ½åˆ¤æ–­ '0.00' æ˜¯å¦ä¸ºç©ºã€‚
+    #2) è°ƒç”¨é€’å½’æ–¹æ³•æ—¶ï¼Œå¿˜è®°åœ¨æ–¹æ³•å‰åŠ  â€™returnâ€˜ ç»“æŸé€’å½’ã€‚
 
 
 /**
- * 14£©ÊÛ¼Û¾«È·µ½·Ö[°üº¬Ä©Î²µÄ¡¯0¡®]
+ * 14ï¼‰å”®ä»·ç²¾ç¡®åˆ°åˆ†[åŒ…å«æœ«å°¾çš„â€™0â€˜]
  * @date 2017-11-27 16:16
  */
     sprintf('%.2f', round($salesPrice, 2));
@@ -263,18 +263,18 @@ SELECT COUNT(*) FROM `erp_distribute_ebay_listing` WHERE `status`=3 AND account_
 
 
 /**
- * 15£©°´¼üÃûÅÅĞò[ÒÔ¼Û¸ñÎª¼üÃû]
+ * 15ï¼‰æŒ‰é”®åæ’åº[ä»¥ä»·æ ¼ä¸ºé”®å]
  * @date 2017-11-30 11:16
  */
     $price_sum = $this->priceCount($weight, $val);
     $key_sort = str_pad($price_sum*100, 8, '0', STR_PAD_LEFT) .'_'. $key;
     $priceListSort[$key_sort]['price_sum'] = $price_sum;
-    ksort($priceListSort);  //°´¼üÃûÅÅĞò
+    ksort($priceListSort);  //æŒ‰é”®åæ’åº
 
 
 
 /**
- * 16£©Ê¹ÓÃ URL Ïò·şÎñÆ÷´«µİÊı×é
+ * 16ï¼‰ä½¿ç”¨ URL å‘æœåŠ¡å™¨ä¼ é€’æ•°ç»„
  * @date 2017-12-11 15:13
  */
 # http://localhost/test.php?id=1&pid[]=2&pid[]=5&pid[]=8
@@ -283,7 +283,7 @@ SELECT COUNT(*) FROM `erp_distribute_ebay_listing` WHERE `status`=3 AND account_
 
 
 /**
- * 17£©¿ØÖÆÆ÷ÄÚ²¿ -- POST·½Ê½ÇĞ»»[·½·¨]
+ * 17ï¼‰æ§åˆ¶å™¨å†…éƒ¨ -- POSTæ–¹å¼åˆ‡æ¢[æ–¹æ³•]
  * @date 2017-12-12 15:53
  */
  echo "<form style='display:none;' id='form1' name='form1' method='post' action='{$url}'>
@@ -297,18 +297,18 @@ SELECT COUNT(*) FROM `erp_distribute_ebay_listing` WHERE `status`=3 AND account_
 
 
 /**
- * 18£©Failed to execute 'getComputedStyle' on 'Window':
+ * 18ï¼‰Failed to execute 'getComputedStyle' on 'Window':
  * @date 2017-12-14 15:53
  */
 /*
-<!-- ±äÌåÊôĞÔ[²»ÄÜ·ÅÔÚhtml±êÇ©ÍâÃæ] -->
+<!-- å˜ä½“å±æ€§[ä¸èƒ½æ”¾åœ¨htmlæ ‡ç­¾å¤–é¢] -->
 <?php if ($this->key=="variant"){ ?>
     <html>
         ...
         $("#winEdit").window({
-            //title:'WishÊı¾İµ¼Èë',
+            //title:'Wishæ•°æ®å¯¼å…¥',
             closed:false,
-            width:$(data).width(),  //BUG¡¾'getComputedStyle'¡¿
+            width:$(data).width(),  //BUGã€'getComputedStyle'ã€‘
             shadow:false,
             minimizable:false,
             maximizable:false
@@ -319,13 +319,13 @@ SELECT COUNT(*) FROM `erp_distribute_ebay_listing` WHERE `status`=3 AND account_
 
 
 /**
- * 19£©Bootstrap ±êÇ©Ò³£¨Tab£©
+ * 19ï¼‰Bootstrap æ ‡ç­¾é¡µï¼ˆTabï¼‰
  * @date 2017-12-14 16:53
  */
     /*
         <tr>
             <td  align="right">SKU</td>
-            <!-- Tab±êÇ©Ò³ -->
+            <!-- Tabæ ‡ç­¾é¡µ -->
             <td><ul id="myTab" class="nav nav-tabs">
                 <?php foreach($this->attr as $k=>$v){?>
                     <li <?if($k==0){?>class="active"<?}?>><a href="#Tab-<?=$v['id']?>" data-toggle="tab"><?=$v['sku']?></a></li>
@@ -333,8 +333,8 @@ SELECT COUNT(*) FROM `erp_distribute_ebay_listing` WHERE `status`=3 AND account_
             </ul></td>
         </tr>
         <tr>
-            <td  align="right">±êÌâ</td>
-            <!-- Tab±êÇ©Ò³-ÄÚÈİ -->
+            <td  align="right">æ ‡é¢˜</td>
+            <!-- Tabæ ‡ç­¾é¡µ-å†…å®¹ -->
             <td><div id="myTabContent" class="tab-content">
                 <?php foreach($this->attr as $k2=>$v2){?>
                     <div class="tab-pane fade <?if($k2==0){?>in active<?}?>" id="Tab-<?=$v2['id']?>">
@@ -348,7 +348,40 @@ SELECT COUNT(*) FROM `erp_distribute_ebay_listing` WHERE `status`=3 AND account_
 
 
 /**
- * 20£©Bootstrap µ¯³ö¿ò£¨Popover£©¿í¶ÈÏŞÖÆ
+ * 20ï¼‰Bootstrap å¼¹å‡ºæ¡†ï¼ˆPopoverï¼‰å®½åº¦é™åˆ¶
  * @date 2017-12-22 18:05
  */
-    .popover { max-width:800px; }  #Ä¬ÈÏ×î¶à¿í¶ÈÊÇ 275px
+    .popover { max-width:800px; }  #é»˜è®¤æœ€å¤šå®½åº¦æ˜¯ 275px
+
+
+
+/**
+ * 21ï¼‰HTTPä¸­GETä¸POSTçš„åŒºåˆ«
+ * @date 2018-01-05 16:49
+ */
+    /*
+    GETå’ŒPOSTè¿˜æœ‰ä¸€ä¸ªé‡å¤§åŒºåˆ«ï¼Œç®€å•çš„è¯´ï¼š GETäº§ç”Ÿä¸€ä¸ªTCPæ•°æ®åŒ…ï¼›POSTäº§ç”Ÿä¸¤ä¸ªTCPæ•°æ®åŒ…ã€‚
+
+    å¯¹äºGETæ–¹å¼çš„è¯·æ±‚ï¼Œæµè§ˆå™¨ä¼šæŠŠhttp headerå’Œdataä¸€å¹¶å‘é€å‡ºå»ï¼ŒæœåŠ¡å™¨å“åº”200ï¼ˆè¿”å›æ•°æ®ï¼‰ï¼›
+    è€Œå¯¹äºPOSTï¼Œæµè§ˆå™¨å…ˆå‘é€headerï¼ŒæœåŠ¡å™¨å“åº”100 continueï¼Œæµè§ˆå™¨å†å‘é€dataï¼ŒæœåŠ¡å™¨å“åº”200 okï¼ˆè¿”å›æ•°æ®ï¼‰ã€‚
+
+    ä¹Ÿå°±æ˜¯è¯´ï¼ŒGETåªéœ€è¦æ±½è½¦è·‘ä¸€è¶Ÿå°±æŠŠè´§é€åˆ°äº†ï¼Œè€ŒPOSTå¾—è·‘ä¸¤è¶Ÿï¼Œç¬¬ä¸€è¶Ÿï¼Œå…ˆå»å’ŒæœåŠ¡å™¨æ‰“ä¸ªæ‹›å‘¼â€œå—¨ï¼Œæˆ‘ç­‰ä¸‹è¦é€ä¸€æ‰¹è´§æ¥ï¼Œä½ ä»¬æ‰“å¼€é—¨è¿æ¥æˆ‘â€ï¼Œç„¶åå†å›å¤´æŠŠè´§é€è¿‡å»ã€‚
+
+    å› ä¸ºPOSTéœ€è¦ä¸¤æ­¥ï¼Œæ—¶é—´ä¸Šæ¶ˆè€—çš„è¦å¤šä¸€ç‚¹ï¼Œçœ‹èµ·æ¥GETæ¯”POSTæ›´æœ‰æ•ˆã€‚å› æ­¤Yahooå›¢é˜Ÿæœ‰æ¨èç”¨GETæ›¿æ¢POSTæ¥ä¼˜åŒ–ç½‘ç«™æ€§èƒ½ã€‚ä½†è¿™æ˜¯ä¸€ä¸ªå‘ï¼è·³å…¥éœ€è°¨æ…ã€‚ä¸ºä»€ä¹ˆï¼Ÿ
+    1. GETä¸POSTéƒ½æœ‰è‡ªå·±çš„è¯­ä¹‰ï¼Œä¸èƒ½éšä¾¿æ··ç”¨ã€‚
+    2. æ®ç ”ç©¶ï¼Œåœ¨ç½‘ç»œç¯å¢ƒå¥½çš„æƒ…å†µä¸‹ï¼Œå‘ä¸€æ¬¡åŒ…çš„æ—¶é—´å’Œå‘ä¸¤æ¬¡åŒ…çš„æ—¶é—´å·®åˆ«åŸºæœ¬å¯ä»¥æ— è§†ã€‚è€Œåœ¨ç½‘ç»œç¯å¢ƒå·®çš„æƒ…å†µä¸‹ï¼Œä¸¤æ¬¡åŒ…çš„TCPåœ¨éªŒè¯æ•°æ®åŒ…å®Œæ•´æ€§ä¸Šï¼Œæœ‰éå¸¸å¤§çš„ä¼˜ç‚¹ã€‚
+    3. å¹¶ä¸æ˜¯æ‰€æœ‰æµè§ˆå™¨éƒ½ä¼šåœ¨POSTä¸­å‘é€ä¸¤æ¬¡åŒ…ï¼ŒFirefoxå°±åªå‘é€ä¸€æ¬¡ã€‚
+     */
+
+/**
+ * 22ï¼‰CSSæ˜Ÿå·â€œ*â€çš„æ„ä¹‰
+ * @date 2018-01-11 09:21
+ */
+    *{padding:0; ... } #è¿™é‡Œçš„â€œ*â€å·æ˜¯é€šé…ç¬¦ï¼Œå³æŒ‡ï¼Œç½‘é¡µhtmlä¸­æ‰€æœ‰æ ‡ç­¾æ„æ€ã€‚
+
+    # bootstrap æè¿°ï¼šä¸ºå…ƒç´ æŒ‡å®šçš„ä»»ä½•å†…è¾¹è·å’Œè¾¹æ¡†éƒ½å°†åœ¨å·²è®¾å®šçš„å®½åº¦å’Œé«˜åº¦å†…è¿›è¡Œç»˜åˆ¶ã€‚
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
