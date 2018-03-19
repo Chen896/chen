@@ -231,7 +231,7 @@ SELECT COUNT(*) FROM `erp_distribute_ebay_listing` WHERE `status`=3 AND account_
                     WHERE a.platform_id=2 AND a.`status`=0 AND a.`type` IN (2) AND b.Quantity>0) d
             )";
 
-    # 联表查询[更新利润率2017-11-17]
+    # 联表查询[更新利润率2017-11-17] UPDATE from JOIN
     "UPDATE `erp_ebay_order_profit_log` a JOIN `erp_ebay_order_profit_log` b ON a.`id`=b.`id` SET a.`profit_rate`=ROUND(b.`profit`/b.`shipping_min_price`*1000)";
 
     #MySQL用一个表更新另一个表
@@ -385,3 +385,31 @@ SELECT COUNT(*) FROM `erp_distribute_ebay_listing` WHERE `status`=3 AND account_
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
+
+
+/**
+ * 23）利用curl工具发送post请求的时候可以有2种方式
+ * @date 2018-03-08 14:50
+ */
+-d --data 使用POST方法， -d 后面的是post的数据
+-s --silent 静默模式，就是不显示错误和进度, 如果没有指定-d(或者其他方式) 默认为GET
+
+// [POST] curl https://merchant.wish.com/api/v2/product/update -d "id=123456789009876543211234&name=Awesome shoe&description=This shoe is the best on Wish&tags=shoe, awesome, size 11&access_token=an_example_access_token"
+// [GET] curl "https://merchant.wish.com/api/v2/variant/multi-get?limit=2&start=20&access_token=an_example_access_token"
+
+
+/**
+ * 24）php中数组+和array_merge区别
+ * 主要区别在与两个或多个数组在合并时，出现相同的键名时处理方式不一样
+ * @date 2018-03-12 12:02
+ */
+    一、当键名为数字时，array_merge不会覆盖原来的值，+会抛弃后面的值
+    二、当键名为字符串时，+会舍弃掉后面键相同的元素，array_merge键相同的后面元素覆盖前面元素
+
+
+/**
+ * 25）计算Listing利润
+ * @date 2018-03-12 12:02
+ */
+    #SELECT (65)/(1-0.25-0.0500-0.0200);   #95.5882售价，65成本
+    #SELECT (95.5882*(1-0.0500-0.0200)-65)/95.5882;

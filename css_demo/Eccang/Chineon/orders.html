@@ -1,0 +1,861 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<!--<meta http-equiv="x-ua-compatible" content="ie=7" />-->
+<!--
+    输出在renderTpl方法中设置的，title和meta
+    ?php echo($this->HeadTitle()) ;?>
+    ?php echo($this->headMeta()) ;?>
+
+    ?php echo $this->layout()->getView()->headTitle();?>
+    ?php echo $this->layout()->getView()->headMeta();?>
+ -->
+
+<title>盛世华扬-订单管理系统</title>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/jquery-myProject.js"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/jquery-myAjaxForm.js"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/chosen/chosen.jquery.js?20171031"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/init.js?20171031"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/common.js?20171031"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/jquery.alerts.js"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/toastr/toastr.js?t=20171008"></script>
+<script type="text/javascript">
+//语言
+var locale_message_language = 'zh_CN';
+</script>
+<link type="text/css" rel="stylesheet" href="http://chineoneb.eccang.com/css/ui-lightness/jquery-ui.min.css?20171031" />
+<link type="text/css" rel="stylesheet" href="http://chineoneb.eccang.com/css/global.css?20171031" />
+<link type="text/css" rel="stylesheet" href="http://chineoneb.eccang.com/css/public/layout_index_head.css?20171031" />
+<link type="image/x-icon" rel="shortcut icon" href="http://chineoneb.eccang.com/images/favicon.ico?20180222" />
+<link type="text/css" rel="stylesheet" href="http://chineoneb.eccang.com/css/jquery.alerts.css" />
+<link type="text/css" rel="stylesheet" href="http://chineoneb.eccang.com/js/chosen/chosen.min.css" />
+<link type="text/css" rel="stylesheet" href="http://chineoneb.eccang.com/js/toastr/style/toastr.css" />
+</head>
+<body>
+<script type="text/javascript">
+    EZ.userId=712;
+    function showThisSubMenuHeader(obj,id){
+        var mLeft=$(obj).children().position().left;
+        var width = $("#"+id).children('ul').length*124;
+        var idTop = $('.nav2').css('display') == "block" ? "124px" : "93px";
+        var dWidth = $(window).width();
+        if(mLeft+width >dWidth){
+            $("#"+id).css("left", mLeft-(width/1.3) );
+        }else{
+            $("#"+id).css("left",mLeft-1);
+        }
+        $("#"+id).css("top",idTop);
+        $("#"+id).show();
+        $("#"+id+"-ret").show();
+        $(obj).children("li").addClass("headNavA");
+        $(obj).children("li").children("a").css("color","#0090E1");
+    }
+    function closeThisSubMenuHeader(obj,id){
+        $(obj).children("li").removeClass("headNavA");
+        $(obj).children("li").children("a").css("color","#333");
+        $("#"+id).hide();
+        $("#"+id+"-ret").hide();
+    }
+    function headMenu(id, title, url,obj) {
+
+    }
+    function showBox(obj,id){
+        $(obj).children('a').removeClass('title-right');
+        $(obj).children('a').addClass('title-right-over');
+        $("."+id).show();
+    }
+    function hideBox(obj,id){
+        $(obj).children('a').removeClass('title-right-over');
+        $(obj).children('a').addClass('title-right');
+        $("."+id).hide();
+    }
+    $(".user_select li").live('mouseover',function(){
+        var cla = $(this).children('a').attr('class');
+        $(this).children('a').attr('class',cla+'-over');
+    });
+    $(".user_select li").live('mouseout',function(){
+        var cla = $(this).children('a').attr('class');
+        cla = cla.split("-");
+        $(this).children('a').attr('class',cla[0]);
+    });
+    $('.more-service').live('click',function(){
+        var height = $('#main-right-container-iframe').height();
+        $('.nav2').css('display') == 'block' ? $('#main-right-container-iframe').height(height+31) : $('#main-right-container-iframe').height(height-31);
+        $('.nav2').toggle('500');
+    });
+    $(function(){
+        var height = $('#main-right-container-iframe').height();
+        $('#main-right-container-iframe').height(height-31);
+    });
+
+    $("#ecpay").live('click',function(){
+        if($(this).attr('authstatus') == '0'){
+            alertTip("您当前帐号没有访问权限，请联系贵公司管理员到仓配系统--系统管理--易仓小工具--第三方结算工具中授权。");
+            return false;
+        }
+        $.ajax({
+              type: "POST",
+              dataType: "json",
+              url: "/default/index/get-ecpay-config",
+              success: function (json) {
+                  if(json.state == '1'){
+                      $("#ecpay").attr('href',json.data);
+                  }
+              }
+         });
+    });
+</script>
+<style>
+<!--
+-->
+</style>
+
+
+<div id="head">
+    <div class="headProduct">
+        &nbsp;&nbsp;订单管理系统
+                <div class="headPro_drop" style="display: none">
+                                                <a href="http://chineon.eccang.com?session_id=9umnhfei06u7a6gc1kfrc8btr5">仓配管理系统</a>
+                                    </div>
+            </div>
+
+    <div class="headProductMore">
+        <ul>
+                                                <li class="li_hover">
+                                            <a href="http://chineon.eccang.com?session_id=9umnhfei06u7a6gc1kfrc8btr5">仓配管理系统</a>
+                                        </li>
+                                                        <li class="li_hover">
+                    <a href="http://ecpay.eccang.com/api/v1/login?companyCode=CHINEON&params=NmEzNzY5Wlp5T1NQWnFMaHBoWm9yZlFQUGVtaEZzR2ErTEYvRXA3cTJPaDJPWXRUYTBsRXV1ZW44VENPM0hWdGdmcnlieC9Gd1hwZkNnZ3JRWGsxcE1ENWZkOWJHZFNlSHlRQng3RzdYblVrYVIvRzVSS21ZV0czYlZCOElp" id="ecpay" authStatus="0" target="_blank">资金助手</a>
+                    <!-- <a href="http://ecpay.eccang.com/api/v1/login?companyCode=CHINEON&params=NmEzNzY5Wlp5T1NQWnFMaHBoWm9yZlFQUGVtaEZzR2ErTEYvRXA3cTJPaDJPWXRUYTBsRXV1ZW44VENPM0hWdGdmcnlieC9Gd1hwZkNnZ3JRWGsxcE1ENWZkOWJHZFNlSHlRQng3RzdYblVrYVIvRzVSS21ZV0czYlZCOElp" target="_blank">资金助手</a> -->
+                </li>
+                            <li class="li_hover">
+                    <a href="http://hktools.eccang.com/default/index/quick-login?company_code=SSHY&company_name=盛世华扬&user_code=罗伟&user_id=712&callback_url=http://chineoneb.eccang.com&sign=86663052fd476be7594b468487c455be" id="hk"  target="_blank">爬虫STool</a>
+                    <!-- <a href="http://hktools.eccang.com/default/index/quick-login?company_code=SSHY&company_name=盛世华扬&user_code=罗伟&user_id=712&callback_url=http://chineoneb.eccang.com&sign=86663052fd476be7594b468487c455be" target="_blank">爬虫STool</a> -->
+                </li>
+                        <li style="border-right:0;"><a href="javascript:void(0);" class="more-service">常用菜单</a></li>
+        </ul>
+    </div>
+    <div style="display:none;">
+                                <iframe style='display: none;' src='http://chineon.eccang.com/default/system/api-login?session_id=9umnhfei06u7a6gc1kfrc8btr5'> </iframe>
+                            </div>
+    <div class="headNavRight" style="float: right;z-index: 5;width:auto;">
+        <ul>
+            <li style="width:120px;">
+                <span style="color:#FFFFFF; padding-right:15px;" id='erp_version'>当前版本号:V8.1</span>
+            </li>
+            <li class="select_show" onmouseover="showBox(this,'vesion_select')" onmouseout="hideBox(this,'vesion_select')">
+                <a href="http://chineoneb.eccang.com/?LANGUAGE=zh_CN" class="title-language title-right" style="color:#FFFFFF;">中文版</a>
+                <ul class="vesion_select select_box" style="display:none;">
+                   <li><a href="http://chineoneb.eccang.com/?LANGUAGE=zh_CN">中文版</a></li>
+                   <li><a href="http://chineoneb.eccang.com/?LANGUAGE=en_US">English</a></li>
+                </ul>
+            </li>
+            <li class="select_show" onmouseover="showBox(this,'user_select')" onmouseout="hideBox(this,'user_select')">
+                <a style='color: #FFFFFF;' class="title-right" href="javascript:void(0);">罗伟</a>
+                <ul class="user_select select_box" style="display:none;">
+                   <li><a onclick="leftMenu('user_set_1024','个人设置','/auth/user/user-set')" class="sub_menu_id_user_set_1024" href="javascript:void(0);">个人中心</a></li>
+                   <li><a href="http://chineoneb.eccang.com/default/index/logout" class="logout">退出登录</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="clr"></div>
+</div>
+
+<link rel="stylesheet" href="http://chineoneb.eccang.com/js/liMarquee/css/liMarquee.css">
+<style type="text/css">
+    .str_wrap{
+        padding-left: 3em;
+        padding-right: 3em;
+        font-size: 1.1em;
+        color:red;
+        background:transparent;
+    }
+    #billDiv{position:absolute;top:28px;}
+</style>
+<!--[if IE]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/liMarquee/js/jquery.liMarquee.js"></script>
+<script>
+$(function(){
+    $.ajax({
+        url: 'http://oversee.eccang.com/default/svc-for-erp/bill/',
+        data: 'company_code=sshy',
+//         url: 'http://www.erpoversee.com/default/svc-for-erp/bill/',
+//         data: 'company_code=sshy',
+        dataType: "jsonp",
+        jsonp: "callback",
+        jsonpCallback: "jsonpcallback",
+        timeout: 1000,
+        success: function(ojson) {
+            if(ojson.ask==1){
+                $('#billDiv').html(ojson.message).show().liMarquee();
+                $('#erp_version').attr('title',ojson.service_type_title);
+            }
+        },
+        error: function(ojson)
+        {
+        }
+    });
+
+})
+</script>
+<div id="billDiv" style="line-height:25px;display:none;">您的维护期限已经到期，请联系易仓客服进行续费...</div>
+<div class="nav2" style="display: none;"></div>
+    <div id="column">
+            <div class="logo2" onclick="leftMenu('0','首页','/system/home')">
+            <a href="javascript:void(0);"></a>
+        </div>
+            <div class="headNav">
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu9')" onmouseout="closeThisSubMenuHeader(this,'headmenu9')">
+            <li style="">
+                <a href="#">订单管理</a>
+            </li>
+                        <div class="topMenu-ret" id="headmenu9-ret" style="display: none"></div>
+            <div class="topMenu" style="display: none;width:auto;" id="headmenu9">
+                <div class="topMenu_cover"></div>
+                                <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>平台订单</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-16" onclick="leftMenu('16','eBay订单','/order/order-list/list/platform/ebay/?quick=16')" title="eBay订单">eBay订单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-38" onclick="leftMenu('38','Amazon订单','/order/order-list/list/platform/amazon/?quick=38')" title="Amazon订单">Amazon订单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-59" onclick="leftMenu('59','Aliexpress订单','/order/order-list/list/platform/aliexpress/?quick=59')" title="Aliexpress订单">Aliexpress订单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-90" onclick="leftMenu('90','Wish订单','/order/order-list/list/platform/wish?quick=90')" title="Wish订单">Wish订单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-218" onclick="leftMenu('218','Cdiscount订单','/order/order-list/list/platform/cdiscount/?quick=218')" title="Cdiscount订单">Cdiscount订单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-232" onclick="leftMenu('232','Lazada订单','/order/order-list/list/platform/lazada/?quick=232')" title="Lazada订单">Lazada订单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-236" onclick="leftMenu('236','Shopee订单','/order/order-list/list/platform/shopee/?quick=236')" title="Shopee订单">Shopee订单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-237" onclick="leftMenu('237','Linio订单','/order/order-list/list/platform/linio/?quick=237')" title="Linio订单">Linio订单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-242" onclick="leftMenu('242','Joom订单','/order/order-list/list/platform/joom?quick=242')" title="Joom订单">Joom订单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-39" onclick="leftMenu('39','B2C订单','/order/order-list/list/platform/b2c/?quick=39')" title="B2C订单">B2C订单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-26" onclick="leftMenu('26','PayPal线下订单','/fee/paypal-transation/list?quick=26')" title="PayPal线下订单">PayPal线下订单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-221" onclick="leftMenu('221','历史订单','/order/history-order/list?quick=221')" title="历史订单">历史订单</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>线下订单</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-102" onclick="leftMenu('102','新建订单','/order/order/create-order?quick=102')" title="新建订单">新建订单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-24" onclick="leftMenu('24','批量导入订单','/order/order/import?quick=24')" title="批量导入订单">批量导入订单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-101" onclick="leftMenu('101','审核订单','/order/order-verification/list/?quick=101')" title="审核订单">审核订单</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>订单规则</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-30" onclick="leftMenu('30','自动分仓规则','/order/order-allot/index?quick=30')" title="自动分仓规则">自动分仓规则</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-47" onclick="leftMenu('47','订单审核规则','/order/order-audit-set/list?quick=47')" title="订单审核规则">订单审核规则</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-235" onclick="leftMenu('235','订单标发管理','/order/order-complete-sale-management/list?quick=235')" title="订单标发管理">订单标发管理</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-70" onclick="leftMenu('70','待确认订单规则','/order/order-doubt-set?quick=70')" title="待确认订单规则">待确认订单规则</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-73" onclick="leftMenu('73','发货超时提醒规则','/order/order-delivery-remind?quick=73')" title="发货超时提醒规则">发货超时提醒规则</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-71" onclick="leftMenu('71','FBA/FBC订单分配规则','/order/order-fba-set?quick=71')" title="FBA/FBC订单分配规则">FBA/FBC订单分配规则</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-76" onclick="leftMenu('76','附加操作规则','/order/order-additional?quick=76')" title="附加操作规则">附加操作规则</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-87" onclick="leftMenu('87','标记发货规则','/order/mark-shipping-rule?quick=87')" title="标记发货规则">标记发货规则</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" style="margin-right:0;">
+                        <span>订单配置</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-18" onclick="leftMenu('18','订单导出模板','/order/column-map/index?quick=18')" title="订单导出模板">订单导出模板</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-234" onclick="leftMenu('234','自定义订单模板','order/order-template/list?quick=234')" title="自定义订单模板">自定义订单模板</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-48" onclick="leftMenu('48','B2C数据来源','/order/order-data-source/list?quick=48')" title="B2C数据来源">B2C数据来源</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-58" onclick="leftMenu('58','订单状态自定义标签','/order/order-tag/list?quick=58')" title="订单状态自定义标签">订单状态自定义标签</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-49" onclick="leftMenu('49','地址黑名单','/order/address-blacklist/list?quick=49')" title="地址黑名单">地址黑名单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-68" onclick="leftMenu('68','买家黑名单','/order/buyer-blacklist/list?quick=68')" title="买家黑名单">买家黑名单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-69" onclick="leftMenu('69','PayPal账户黑名单','/order/paypal-payment-blacklist/list?quick=69')" title="PayPal账户黑名单">PayPal账户黑名单</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-81" onclick="leftMenu('81','目的国家分类','/order/country-user-category/list?quick=81')" title="目的国家分类">目的国家分类</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                        </div>
+                                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu8')" onmouseout="closeThisSubMenuHeader(this,'headmenu8')">
+            <li style="">
+                <a href="#">客服管理</a>
+            </li>
+                        <div class="topMenu-ret" id="headmenu8-ret" style="display: none"></div>
+            <div class="topMenu" style="display: none;width:auto;" id="headmenu8">
+                <div class="topMenu_cover"></div>
+                                <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>message管理</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-20" onclick="leftMenu('20','eBay消息','/message/ebay/index?quick=20')" title="eBay消息">eBay消息</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-238" onclick="leftMenu('238','eBay消息(New)','/message/ebay-message-new/list?quick=238')" title="eBay消息(New)">eBay消息(New)</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-80" onclick="leftMenu('80','Amazon邮件','/message/amazon-message/list?quick=80')" title="Amazon邮件">Amazon邮件</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-98" onclick="leftMenu('98','Aliexpress消息','/message/aliexpress-message/?quick=98')" title="Aliexpress消息">Aliexpress消息</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-83" onclick="leftMenu('83','消息自定义标签','/message/message-filter/list?quick=83')" title="消息自定义标签">消息自定义标签</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>营销配置</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-21" onclick="leftMenu('21','消息/邮件模板','/message/template/index?quick=21')" title="消息/邮件模板">消息/邮件模板</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-66" onclick="leftMenu('66','自动客服模板','/message/automatic-letter-template/list?quick=66')" title="自动客服模板">自动客服模板</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-67" onclick="leftMenu('67','自动客服规则','/message/automatic-letter-rule/?quick=67')" title="自动客服规则">自动客服规则</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-215" onclick="leftMenu('215','邮件分配规则','/customerservice/customer-mail-distribution?quick=215')" title="邮件分配规则">邮件分配规则</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-79" onclick="leftMenu('79','Amazon邮箱设置','/auth/email-account?quick=79')" title="Amazon邮箱设置">Amazon邮箱设置</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-212" onclick="leftMenu('212','Wish邮管理','/auth/wish-api/?quick=212')" title="Wish邮管理">Wish邮管理</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>message列表</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-40" onclick="leftMenu('40','eBay站内信','/message/ebay-feedback-message/list?quick=40')" title="eBay站内信">eBay站内信</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-226" onclick="leftMenu('226','邮件发送列表','/feedback/amazon-generation-mail/list?quick=226')" title="邮件发送列表">邮件发送列表</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>售后</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-34" onclick="leftMenu('34','eBay评价','/feedback/ebay-customer-feedback/list?quick=34')" title="eBay评价">eBay评价</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-36" onclick="leftMenu('36','eBay纠纷','/case/ebay-user-cases?quick=36')" title="eBay纠纷">eBay纠纷</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-86" onclick="leftMenu('86','eBay退换货申请','/customerservice/ebay-return-request?quick=86')" title="eBay退换货申请">eBay退换货申请</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-105" onclick="leftMenu('105','eBay取消订单申请','/customerservice/ebay-cancellation?quick=105')" title="eBay取消订单申请">eBay取消订单申请</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-239" onclick="leftMenu('239','eBay自动退款设置','/customerservice/ebay-automatic-refund/list?quick=239')" title="eBay自动退款设置">eBay自动退款设置</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-100" onclick="leftMenu('100','中差评统计','/feedback/feedback-statistics?quick=100')" title="中差评统计">中差评统计</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-96" onclick="leftMenu('96','Amazon中差评','/feedback/amazon-customer-feedback/list?quick=96')" title="Amazon中差评">Amazon中差评</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>产品库存</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-51" onclick="leftMenu('51','产品查询','/product/product/list/?quick=51')" title="产品查询">产品查询</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-50" onclick="leftMenu('50','库存查询','/product/inventory/list?quick=50')" title="库存查询">库存查询</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-228" onclick="leftMenu('228','库存查询(仓库)','/product/inventory-warehouse/list?quick=228')" title="库存查询(仓库)">库存查询(仓库)</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" style="margin-right:0;">
+                        <span>客服任务</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-41" onclick="leftMenu('41','客户管理','/buyer/buyer/list?quick=41')" title="客户管理">客户管理</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-97" onclick="leftMenu('97','订单发票','/customerservice/invoice-receipt/list?quick=97')" title="订单发票">订单发票</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-72" onclick="leftMenu('72','工单管理','/customerservice/ticket?quick=72')" title="工单管理">工单管理</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-84" onclick="leftMenu('84','任务分派','/customerservice/service-assignments/list?quick=84')" title="任务分派">任务分派</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                        </div>
+                                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu10')" onmouseout="closeThisSubMenuHeader(this,'headmenu10')">
+            <li style="">
+                <a href="#">RMA管理</a>
+            </li>
+                        <div class="topMenu-ret" id="headmenu10-ret" style="display: none"></div>
+            <div class="topMenu" style="display: none;width:auto;" id="headmenu10">
+                <div class="topMenu_cover"></div>
+                                <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>RMA管理</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-27" onclick="leftMenu('27','退款管理','/fee/paypal-refund/list?quick=27')" title="退款管理">退款管理</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-29" onclick="leftMenu('29','退件重发','/order/rma/list?quick=29')" title="退件重发">退件重发</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-43" onclick="leftMenu('43','仓库退件','/order/returns/list?quick=43')" title="仓库退件">仓库退件</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" style="margin-right:0;">
+                        <span>RMA数据</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-88" onclick="leftMenu('88','RMA统计','/order/rma/statistics-list?quick=88')" title="RMA统计">RMA统计</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-89" onclick="leftMenu('89','RMA分析','/order/rma/analysis-list?quick=89')" title="RMA分析">RMA分析</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                        </div>
+                                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu11')" onmouseout="closeThisSubMenuHeader(this,'headmenu11')">
+            <li style="">
+                <a href="#">费用管理</a>
+            </li>
+                        <div class="topMenu-ret" id="headmenu11-ret" style="display: none"></div>
+            <div class="topMenu" style="display: none;width:auto;" id="headmenu11">
+                <div class="topMenu_cover"></div>
+                                <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>费用管理</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-55" onclick="leftMenu('55','额度管理','/fee/pay-quota/list?quick=55')" title="额度管理">额度管理</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-52" onclick="leftMenu('52','费用试算','/ship/shipping-method/trial?quick=52')" title="费用试算">费用试算</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" style="margin-right:0;">
+                        <span>费用查询</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-77" onclick="leftMenu('77','订单费用','/fee/orders-fee/list?quick=77')" title="订单费用">订单费用</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                        </div>
+                                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu7')" onmouseout="closeThisSubMenuHeader(this,'headmenu7')">
+            <li style="">
+                <a href="#">应用中心</a>
+            </li>
+                        <div class="topMenu-ret" id="headmenu7-ret" style="display: none"></div>
+            <div class="topMenu" style="display: none;width:auto;" id="headmenu7">
+                <div class="topMenu_cover"></div>
+                                <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>商品管理列表</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-61" onclick="leftMenu('61','店铺补货策略','/product/platform-user/list?quick=61')" title="店铺补货策略">店铺补货策略</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-37" onclick="leftMenu('37','eBay商品管理','/product/seller-item/index?quick=37')" title="eBay商品管理">eBay商品管理</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-60" onclick="leftMenu('60','Amazon商品管理','/product/amazon-merchant-list?quick=60')" title="Amazon商品管理">Amazon商品管理</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>eBay运营</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-35" onclick="leftMenu('35','PayPal交易下载','/fee/paypal-transation/paypal-tool?quick=35')" title="PayPal交易下载">PayPal交易下载</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-225" onclick="leftMenu('225','eBay议价','/order/ebay-best-offers-item/index?quick=225')" title="eBay议价">eBay议价</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>Amazon平台数据</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-217" onclick="leftMenu('217','Amazon账号健康列表','/statistics/platform-account-health/account-list?quick=217')" title="Amazon账号健康列表">Amazon账号健康列表</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-224" onclick="leftMenu('224','Amazon FBA库存','/product/amazon-fba-myi-all-inventory?quick=224')" title="Amazon FBA库存">Amazon FBA库存</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-78" onclick="leftMenu('78','Amazon商品竞价','/product/Amazon-Automatic-Pricing?quick=78')" title="Amazon商品竞价">Amazon商品竞价</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-220" onclick="leftMenu('220','Amazon入库货件列表','/product/Amazon-Inbound-Original?quick=220')" title="Amazon入库货件列表">Amazon入库货件列表</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-227" onclick="leftMenu('227','Amazon商品跟卖','/product/amazon-sale-follow/list?quick=227')" title="Amazon商品跟卖">Amazon商品跟卖</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>Amazon采集工具</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-229" onclick="leftMenu('229','Review小助手','/buyer/amazon-buyer-review/select?quick=229')" title="Review小助手">Review小助手</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" style="margin-right:0;">
+                        <span>统计面板</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-65" onclick="leftMenu('65','统计面板','/common/panel/list?quick=65')" title="统计面板">统计面板</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-230" onclick="leftMenu('230','异常统计面板','/common/abnormal-panel/list?quick=230')" title="异常统计面板">异常统计面板</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-214" onclick="leftMenu('214','在线商品销量分析','/statistics/product-ship/list?quick=214')" title="在线商品销量分析">在线商品销量分析</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-106" onclick="leftMenu('106','在线商品销量统计','/customerservice/Listing-Sales-Statistics/select?quick=106')" title="在线商品销量统计">在线商品销量统计</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                        </div>
+                                </ul>
+                <ul onmouseover="showThisSubMenuHeader(this,'headmenu1')" onmouseout="closeThisSubMenuHeader(this,'headmenu1')">
+            <li style="">
+                <a href="#">系统管理</a>
+            </li>
+                        <div class="topMenu-ret" id="headmenu1-ret" style="display: none"></div>
+            <div class="topMenu" style="display: none;width:auto;" id="headmenu1">
+                <div class="topMenu_cover"></div>
+                                <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>权限管理</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-2" onclick="leftMenu('2','用户中心','/auth/user/user-center?quick=2')" title="用户中心">用户中心</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-22" onclick="leftMenu('22','用户店铺管理','/auth/service/index?quick=22')" title="用户店铺管理">用户店铺管理</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-3" onclick="leftMenu('3','部门管理','/auth/user-department/list?quick=3')" title="部门管理">部门管理</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>账号管理</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-12" onclick="leftMenu('12','平台账号授权','/order/Platform-User/list?quick=12')" title="平台账号授权">平台账号授权</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-28" onclick="leftMenu('28','PayPal账户关联','/auth/ebay-paypal/list?quick=28')" title="PayPal账户关联">PayPal账户关联</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-25" onclick="leftMenu('25','eub账号管理','/auth/eub-account/?quick=25')" title="eub账号管理">eub账号管理</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>SKU管理</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-32" onclick="leftMenu('32','SKU关系管理','/product/product-combine-relation/list?quick=32')" title="SKU关系管理">SKU关系管理</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-82" onclick="leftMenu('82','平台SKU拆分规则','/product/combine-relation-ruler/list?quick=82')" title="平台SKU拆分规则">平台SKU拆分规则</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-56" onclick="leftMenu('56','试运行SKU设置','/product/allow-sku/list?quick=56')" title="试运行SKU设置">试运行SKU设置</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" >
+                        <span>物流维护</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-57" onclick="leftMenu('57','标记派送方式设置','/product/fulfill-map/list?quick=57')" title="标记派送方式设置">标记派送方式设置</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-31" onclick="leftMenu('31','运输方式映射','/auth/shipping-method-platform/?quick=31')" title="运输方式映射">运输方式映射</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-223" onclick="leftMenu('223','Aliexpress渠道查询','/order/aliexpress/list?quick=223')" title="Aliexpress渠道查询">Aliexpress渠道查询</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                                        <ul style="margin-right:24px;">
+                    <li class="noline" style="margin-right:0;">
+                        <span>高级设置</span>
+                    </li>
+
+                        <ul>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-64" onclick="leftMenu('64','店铺运行设置','/auth/platform-user/list?quick=64')" title="店铺运行设置">店铺运行设置</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-85" onclick="leftMenu('85','易仓国际化助手','/common/word-internationalization/list/?quick=85')" title="易仓国际化助手">易仓国际化助手</a>
+                        </li>
+                                                <li class="title">
+                            <a href="javascript:void(0);" class="sub-menu-id-222" onclick="leftMenu('222','自动任务时间设置','/customerservice/auto-task/list?quick=222')" title="自动任务时间设置">自动任务时间设置</a>
+                        </li>
+
+                        </ul>
+
+                </ul>
+                        </div>
+                                </ul>
+
+    </div>
+    <div class="headFoot"></div>
+    </div>
+<div id="main-container">
+        <div class="shrink">&nbsp;</div>
+        <div class="main-right" id="main-right">
+        <link rel="stylesheet" type="text/css" href="http://chineoneb.eccang.com/css/public/step.css">
+<link rel="stylesheet" type="text/css" href="http://chineoneb.eccang.com/css/public/help.css">
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/step.js?20131012"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/help.js?20171207"></script>
+<div class="guild">
+    <h2 style="cursor: pointer" id="menu0">
+        <a href="javascript:void (0)" title="首页" onclick="leftMenu('0','首页','/system/home')">
+            首页
+        </a>
+    </h2>
+    <h3 class="guild_drop">
+        <a href="javascript:;" onclick="showHistory()"><img id="menuBtn" src="http://chineoneb.eccang.com/images/pack/bg_guild_drop01.gif" alt="显示历史标签"></a>
+        <div class="guild_drop_list" style="display: none;top:118px" id="menuList" onmouseout="showHistory()">
+            <a href="javascript:void(0);" style="border-bottom:1px solid #a8ccee;" onclick="clearHis(this)">清空历史标签</a>
+        </div>
+    </h3>
+    <span class="sys_help" title="帮助">
+        <a href="http://oversee.eccang.com/default/platform-user/system-problem-answer" target="_blank" style="text-decoration:none;">
+            <div style="display: inline-block;height:30px;float: right;"><img src="images/base/problem.png" style="width: 30px;float: left;"/><p style="display: inline-block;float: left;height:30px;font-size: 0.7em;">系统常见问题解答</p></div>
+        </a>
+    </span>
+</div>
+<!-- 帮助页面，弹出窗体 -->
+<div id="sys_help_dialog" style="display:none;">
+    <table class="dialog-module" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+            <tr class="table-module-b1">
+                <td class="stateFlow">
+                    <!-- 状态流转区域 -->
+                </td>
+            </tr>
+            <tr class="table-module-b1">
+                <td style="border: 1px solid #D9D9D9;height:400px;" valign="top">
+                    <!-- 说明区域 -->
+                    <div id="stateContent" style="width: 100%;height:400px;max-height: 400px;overflow-x: hidden;overflow-y: auto;">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>        <div class="main-right-container" id="main-right-container-iframe">
+                <iframe frameborder="0" src="http://chineoneb.eccang.com/system/home" width="100%" height="100%" id="iframe-container-0" name="iframe-container-0" class="iframe-container"></iframe>
+            </div>
+        </div>
+</div>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/jquery.alerts.js"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/jquery-cookie.js"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/jquery.form.js"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/jquery.pagination.js"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/mod.js?t=20171008"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/skyeQuiKey.js?t=20171008"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/jquery.myLoading.js"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/locale/oms-lang-en_US.js?t=20171008"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/locale/oms-lang-zh_CN.js?t=20171008"></script>
+<script type="text/javascript" src="http://chineoneb.eccang.com/js/locale/locale_message.js?t=20171008"></script>
+</body>
+</html>

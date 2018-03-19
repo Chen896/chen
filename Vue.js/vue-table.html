@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 表格</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/vue-easytable/umd/css/index.css">
+</head>
+<body>
+
+<!--
+    固定表头：
+    只需要设置height属性即可，如果设置的高度大于实际表格的高度，将以实际表格高度为准
+
+    固定列：
+    通过给需要固定的列，设置 isFrozen: true 即可
+
+
+    自适应分为纵向自适应（高自适应） 和 横向自适应（宽自适应）。
+    如果是横向自适应需要满足下面条件：
+        通过 is-horizontal-resize 属性设置横向自适应；
+        通过 isResize 属性设置哪些列需要自适应（所有列都可以设置，达到所有列自适应）；
+        通过 style="width:100%" 设置显示比例（百分比的值根据需求而定）；
+        每个列必须提供宽度，这个宽度是自适应的最小宽度；
+        如果是纵向自适应只需要设置is-vertical-resize=true即可
+
+    可以通过vertical-resize-offset设置纵向偏移量调节距离当前可视高度底部的距离（比如包含分页时）
+ -->
+<div id="app">
+    <v-table
+            is-horizontal-resize
+            style="width:100%"
+            :vertical-resize-offset='5'
+
+            :width="1000"
+            :height="200"
+            :columns="columns"
+            :table-data="tableData"
+            :show-vertical-border="false"
+    ></v-table>
+</div>
+</body>
+<!-- 先引入 Vue -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/vue-easytable/umd/js/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: function() {
+            return {
+                tableData: [
+                    {"name":"赵伟","tel":"156*****1987","hobby":"钢琴、书法、唱歌","address":"上海市黄浦区金陵东路569号17楼"},
+                    {"name":"李伟","tel":"182*****1538","hobby":"钢琴、书法、唱歌","address":"上海市奉贤区南桥镇立新路12号2楼"},
+                    {"name":"孙伟","tel":"161*****0097","hobby":"钢琴、书法、唱歌","address":"上海市崇明县城桥镇八一路739号"},
+                    {"name":"周伟","tel":"197*****1123","hobby":"钢琴、书法、唱歌","address":"上海市青浦区青浦镇章浜路24号"},
+                    {"name":"吴伟","tel":"183*****6678","hobby":"钢琴、书法、唱歌","address":"上海市松江区乐都西路867-871号"}
+                ],
+                columns: [
+                    {field: 'name', title:'姓名', width: 100, titleAlign: 'center',columnAlign:'center', isFrozen: true  ,isResize:true},
+                    {field: 'tel', title: '手机号码', width: 260, titleAlign: 'center',columnAlign:'center'  ,isResize:true},
+                    {field: 'hobby', title: '爱好', width: 330, titleAlign: 'center',columnAlign:'center'  ,isResize:true},
+                    {field: 'address', title: '地址', width:200, titleAlign: 'center',columnAlign:'left'  ,isResize:true}
+                ]
+            }
+        }
+    })
+</script>
+</html>

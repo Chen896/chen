@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Vue.js 遍历</title>
+        <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script> -->
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript" src="./vue.min.js"></script>
+    </head>
+
+    <body class="container" style="margin-top:50px;">
+        <div id="todo-list-example">
+            <input
+                v-model="newTodoText"
+                v-on:keyup.enter="addNewTodo"
+                placeholder="Add a todo"
+            >
+
+            <ul>
+                <!-- 注意这里的 is="todo-item" 属性。这种做法在使用 DOM 模板时是十分必要的，因为在 <ul> 元素内只有 <li> 元素会被看作有效内容。这样做实现的效果与 <todo-item> 相同，但是可以避开一些潜在的浏览器解析错误。 -->
+                <li
+                    is="todo-item"
+                    v-for="(todo, index) in todos"
+                    v-bind:key="todo.id"
+                    v-bind:title="todo.title"
+                    v-on:remove="todos.splice(index, 1)"
+                ></li>
+            </ul>
+        </div>
+
+        <script type="text/javascript">
+            Vue.component('todo-item', {
+                template: '\
+                    <li>\
+                        {{ title }}\
+                        <button v-on:click="$emit(\'remove\')">X</button>\
+                    </li>',
+                props: ['title']
+            })
+
+            new Vue({
+                el: '#todo-list-example',
+                data: {
+                    newTodoText: '',
+                    todos: [
+                        {
+                            id: 1,
+                            title: 'Do the dishes',
+                        },
+                        {
+                            id: 2,
+                            title: 'Take out the trash',
+                        },
+                        {
+                            id: 3,
+                            title: 'Mow the lawn'
+                        }
+                    ],
+                    nextTodoId: 4
+                },
+
+                methods: {
+                    addNewTodo: function() {
+                        this.todos.push({
+                            id: this.nextTodoId++,
+                            title: this.newTodoText
+                        });
+                        this.newTodoText = '';
+                    }
+                }
+            })
+        </script>
+
+
+
+
+
+
+
+        <!-- 表格 ****************************************************************8 -->
+        <h3>Vue 表格嵌套</h3>
+        <table id="app" v-bind:class="{ table: isActive, 'text-danger': hasError }" class="table table-condensed table-hover table-bordered tablechckbox">
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>操作</th>
+            </tr>
+
+            <template v-for="(data, key) in listData">
+                <tr>
+                    <td v-bind:rowspan="data.rowNum">
+                        {{ data.id }}
+                        <span v-on:click="Expand(key)" v-bind:class="data.openClass" style="color:green; cursor:pointer;"></span>
+                    </td>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.sex }}</td>
+
+                    <!-- 绑定data-id属性 -->
+                    <td><button v-bind:data-id="data.id">编辑</button></td>
+                </tr>
+
+                <!-- v-if 是“真正”的条件渲染，v-show 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 进行切换。 -->
+                <template v-show="data.child.length">
+                    <tr v-bind:style="{display: data.open}">
+
+                        <td colspan="5">
+                            <table class="table table-condensed table-hover table-bordered">
+                                <tr v-for="cc in data.child">
+                                    <td>{{ cc.no }}</td>
+                                    <td>{{ cc.no }}</td>
+                                    <td>{{ cc.no }}</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </template>
+            </template>
+
+        </table>
+
+        <script type="text/javascript">
+
+            var app = new Vue({
+                'el': "#app",
+                'data': {
+                    isActive: true,
+                    hasError: true,
+
+                    listData: [
+                        {id:1, name: '张三', sex: '男', child: [{no:1},{no:12}], open: 'none', rowNum: 1, openClass: 'glyphicon glyphicon-minus'},
+                        {id:2, name: '李四', sex: '男', child: [], open: 'none', rowNum: 1, openClass: 'glyphicon glyphicon-minus'},
+                        {id:3, name: '王五', sex: '男', child: [{no:1}], open: 'none', rowNum: 1, openClass: 'glyphicon glyphicon-minus'},
+                    ]
+                },
+
+                // 自定义方法[原生JS]
+                'methods': {
+                    Expand: function(key){
+                        //  app === this
+                        if(!this.listData[key].child.length) return false;
+
+                        // block VS table-row
+                        if(this.listData[key].open === 'table-row'){
+                            this.listData[key].open = 'none';
+                            this.listData[key].rowNum = 1;
+                            this.listData[key].openClass = 'glyphicon glyphicon-minus';
+
+                        }else{
+                            this.listData[key].open = 'table-row';
+                            this.listData[key].rowNum = 2;
+                            this.listData[key].openClass = 'glyphicon glyphicon-plus';
+                        }
+                    }
+                }
+            });
+
+            // jq
+            $("button").on("click", function(){
+                var id = $(this).data("id");
+
+                alert(id);
+            });
+        </script>
+
+    </body>
+</html>
